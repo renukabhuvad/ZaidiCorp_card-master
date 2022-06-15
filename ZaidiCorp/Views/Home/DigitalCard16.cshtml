@@ -1,0 +1,886 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard16";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+@foreach (var item in Model.customerinfo)
+{
+    <title> @item.customername </title>
+}
+
+<link href="/DigitalCard16/assets/card-assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/DigitalCard16/assets/card-assets/css/all.css" rel="stylesheet" type="text/css">
+<link href="/DigitalCard16/assets/card-assets/css/themify-icons.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/DigitalCard16/assets/card-assets/css/jquery.fancybox.min.css">
+<!-- modal -->
+<link rel="stylesheet" href="/DigitalCard16/assets/card-assets/css/remodal.css">
+<link rel="stylesheet" href="/DigitalCard16/assets/card-assets/css/remodal-default-theme.css">
+<link href="/DigitalCard16/assets/card-assets/css/style.css" rel="stylesheet" type="text/css">
+<!--favicon icon-->
+<link rel="icon" href="/DigitalCard16/assets/web-assets/img/favicon.png" type="image/png">
+<!-- javascript -->
+<script type="text/javascript" src="/DigitalCard16/assets/card-assets/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/DigitalCard16/assets/card-assets/js/bootstrap.min.js"></script>
+<script src="/DigitalCard16/assets/card-assets/js/jquery.fancybox.min.js"></script>
+
+@foreach (var item in Model.customerinfo)
+{
+
+    <meta name="keywords" content="">
+    <meta name="description" content="@item.customername">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:site" content="@item.customername">
+    <meta name="twitter:title" content="@item.customername">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:creator" content="http://mydc.in/?a=@item.callme-16">
+    <meta name="twitter:image:src" content="@item.imageurl">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="@item.customername" />
+    <meta property="og:type" content="@item.customername" />
+    <meta property="og:description" content="We are group of life insurance professionals, helping people with professional and expert advice on different types of life insurance as per their needs. We also provide support to people searching for career in life insurance sector." />
+    <meta property="og:site_name" content="http://mydc.in/?a=@item.callme-16" />
+    <meta property="og:image" content="@item.imageurl" />
+    <meta property="article:section" content="@item.customername" />
+
+    <main class="content-wrap">
+        <section id="home" class="home mb-3">
+
+            <div class="profile" style="background:#00529c url(/DigitalCard16/assets/card-assets/images/profile-bg.png) center no-repeat">
+                @if (item.imageurl != "")
+                {
+                    <img src="@item.imageurl" class="img-fluid">
+                }
+                else
+                {
+                    <img src="~/images/abc.png" class="img-fluid">
+                }
+            </div>
+            <div class="content">
+                <h2>
+                    @item.customername
+                    <small style="background: linear-gradient(to right, #ffe607 0%, #ffe607 100%);"> @item.designation </small>
+                </h2>
+
+                <p>
+                    <a href="tel:@item.callme">
+                        <i class="ti-mobile" style="background:linear-gradient(to right, #00529c 0%, #00529c 100%)"></i>
+                        @item.callme
+                    </a>
+                </p>
+
+                <p id="mailid">
+                    <a href="mailto:@item.emailid">
+                        <i class="fa fa-envelope" style="background:linear-gradient(to right, #00529c 0%, #00529c 100%)"></i>
+                        @item.emailid
+                    </a>
+                </p>
+
+                <p>
+                    <a href="@item.website" target="blank">
+                        <i class="fa fa-globe" style="background:linear-gradient(to right, #00529c 0%, #00529c 100%)"></i>
+                        @item.website
+                    </a>
+                </p>
+
+                <p>
+                    <a href="@item.direction" target="_blank">
+                        <i class="fas fa-map-marker-alt" style="background:linear-gradient(to right, #00529c 0%, #00529c 100%)"></i>
+                        @item.address
+                    </a>
+                </p>
+
+            </div>
+            <div class="other-pt">
+
+                <div style="padding:10px;padding-top:30px;" class="input-group">
+                    <input id="whatsapp-input" type="text" class="form-control" placeholder="Enter Mobile No">
+                    <span class="input-group-addon"><a class="whatsapp-button" target="_blank" href="javascript:;" onclick="shareViaWhatsapp(this)" style="color:#fff;" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"><i class="fa fa-whatsapp"></i> Share On Whatsapp </a> </span>
+                </div>
+                <style>
+                    .input-group-addon {
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        font-weight: normal;
+                        line-height: 1.8;
+                        text-align: center;
+                        background-color: #13730f;
+                        /* border: 1px solid #cccccc; */
+                        /*border-radius: 4px;*/
+                        color: #fff;
+                        /* background-color: white; */
+                    }
+
+                    .form-control {
+                        height: 40px !important;
+                    }
+                </style>
+
+                <script>
+                function shareViaWhatsapp(e) {
+                     const {value} = document.getElementById('whatsapp-input');
+                     if (value.length < 10) {
+                         e.preventDefault();
+                         return;
+                     }
+                     var msg = encodeURIComponent('Hello,\n To Know more about our provided services click on given link...\n http://mydc.in/?a=@item.callme-16 \n Thanks & Regards \n @item.customername')
+                     e.href = `https://wa.me/91${document.getElementById('whatsapp-input').value}?text=${msg}`;
+                     }
+                     function handleDirectWhatsappShare(e) {
+                         e.href = `whatsapp: \/\/send?text=${window.location.href}`;
+                   }
+                </script>
+
+                <div class="save-pt">
+                    <form method="post" action="savecontact">
+                        <button role="button" type="submit" class="shadow-button" style="border: 2px solid #d4d4d4 !important;background: #00529c !important;color: #fff;padding: 12px">
+                            <i class="ti-download mr-2"></i> Add to Phonebook
+                        </button>
+                    </form>
+
+                </div>
+                @*<div class="social-container px-4 mb-4 mt-2">
+                        <a href="https://www.linkedin.com/in" target="_blank" title="Linkedin" class="linkedin"><i class="fa fa-phone"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" title="Youtube" class="youtube"><i class="fa fa-envelope"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" title="Instagram" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>*@
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="about" class="about mb-3">
+            <h3 class="h3" style="background:#00529c">About Me</h3>
+            <p>
+                <div>
+                    @Html.Raw(item.about)
+                </div>
+            </p>
+        </section>
+
+        <!-- Vision -->
+        <section id="vision" class="product mb-3">
+            <h3 class="h3" style="background:#00529c">Vision</h3>
+            <p>
+                <div>
+                    @Html.Raw(item.vision)
+                </div>
+            </p>
+        </section>
+        <!-- End Vision -->
+        <!-- Services -->
+        <section id="services" class="product mb-3">
+            <h3 class="h3" style="background:#00529c">Services</h3>
+            <p>
+                <div>
+                    @Html.Raw(item.service)
+                </div>
+            </p>
+        </section>
+        <!-- End Services -->
+        <!-- Testimonials -->
+        <style>
+            .testimonial {
+                border: 1px solid #7dbef9;
+                padding: 10px;
+                border-radius: 10px;
+                background: #bedcf7;
+                margin-bottom: 10px;
+            }
+
+                .testimonial img {
+                    width: 150px;
+                    height: 150px;
+                    text-align: center;
+                    display: block;
+                    margin: auto;
+                    border-radius: 50%;
+                }
+
+                .testimonial h2 {
+                    font-size: 18px;
+                    text-align: left;
+                    font-weight: 600;
+                }
+
+                .testimonial p {
+                    font-size: 17px;
+                }
+
+            @@media only screen and (max-width:520px) and (min-width:220px) {
+                .testimonial {
+                    position: initial;
+                }
+
+                    .testimonial h2 {
+                        text-align: center;
+                    }
+            }
+        </style>
+        <section id="testimonials" class="product mb-3">
+            <h3 class="h3" style="background:#00529c"> TEAM </h3>
+            <div class="col-md-12">
+                @if (Model.testimonials != null)
+                {
+                    foreach (var items in Model.testimonials)
+                    {
+                        <div class="testimonial">
+                            <div class="" style="margin-bottom:10px;">
+                                @if (items.image != null)
+                                {
+                                    <img src="@items.image" alt="" class="img-responsive">
+                                }
+                                else
+                                {
+                                    <img src="~/DigitalCard/images/abc.png" alt="" class="img-responsive">
+                                }
+
+                            </div>
+                            <div class="text-center">
+                                <h2 class="text-center">
+                                    @items.name
+                                </h2>
+                                <p>
+                                    @items.description
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- End Testimonials -->
+        <!-- Gallery -->
+        <section id="gallerypt" class="gallery mb-3">
+            <h3 style="background:#00529c">GALLERY</h3>
+            <div class="gallery-main">
+                <style>
+                    .box_gallery {
+                        overflow: hidden;
+                        position: relative;
+                    }
+
+                        .box_gallery img {
+                            width: 100%;
+                            height: 300px;
+                            margin-bottom: 10px;
+                        }
+
+                        .box_gallery .box-content {
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            z-index: 2;
+                            transform: translate(-50%, -50%);
+                        }
+
+                            .box_gallery:before,
+                            .box_gallery:after,
+                            .box_gallery .box-content:before,
+                            .box_gallery .box-content:after {
+                                /*content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                    position: absolute;
+                    top: -100%;
+                    left: 50%;
+                    opacity: 0;
+                    transform: translateX(-50%) rotate(45deg);
+                    transition: all 0.3s steps(4);*/
+                            }
+
+                        .box_gallery:after {
+                            /*top: 100%;
+                        background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                        transform: translateX(-50%) rotate(45deg);*/
+                        }
+
+                        .box_gallery .box-content:before {
+                            /*top: 50%;
+                        left: -100%;
+                        background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                        transform: translateY(-50%) rotate(45deg);*/
+                        }
+
+                        .box_gallery .box-content:after {
+                            /*top: 50%;
+                        left: 100%;
+                        background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                        transform: translateY(-50%) rotate(45deg);*/
+                        }
+
+                        .box_gallery:hover:before {
+                            top: -70%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery:hover:after {
+                            top: 70%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery:hover .box-content:before {
+                            top: 50%;
+                            left: -71%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery:hover .box-content:after {
+                            top: 50%;
+                            left: 71%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery .inner-content {
+                            width: 100%;
+                            height: 50%;
+                            text-align: center;
+                            color: #fff;
+                            position: absolute;
+                            top: 65%;
+                            left: 50%;
+                            z-index: 2;
+                            transform: translate(-50%, 50%) scale(0);
+                            transition: all 0.3s ease 0.2s;
+                        }
+
+                            .box_gallery .inner-content:after {
+                                content: "";
+                                width: 180px;
+                                height: 180px;
+                                border-radius: 50%;
+                                background: #00529c;
+                                position: absolute;
+                                top: 20%;
+                                left: 50%;
+                                z-index: -1;
+                                transform: translate(-50%, -50%);
+                            }
+
+                        .box_gallery:hover .inner-content {
+                            transform: translate(-50%, -50%) scale(1);
+                            transition: all 0.3s ease 0s;
+                        }
+
+                        .box_gallery .title {
+                            font-size: 22px;
+                            font-weight: 700;
+                            text-transform: capitalize;
+                            margin: 0 0 5px 0;
+                        }
+
+                        .box_gallery .post {
+                            display: block;
+                            font-size: 14px;
+                            font-style: italic;
+                            text-transform: uppercase;
+                            margin-bottom: 7px;
+                        }
+
+                        .box_gallery .icon {
+                            padding: 0;
+                            margin: 0;
+                            list-style: none;
+                        }
+
+                            .box_gallery .icon li {
+                                display: inline-block;
+                                margin: 0 10px;
+                                opacity: 0;
+                                transition: all 0.3s ease 0s;
+                            }
+
+                        .box_gallery:hover .icon li {
+                            margin: 0 3px;
+                            opacity: 1;
+                        }
+
+                        .box_gallery .icon li a {
+                            display: block;
+                            width: 28px;
+                            height: 28px;
+                            line-height: 28px;
+                            border-radius: 20%;
+                            background: #fff;
+                            font-size: 16px;
+                            color: #505050;
+                            transition: all 0.3s ease 0s;
+                        }
+
+                            .box_gallery .icon li a:hover {
+                                background: #fff;
+                                color: #1856a3;
+                                box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                            }
+
+                    @@media only screen and (max-width:990px) {
+                        .box_gallery {
+                            margin-bottom: 30px;
+                        }
+                    }
+                </style>
+                <style>
+                    .box{
+                    overflow: hidden;
+                    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+                    perspective: 800px;
+                    position: relative;
+                    margin-bottom:15px;
+                }
+                .box:after{
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(173, 129, 65, 0.9);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    transform: rotateX(-90deg);
+                    transform-origin: 50% -50% 0;
+                    visibility: hidden;
+                    transition: all 0.5s ease 0s;
+                }
+                .box:hover:after{
+                    transform: rotateX(0deg);
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .box img{
+                    width: 100%;
+                    height: auto;
+                }
+                .box .box-content{
+                    width: 100%;
+                    text-align: center;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    z-index: 1;
+                    transform: translate(0%, 0%);
+                    transition: all 0.5s ease 0s;
+                }
+                .box:hover .box-content{
+                    opacity: 1;
+                    top: 50%;
+                    transform: translate(0%, -50%);
+                }
+                .box .title{
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: #fff;
+                    margin-top: 0;
+                }
+                .box .post{
+                    font-size: 16px;
+                    color: #fff
+                }
+                .box .icon{
+                    list-style: none;
+                    padding: 0;
+                    margin: 10px 0 0 0;
+                    opacity: 0;
+                    transition: all 0.5s ease 0.3s;
+                }
+                .box:hover .icon{
+                    opacity: 1;
+                }
+                .box .icon li{
+                    display: inline-block;
+                    margin-right: 5px;
+                    position: relative;
+                    transition: all 0.5s ease 0.3s;
+                }
+                .box .icon li:first-child{ left: -40%; }
+                .box .icon li:last-child{ right: -40%; }
+                .box:hover .icon li:first-child{ left: 0; }
+                .box:hover .icon li:last-child{ right: 0; }
+                .box .icon li a{
+                    width: 35px;
+                    height: 35px;
+                    line-height: 25px;
+                    border-radius: 50%;
+                    border: 1px solid #fff;
+                    font-size: 16px;
+                    color: #fff;
+                    transition: all 0.5s ease 0s;
+                }
+                .box .icon li a:hover{
+                    border-color: transparent;
+                }
+                @@media only screen and (max-width:990px){
+                    .box{ margin-bottom: 30px; }
+                }
+                </style>
+
+                <div class="col-md-12">
+                    @if (Model.gallery != null)
+                    {
+                        foreach (var items in Model.gallery)
+                        {
+                            @*<div class="">
+                                <div class="box_gallery">
+                                    <img src="@items.Image" class="img-responsive">
+                                    <div class="box-content">
+                                        <div class="inner-content">
+                                            <ul class="icon">
+                                                <li>
+                                                    <a href="@items.Image" data-magnify="gallery">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="">
+                                <div class="box">
+                                    <img src="@items.Image" alt="">
+                                    <div class="box-content">
+                                        <ul class="icon">
+                                            <li><a href="@items.Image" target="_blank" class="fa fa-search"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Videos -->
+        <style>
+            .Video_blcok .blocks .greenhead {
+                background: #fff;
+                text-align: center;
+                color: #00283a;
+                font-size: 14px;
+                /*border-bottom: 1px solid #558f02;*/
+                line-height: 43px;
+                font-weight: 600;
+            }
+
+            .blockstart {
+                border: 2px solid #000;
+                padding: 2px;
+                height: 300px;
+                margin: 10px 0px;
+            }
+
+                .blockstart a {
+                    width: 100%;
+                }
+
+            .blockimg {
+                width: 100%;
+                height: 250px !important;
+            }
+
+            .Video_blcok .blocks .blockstart span {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-top: -25px;
+                margin-left: -25px;
+                width: 58px;
+                height: 41px;
+                line-height: 50px;
+                font-size: 60px;
+                color: #48c7f6;
+            }
+        </style>
+        <section id="video" class="product mb-3">
+            <h3 class="h3" style="background:#00529c"> Video </h3>
+            <div class="Video_blcok">
+                <section>
+
+
+                    @{
+                        if (Model.videos != null)
+                        {
+                            foreach (var itm in Model.videos)
+                            {
+                                <div class="blocks">
+                                    <div class="blockstart" style="position:relative;">
+                                        <a id="pIASsr9TcKA" rel="fancyvideo" class="fancybox-media" href="https://youtu.be/@itm.url">
+                                            <img src="https://img.youtube.com/vi/@itm.url/0.jpg" class="img-responsive blockimg">
+                                            <span class="fa fa-play" id="@itm.url"></span>
+                                        </a>
+                                        <div class="greenhead"> @itm.title</div>
+                                    </div>
+                                </div>
+
+
+                            }
+                        }
+
+                    }
+
+                </section>
+            </div>
+        </section>
+        <!-- End Videos -->
+        <!-- Enquiry -->
+        <style>
+            .g-recaptcha {
+                /*transform: scale(1);
+            transform-origin: 0 0;*/
+                padding: 5px 15px;
+            }
+
+                .g-recaptcha div {
+                    width: 100% !important;
+                    text-align: center;
+                    margin: auto;
+                }
+
+            @@media only screen and (max-width:520px) and (min-width:220px) {
+                .g-recaptcha {
+                    transform: scale(1);
+                    transform-origin: 0 0;
+                    padding: 5px 10px;
+                }
+            }
+        </style>
+        <section id="enquiry" class="enquiry">
+            <h3 style="background:#00529c">ENQUIRY FORM</h3>
+            <form class="contact-form" method="post" id="register" name="register" action="sendenquiry">
+                <div class="form-group">
+                    <input type="text" class="form-control alphabetOnly" name="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="number" class="form-control numbersOnly" placeholder="Your Phone" pattern="[1-9]{1}[0-9]{9}" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <textarea name="query" class="form-control" rows="3" cols="5" placeholder="Message"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                    <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                </div>
+                <br />
+                <button type="submit" class="btn1" name="subquery" style="background:#00529c">
+                    Send Message
+                </button>
+            </form>
+        </section>
+        <section class="enquiry mt-1 p-1" style="background:#00529c">
+            <div class="text-center">
+                <a href="http://zaidicorp.in/" target="_blank" class="text-white"> © 2020 Zaidi Corporation </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="http://digitalcard.live/Home/PrivacyPolicy?customerid=@ViewBag.id" target="_blank" style="color:#fff;"> Privacy Policy </a>
+            </div>
+        </section>
+
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" style="background:#fff;">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title"> Alert </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="msg"> Enquiry Send Successfully </p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="clearcookies">
+                            <button type="submit" class="btn btn-success">OK</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- End Enquiry -->
+        <!-- footer navigation -->
+        <footer>
+            <div class="footer-menu">
+                <ul>
+                    <li><a href="#home" style="color:#00529c"><i class="ti-home" style="color:#00529c"></i>Home</a></li>
+                    <li><a href="#about" style="color:#00529c"><i class="ti-pencil-alt" style="color:#00529c"></i>About Us</a></li>
+                    <li><a href="#vision" style="color:#00529c"><i class="ti-eye" style="color:#00529c"></i>Vision</a></li>
+                    <li><a href="#services" style="color:#00529c"><i class="ti-gift" style="color:#00529c"></i> Services </a></li>
+                    <li><a href="#testimonials" style="color:#00529c"><i class="ti-comment" style="color:#00529c"></i> Team </a></li>
+                    <li><a href="#gallerypt" style="color:#00529c"><i class="ti-image" style="color:#00529c"></i>Gallery</a></li>
+                    <li><a href="#video" style="color:#00529c"><i class="ti-video-camera" style="color:#00529c"></i>Video</a></li>
+                    <li><a href="#enquiry" style="color:#00529c"><i class="ti-comment-alt" style="color:#00529c"></i>Enquiry</a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- // footer navigation -->
+
+    </main>
+}
+
+<script src="/DigitalCard16/assets/card-assets/js/remodal.js"></script>
+<script src="/DigitalCard16/assets/web-assets/js/notify.min.js"></script>
+<script>
+    function showServices() {
+        $('.divServices').show();
+        $('#btnShowServices').hide();
+    }
+
+    function showGalleries() {
+        $('.divGalleries').show();
+        $('#btnShowGalleries').hide();
+    }
+
+    function showVideos() {
+        $('.divVideos').show();
+        $('#btnShowVideos').hide();
+    }
+
+    //function shareViaWhatsapp() {
+    //    var phoneNo = $('#txtWhatsappNo').val().replace('+','');
+    //    window.open('https://api.whatsapp.com/send?phone=' + phoneNo + '&text=Please check my new digital visiting card', '_blank');
+    //}
+
+</script>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    //function shareViaWhatsapp() {
+    //    var phoneNo = $('#txtWhatsappNo').val().replace('+', '');
+    //    window.open('https://api.whatsapp.com/send?phone=' + phoneNo + '&text=Please check my new digital visiting card', '_blank');
+    //}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<script>
+      $(window).load(function () {
+        var msg = "@ViewBag.msg";
+        if (msg != "") {
+            $(".modal-title").html("Alert!")
+            $("#msg").html(msg);
+            $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+        }
+    })
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    $(document).ready(function () {
+        $("#register").validate({
+            ignore: ".ignore",
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                number: {
+                    required: true,
+                    number: true,
+                    minlength: 10
+                },
+                query: {
+                    required: true
+                },
+                hiddenRecaptcha: {
+                    required: function () {
+                        if (grecaptcha.getResponse() == '') {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+            messages: {
+                name: {
+                    required: "Enter name"
+                },
+                email: {
+                    required: "Enter email Id",
+                    email: "Enter valid email Id"
+                },
+                number: {
+                    required: "Enter phone number",
+                    number: "Enter Phone number"
+                },
+                hiddenRecaptcha:
+                {
+                    required: "This Field Required"
+                }
+            }
+
+        }); //validate
+    });
+</script>
+
+<script>
+    function recaptchaCallback() {
+        $('#hiddenRecaptcha').valid();
+    };
+</script>
+
+
+<link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+<script src="~/js/jQueryMagnify.js"></script>
+
+<script>
+    $('[data-magnify]').magnify({
+        resizable: true,
+        initMaximized: true
+    })
+</script>
+<script>
+    $(".numbersOnly").keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
+
+    $(".alphabetOnly").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Alphabets.
+        var regex = /^[a-zA-Z ]*$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        if (!isValid) {
+            return false;
+        }
+    });
+</script>
+
+

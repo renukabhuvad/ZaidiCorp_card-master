@@ -1,0 +1,393 @@
+﻿
+@{
+    ViewBag.Title = "PrivacyPolicy";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style>
+
+    body {
+        background: #f4f4f4;
+    }
+
+    a:hover,
+    a:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .tab {
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .tab .nav-tabs {
+        border: none;
+        margin: 0 0 10px;
+    }
+
+    .tab .nav-tabs li a {
+        color: #222;
+        background: #fff;
+        font-size: 19px;
+        font-weight: 600;
+        text-transform: capitalize;
+        padding: 12px 20px 14px;
+        margin: 0 10px 0 0;
+        border: none;
+        border-radius: 100px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease 0s;
+    }
+
+    .tab .nav-tabs li.active a,
+    .tab .nav-tabs li a:hover,
+    .tab .nav-tabs li.active a:hover
+    {
+        color: #fff;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .tab .nav-tabs li a:before,
+    .tab .nav-tabs li a:after {
+        content: "";
+        background-color: #4b4b4b;
+        width: 60%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.3s ease 0s;
+    }
+
+    .tab .nav-tabs li a:after {
+        left: auto;
+        right: 0;
+    }
+
+    .tab .nav-tabs li.active a:before,
+    .tab .nav-tabs li a:hover:before,
+    .tab .nav-tabs li.active a:after,
+    .tab .nav-tabs li a:hover:after 
+    {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .tab .tab-content {
+        color: #555;
+        background: #fff;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 25px;
+        padding: 20px;
+        border-right: 5px solid #969696;
+        border-bottom: 5px solid #c4c4c4;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px #cdcdcc;
+        position: relative;
+    }
+
+    @@media only screen and (max-width: 479px) 
+    {
+        .tab .nav-tabs 
+        {
+            margin: 0 0 10px;
+        }
+
+        .tab .nav-tabs li 
+        {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+<style>
+
+    .nav-tabs > li 
+    {
+        /*background: #f3f3f3;*/
+    }
+
+    .tab-pane 
+    {
+        padding: 10px 0px;
+    }
+
+    .p0_10 
+    {
+        list-style: none;
+        padding: 0px;
+        padding-left: 10px;
+    }
+
+    body 
+    {
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .border 
+    {
+        border-bottom: 3px dashed #515151;
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .h2, h2 
+    {
+        font-size: 23px;
+    }
+</style>
+
+@foreach (var item in Model.customerinfo)
+{
+
+    <section>
+        <div class="row" style="margin:0px;">
+            <div class="col-md-12" style="padding:0px;">
+                <h1 style="text-align: center;background: linear-gradient(45deg, #a29d9d, #4b4b4b);padding: 20px;color: #fff;margin:0px;"> Privacy Policy Terms of Use </h1>
+                <div class="container" style="padding:30px 0px;">
+                    <div class="tab" role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist" style="margin: 10px auto;text-align: center;display: table;">
+                            <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab"> Terms Of Use </a></li>
+                            <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab"> Privacy Policy </a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content tabs">
+                            <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+
+                                <h2> Terms of Use : </h2>
+                                <div class="border"></div>
+                                <p>
+                                    The domain name is owned by proprietor @item.customername having its registered office at @item.address.
+                                </p>
+
+                                <p>
+                                    For the purpose of these Terms of Use, wherever the context so requires "You" or "Your" or "User" shall mean any natural or legal person who has agreed to become a buyer on the Site by providing Registration Data while registering on the Site as Registered User using the computer systems. The terms "We" or "Us" or "Our" shall mean @item.customername.
+                                </p>
+
+                                <h2> Copyright and Trademarks </h2>
+                                <div class="border"></div>
+                                <p>
+                                    The information and materials appearing on the website (hereinafter referred to as Content) are displayed for personal, non-commercial use only. All software used on this Site and all Content included on this Site (including without limitation Site design, text, graphics, audio and video and the selection and arrangement thereof) is the property of Zaidi Corporation .
+                                </p>
+                                <p>
+                                    None of the Content may be downloaded, copied, reproduced, republished, posted, transmitted, stored, sold or distributed without the prior written permission of Zaidi Corporation.
+                                </p>
+
+                                <h2>
+                                    Links to third party web sites
+                                </h2>
+                                <div class="border"></div>
+
+                                <p>
+                                    The website may include links to third party Internet websites which are controlled and maintained by others. These links are included solely for the convenience of users and do not constitute any endorsement by Zaidi Corporation of the sites linked or referred to, nor does Zaidi Corporation have any control over the content of any such sites.
+                                </p>
+
+                                <h2>
+                                    Price and availability of merchandise/programs
+                                </h2>
+                                <div class="border"></div>
+                                <p>
+                                    Whilst every effort is made to ensure accuracy of prices and availability of the merchandise/programs featured on this Site, this cannot be guaranteed and price and availability information may change without notice.
+                                </p>
+
+                                <h2> Liability disclaimer </h2>
+                                <div class="border"></div>
+                                <p>
+                                    The Site is provided by @item.customername in good faith but @item.customername does not make any representations or warranties of any kind, express or implied whatsoever. The contents of the Site do not constitute advice and should not be relied upon in making, or refraining from making, any decision.
+                                </p>
+                                <p>
+                                    @item.customername hereby disclaims all liabilities whatsoever and from whomsoever (howsoever arising) including any third party liabilities. If you use our site, it is deemed that you have accepted the terms and conditions.
+                                </p>
+
+                                <h2> User information  </h2>
+                                <div class="border"></div>
+                                <p>
+                                    We collect information on what pages are accessed or visited by individuals, as well as information volunteered by the consumer, such as survey information and/or site registrations. We use this information for internal review, in order to improve the content of the Site.
+                                </p>
+
+                                <h2> Indemnity </h2>
+                                <div class="border"></div>
+                                <p>
+                                    You shall indemnify and hold harmless @item.customername, its associates, licensee, affiliates, subsidiaries, group companies (as applicable) and their respective officers, directors, agents, and employees, from any claim or demand, or actions including reasonable attorneys' fees, made by any third party or penalty imposed due to or arising out of your breach of this Terms of Use, your violation of any law, rules or regulations or the rights (including infringement of intellectual property rights) of a third party.
+                                </p>
+
+                                <h2> Arbitration/Jurisdiction </h2>
+                                <div class="border"></div>
+                                <p>
+                                    Terms of Use of the Site shall be governed by and interpreted and construed in accordance with the laws of India. All disputes and differences whatsoever that may arise shall be referred to a single arbitrator to be appointed exclusively by @item.customername whose decision shall be final and binding. The arbitration proceedings shall be conducted in India and subject to exclusive jurisdiction courts in India.
+                                </p>
+
+                                <h2> Refund and Cancellation Policy </h2>
+                                <div class="border"></div>
+                                <p>
+                                    Our focus is complete customer satisfaction. In the event, if you are displeased with the services provided, we will refund back the money, provided the reasons are genuine and proved after investigation. Please read the fine prints of each deal before buying it, it provides all the details about the services or the product you purchase.
+                                </p>
+                                <p>
+                                    In case of dissatisfaction from our services, clients have the liberty to cancel their projects and request a refund from us. Our Policy for the cancellation and refund will be as follows:
+                                </p>
+                                <p>
+                                    If your cancellation is approved , we will initiate a refund to your credit card (or original method of payment).You Will receive the credit within a certain amount of 7 working days.
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="Section2">
+                                <p> This site is the responsibility of @item.customername </p>
+
+                                <h2> We want you to </h2>
+                                <div class="border"></div>
+                                <ul class="p0_10">
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> feel comfortable using our web sites
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> feel secure submitting information to us
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> contact us with your questions or concerns about privacy on this site
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> know that by using our site you are consenting to the collection of certain data
+                                    </li>
+                                </ul>
+
+                                <h2> What Information is, or may be, collected from you? </h2>
+                                <div class="border"></div>
+                                <p>
+                                    We will collect certain anonymous information in standard usage logs through our Web server, including: computer-identification information obtained from "cookies," sent to your browser from a
+                                </p>
+                                <ul class="p0_10">
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> Web server and stored on your hard drive
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> an IP address, assigned to the computer which you use
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> the domain server through which you access our service
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> the type of computer you're using
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-angle-right"> </i> the type of web browser you're using
+                                    </li>
+                                </ul>
+
+                                <h2> We may collect the following personally identifiable information about you: </h2>
+                                <div class="border"></div>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> name </li>
+                                    <li> <i class="fa fa-angle-right"> </i> email address </li>
+                                    <li> <i class="fa fa-angle-right"> </i> ZIP/Postal code </li>
+                                    <li> <i class="fa fa-angle-right"> </i> demographic profile (like your age, gender, occupation and education); </li>
+                                    <li> <i class="fa fa-angle-right"> </i> financial information (like annual income or insurance policy number); and </li>
+                                    <li> <i class="fa fa-angle-right"> </i> opinions of features on our websites. </li>
+                                </ul>
+
+                                <h2> Who collects the information? </h2>
+                                <div class="border"></div>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> We will collect anonymous traffic information from you when you visit our site </li>
+                                    <li> <i class="fa fa-angle-right"> </i> We will collect personally identifiable information about you only as part of a voluntary registration process. </li>
+                                    <li> <i class="fa fa-angle-right"> </i> Our advertisers may collect anonymous traffic information from their own assigned cookies to your browser </li>
+                                    <li> <i class="fa fa-angle-right"> </i> The Site contains links to other Web sites. We are not responsible for the privacy practices of such Web sites </li>
+                                    <li> <i class="fa fa-angle-right"> </i> We offer a collection of online services which are available to you. Please understand that any information that is disclosed in these areas becomes public information. We have no control over its use and you should exercise caution when disclosing your personal information to anyone </li>
+                                </ul>
+
+                                <h2> How's the information used? </h2>
+                                <div class="border"></div>
+                                <p> We use personal information to: </p>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> help us provide personalized features </li>
+                                    <li> <i class="fa fa-angle-right"> </i> tailor our sites to your interest </li>
+                                    <li> <i class="fa fa-angle-right"> </i> get in touch with you when necessary </li>
+                                </ul>
+
+                                <h2> We use contact information internally to: </h2>
+                                <div class="border"></div>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> direct our efforts for product improvement </li>
+                                    <li> <i class="fa fa-angle-right"> </i> contact you as a survey respondent </li>
+                                    <li> <i class="fa fa-angle-right"> </i> notify you if you win any contest; and </li>
+                                    <li> <i class="fa fa-angle-right"> </i> send you promotional materials </li>
+                                </ul>
+
+                                <h2> Generally, we use anonymous traffic information to: </h2>
+                                <div class="border"></div>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> remind us of who you are in order to deliver to you a better and more personalized service from both an advertising and an editorial perspective </li>
+                                    <li> <i class="fa fa-angle-right"> </i> recognize your access privileges to our Web sites </li>
+                                    <li> <i class="fa fa-angle-right"> </i> make sure that you don't see the same ad repeatedly </li>
+                                    <li> <i class="fa fa-angle-right"> </i> help diagnose problems with our server </li>
+                                    <li> <i class="fa fa-angle-right"> </i> administer our Web sites </li>
+                                    <li> <i class="fa fa-angle-right"> </i> track your session so that we can understand better how people use our sites </li>
+                                </ul>
+
+                                <h2> With whom will your information be shared? </h2>
+                                <div class="border"></div>
+                                <p> We will not disclose any of your personally identifiable information to third parties unless: </p>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> we have your permission </li>
+                                    <li> <i class="fa fa-angle-right"> </i> special circumstances such as compliance with legal authorities </li>
+                                    <li> <i class="fa fa-angle-right"> </i> require disclosure </li>
+                                </ul>
+                                <p> We will not use your financial information for any purpose other than to provide services to you. </p>
+
+
+                                <h2> What choices are available to you regarding collection, use and distribution of your information? </h2>
+                                <div class="border"></div>
+                                <ul class="p0_10">
+                                    <li> <i class="fa fa-angle-right"> </i> Supplying personally identifiable information is entirely voluntary. You are not required to register with us in order to use our site. However, we offer some services only to visitors who do register. </li>
+                                    <li> <i class="fa fa-angle-right"> </i> Upon request, we will remove your personally identifiable information from our database, thereby canceling your registration. </li>
+                                    <li> <i class="fa fa-angle-right"> </i> If we plan to use your personally identifiable information for any commercial purposes, we will notify you at the time we collect that information and allow you to opt-out of having your information used for those purposes. </li>
+                                    <li> <i class="fa fa-angle-right"> </i> All sites that are customizable require that you accept cookies. You also must accept cookies to register as someone for access to some of our services. e.g. Online Portfolio. For information on how to set your browser to alert you to cookies, or to reject cookies, go to http://www.cookiecentral.com/faq/ </li>
+                                </ul>
+
+                                <h2>
+                                    What security procedures are in place to protect information from loss, misuse or alteration?
+                                </h2>
+                                <div class="border"></div>
+                                <p>
+                                    To protect against the loss, misuse and alteration of the information under our control, we have in place appropriate physical, electronic and managerial procedures. For example, our servers are accessible only to authorized personnel.
+                                </p>
+                                <p>
+                                    Although we will endeavor to safeguard the confidentiality of your personally identifiable information, transmissions made by means of the Internet cannot be made absolutely secure. By using this site, you agree that we will have no liability for disclosure of your information due to errors in transmission or unauthorized acts of third parties.
+                                </p>
+                                <p>
+                                    Policy Updates
+                                </p>
+                                <p>
+                                    We reserve the right to change or update these policies at any time upon reasonable notice, effective immediately upon posting to this site.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
+<script>
+    alert(Session["url"].ToString());
+</script>

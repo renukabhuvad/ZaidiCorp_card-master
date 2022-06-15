@@ -1,0 +1,1128 @@
+﻿           body,
+            .layout-boxed .inner-wrapper {
+                background-color: #f3f3f3;
+            }
+
+            .extend-bg-fullwidth-left:after,
+            .extend-bg-fullwidth-right:after {
+                background: #da0000;
+            }
+
+
+            #main-menu ul.menu > li > a:hover,
+            #main-menu ul.menu li.menu-item-megamenu-parent:hover > a,
+            #main-menu ul.menu > li.menu-item-simple-parent:hover > a {
+                color: #78d1dc;
+            }
+
+            #main-menu > ul.menu > li.current_page_item > a,
+            #main-menu > ul.menu > li.current_page_ancestor > a,
+            #main-menu > ul.menu > li.current-menu-item > a,
+            #main-menu ul.menu > li.current-menu-ancestor > a,
+            #main-menu ul.menu li.menu-item-simple-parent ul > li.current_page_item > a,
+            #main-menu ul.menu li.menu-item-simple-parent ul > li.current_page_ancestor > a,
+            #main-menu ul.menu li.menu-item-simple-parent ul > li.current-menu-item > a,
+            #main-menu ul.menu li.menu-item-simple-parent ul > li.current-menu-ancestor > a,
+            .left-header #main-menu > ul.menu > li.current_page_item > a,
+            .left-header #main-menu > ul.menu > li.current_page_ancestor > a,
+            .left-header #main-menu > ul.menu > li.current-menu-item > a,
+            .left-header #main-menu > ul.menu > li.current-menu-ancestor > a {
+                color: #78d1dc;
+            }
+
+            #footer a:hover,
+            #footer .dt-sc-dark-bg a:hover {
+                color: #3c939d
+            }
+
+            .top-bar {
+                color: #000000;
+                background-color: #eeeeee
+            }
+
+            .top-bar a:hover,
+            .dt-sc-dark-bg.top-bar a:hover {
+                color: #000000;
+            }
+
+            .menu-wrapper {
+                /*background: #4a8bbc;*/
+                /*background:linear-gradient(#4378a8, #313e6b);*/
+                background:linear-gradient(#e01e25, #860a0f);
+            }
+
+            #main-menu ul.menu > li > a {
+                color: #ffffff;
+            }
+
+            .menu-active-highlight #main-menu > ul.menu > li.current_page_item > a,
+            .menu-active-highlight #main-menu > ul.menu > li.current_page_ancestor > a,
+            .menu-active-highlight #main-menu > ul.menu > li.current-menu-item > a,
+            .menu-active-highlight #main-menu > ul.menu > li.current-menu-ancestor > a {
+                color: #78d1dc;
+            }
+
+            body {
+                color: #927d7d;
+            }
+
+            h1 , h2 ,h3 ,h4,h5,h6{
+                color: #443838;
+            }
+   
+            .footer-widgets {
+                /*background-color: rgba(244, 241, 238, 1);*/
+                background:rgb(244, 241, 238) url('/images/WhatsApp_Image1.png') no-repeat center center;
+                background-size:contain;
+            }
+
+
+            .footer-widgets,
+            #footer,
+            .footer-copyright {
+                color: #927d7d;
+            }
+
+            .footer-widgets a,
+            #footer a {
+                color: #927d7d;
+            }
+
+            #footer h3 {
+                color: #000000;
+            }
+
+            .footer-copyright {
+                background: rgba(244, 241, 238, 1);
+            }
+
+            #main-menu ul li.menu-item-simple-parent ul,
+            #main-menu .megamenu-child-container {
+                border-style: solid;
+                border-color: #3c939d;
+                border-top-width: 4px;
+                border-right-width: 4px;
+                border-bottom-width: 4px;
+                border-left-width: 4px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+
+            #main-menu ul li.menu-item-simple-parent ul,
+            #main-menu .megamenu-child-container {
+                background-color: #fefdf9;
+            }
+
+            #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li > a,
+            #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li > a {
+                border-radius: 8px;
+            }
+
+            #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li > a:hover,
+            #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li > a:hover {
+                background: #eeebe8;
+                color: #3c939d;
+            }
+
+            #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current_page_item > a,
+            #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current_page_ancestor > a,
+            #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current-menu-item > a,
+            #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current-menu-ancestor > a,
+            #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current_page_item > a,
+            #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current_page_ancestor > a,
+            #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current-menu-item > a,
+            #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current-menu-ancestor > a {
+                background: #eeebe8;
+                color: #3c939d;
+            }
+
+            h1,
+            .dt-sc-counter.type1 .dt-sc-counter-number,
+            .dt-sc-portfolio-sorting a,
+            .dt-sc-testimonial .dt-sc-testimonial-author cite,
+            .dt-sc-pr-tb-col.minimal .dt-sc-price p,
+            .dt-sc-pr-tb-col.minimal .dt-sc-price h6 span,
+            .dt-sc-testimonial.special-testimonial-carousel blockquote,
+            .dt-sc-pr-tb-col .dt-sc-tb-title,
+            .dt-sc-pr-tb-col .dt-sc-tb-content,
+            .dt-sc-pr-tb-col .dt-sc-tb-content li,
+            .dt-sc-bar-text,
+            .dt-sc-counter.type3 .dt-sc-counter-number,
+            .dt-sc-newsletter-section.type2 .dt-sc-subscribe-frm input[type="submit"],
+            .dt-sc-timeline .dt-sc-timeline-content h2 span,
+            .dt-sc-model-sorting a,
+            .dt-sc-icon-box.type9 .icon-content h4,
+            .dt-sc-icon-box.type9 .icon-content h4 span,
+            .dt-sc-menu-sorting a,
+            .dt-sc-menu .image-overlay .price,
+            .dt-sc-menu .menu-categories a,
+            .dt-sc-pr-tb-col .dt-sc-price h6,
+            ul.products li .onsale {
+                font-family: 'Cuprum' !important;
+            }
+
+            h2 {
+                font-family: 'Cuprum' !important;
+            }
+
+            h3,
+            .dt-sc-testimonial.type1 blockquote,
+            .blog-entry.entry-date-left .entry-date,
+            .dt-sc-ribbon-title,
+            .dt-sc-testimonial.type1 .dt-sc-testimonial-author cite {
+                font-family: 'Cuprum' !important;
+            }
+
+            h4,
+            .blog-entry .entry-meta,
+            .dt-sc-button {
+                font-family: 'Cuprum' !important;
+            }
+
+            h5 {
+                font-family: 'Cuprum' !important;
+            }
+
+            h6 {
+                font-family: 'Cuprum' !important;
+            }
+
+            h1 {
+                font-size: 36px;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+            }
+
+            h2 {
+                font-size: 34px;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+            }
+
+            h3 {
+                font-size: 30px;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+            }
+
+            h4 {
+                font-size: 24px;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+            }
+
+            h5 {
+                font-size: 18px;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+            }
+
+            h6 {
+                font-size: 16px;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+            }
+
+            body {
+                font-size: 17px !important;
+                line-height: 30px;
+            }
+
+            body,
+            .blog-entry.blog-medium-style .entry-meta,
+            .dt-sc-event-image-caption .dt-sc-image-content h3,
+            .dt-sc-events-list .dt-sc-event-title h5,
+            .dt-sc-team.type2 .dt-sc-team-details h4,
+            .dt-sc-team.type2 .dt-sc-team-details h5,
+            .dt-sc-contact-info.type5 h6,
+            .dt-sc-sponsors .dt-sc-one-third h3,
+            .dt-sc-testimonial.type5 .dt-sc-testimonial-author cite,
+            .dt-sc-counter.type3 h4,
+            .dt-sc-contact-info.type2 h6,
+            .woocommerce ul.products li.product .onsale,
+            #footer .mailchimp-form input[type="email"],
+            .dt-sc-icon-box.type5 .icon-content h5,
+            .main-header #searchform input[type="text"],
+            .dt-sc-testimonial.type1 .dt-sc-testimonial-author cite small,
+            .dt-sc-pr-tb-col.type2 .dt-sc-tb-content li,
+            .dt-sc-team.rounded .dt-sc-team-details h5,
+            .megamenu-child-container > ul.sub-menu > li > a .menu-item-description,
+            .menu-item-description {
+                font-family: 'Cuprum';
+            }
+
+            #main-menu ul.menu > li > a,
+            .left-header #main-menu > ul.menu > li > a {
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+
+            #main-menu ul.menu > li > a,
+            .dt-sc-pr-tb-col .dt-sc-tb-title h5,
+            .dt-sc-timeline .dt-sc-timeline-content h2,
+            .dt-sc-icon-box.type3 .icon-content h4,
+            .dt-sc-popular-procedures .details h3,
+            .dt-sc-popular-procedures .details .duration,
+            .dt-sc-popular-procedures .details .price,
+            .dt-sc-counter.type2 .dt-sc-counter-number,
+            .dt-sc-counter.type2 h4,
+            .dt-sc-testimonial.type4 .dt-sc-testimonial-author cite {
+                font-family: 'Cuprum';
+            }
+
+            .header-right .text-with-icon {
+                line-height: 90px;
+                color: #594c4c;
+            }
+
+            .header-right .text-with-icon a {
+                color: #594c4c;
+            }
+
+            .header-right .dt-sc-vertical-small-separator {
+                background: #3c939d;
+                height: 20px;
+                top: 5px;
+                position: relative;
+            }
+
+            .header-right .text-with-icon a:hover {
+                color: #3c939d;
+            }
+
+            #header #main-header-wrapper {
+                background: #fff;
+            }
+
+            #main-menu ul.menu > li > a {
+                line-height: 70px;
+            }
+
+            .fullwidth-menu-header .menu-wrapper {
+                padding: 0px 20px;
+                box-sizing: border-box;
+                border-radius: 5px;
+                margin-bottom: -35px;
+            }
+
+            .sticky-wrapper {
+                margin-bottom: -35px;
+            }
+
+            .fullwidth-menu-header .menu-wrapper:before {
+                content: "";
+                position: absolute;
+                background: url(/Assets/uploads/sites/19/2015/11/menu-shadow.png) center center no-repeat;
+                bottom: -75px;
+                left: 0px;
+                right: 0px;
+                margin: auto;
+                width: 100%;
+                height: 40px;
+            }
+
+            .fullwidth-menu-header .sticky-wrapper .menu-wrapper:before {
+                bottom: -40px;
+            }
+
+            .top-pattern:before {
+                content: "";
+                top: 0;
+                left: 0;
+                background: url(/Assets/uploads/sites/19/2016/06/wood-top-pattern.png) repeat;
+                display: block;
+                height: 7px;
+                width: 100%;
+                position: absolute;
+            }
+
+            #main-menu ul li.menu-item-simple-parent ul {
+                top: 60px;
+            }
+
+            #main-menu .megamenu-child-container {
+                top: 70px;
+            }
+
+            .footer-copyright {
+                border-top: 1px dashed #dacec0;
+            }
+
+            .dt-sc-sociable.rounded-border-dashed li a:hover {
+                border-color: #3c939d;
+            }
+
+            .widgettitle {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .widgettitle {
+                margin-top: 0px;
+            }
+
+            .widgettitle:before {
+                background: none;
+            }
+
+            .dt-sc-button.filled,
+            .dt-sc-newsletter-section .dt-sc-subscribe-frm input[type="submit"],
+            .dt-sc-hexagons li .dt-sc-hexagon-overlay {
+                /*background: #4a8bbc;*/
+                background:linear-gradient(#e01e25, #860a0f)
+            }
+
+            .dt-sc-button.filled:hover
+            {
+                /*background:#fff !important;
+                color:#4a8bbc !important;
+                border:1px solid #4a8bbc;*/
+                  background:linear-gradient(#860a0f, #e01e25)
+
+            }
+
+            p {
+                line-height: 30px;
+            }
+
+            h5 {
+                font-size: 18px;
+            }
+
+            /*.dt-sc-team.hide-social-show-on-hover.rounded {
+                text-align: center;
+                border: 5px solid #4a8bbc6e;
+                background: #ffffff;
+                box-sizing: border-box;
+                padding: 30px 30px 10px;
+                margin:10px 0px;
+            }*/
+
+            .wpb_column .dt-sc-team.hide-social-show-on-hover.rounded:nth-child(odd) {
+                text-align: center;
+                border: 5px solid #bcddec;
+                background: #ffffff;
+                box-sizing: border-box;
+                padding: 30px 20px 10px;
+                margin:10px 0px;
+            }
+             .wpb_column .dt-sc-team.hide-social-show-on-hover.rounded:nth-child(even) {
+                text-align: center;
+                border: 5px solid #fbb03b;
+                background: #ffffff;
+                box-sizing: border-box;
+                padding: 30px 30px 10px;
+                margin:10px 0px;
+            }
+
+
+            .dt-sc-team.rounded .dt-sc-team-thumb {
+                width: 200px;
+                display: inline-block;
+                text-align: center;
+            }
+
+            .dt-sc-team.rounded .dt-sc-team-thumb img {
+                border: 2px dashed #4a8bbc6e;
+            }
+
+            .dt-sc-team.rounded .dt-sc-team-thumb:before,
+            .dt-sc-team.rounded .dt-sc-team-thumb:after,
+            .dt-sc-team.rounded:hover .dt-sc-team-thumb:after {
+                border: none;
+                background: none;
+            }
+
+            .dt-sc-team .dt-sc-team-details {
+                padding: 20px 0px;
+            }
+
+            .dt-sc-team .dt-sc-team-details p {
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 28px;
+                font-style: italic;
+                margin: 20px 0px 0px;
+            }
+
+            .dt-sc-team.rounded.hide-social-show-on-hover .dt-sc-team-details h4,
+            .dt-sc-team.rounded.hide-social-show-on-hover:hover .dt-sc-team-details h4 {
+                color: #443838;
+                font-size: 18px;
+                text-transform: none;
+                font-weight: normal;
+            }
+
+            .dt-sc-team.rounded.hide-social-show-on-hover .dt-sc-team-details h5,
+            .dt-sc-team.rounded.hide-social-show-on-hover:hover .dt-sc-team-details h5 {
+                color: #988888;
+                text-transform: none;
+            }
+
+            .dt-sc-team.hide-social-show-on-hover.rounded:before {
+                content: "";
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background: #42424261;
+                opacity: 0;
+                z-index: 1;
+                -webkit-transition: all 0.3s linear;
+                -moz-transition: all 0.3s linear;
+                -o-transition: all 0.3s linear;
+                -ms-transition: all 0.3s linear;
+                transition: all 0.3s linear;
+
+            }
+
+            .dt-sc-team.hide-social-show-on-hover.rounded:hover:before {
+                opacity: 1;
+            }
+
+            .dt-sc-team.hide-social-show-on-hover .dt-sc-team-social {
+                z-index: 10;
+            }
+
+            .dt-sc-team-social.rounded-border li a {
+                border: 1px dashed #ffffff;
+            }
+
+            .dt-sc-team.rounded.hide-social-show-on-hover .dt-sc-team-social {
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                margin: auto;
+                height: 36px;
+                padding: 0px;
+            }
+
+        
+            .dt-sc-testimonial.type1 .dt-sc-testimonial-author cite {
+                font-style: normal;
+                font-size: 14px;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin: 5px 0px 0px;
+            }
+
+            .dt-sc-testimonial.type1 .dt-sc-testimonial-author span {
+                display: inline-block;
+                border: 2px dashed;
+                border-radius: 50%;
+                line-height: 0px;
+            }
+
+            .dt-sc-testimonial.type1 .dt-sc-testimonial-author img {
+                border: none;
+            }
+
+            .dt-sc-classes .dt-sc-classes-details h6 a {
+                color: #988888;
+            }
+
+            .dt-sc-icon-box.type5.rounded .icon-wrapper {
+                border: 2px dashed #998675;
+            }
+
+            .dt-sc-icon-box.type5.rounded:hover .icon-wrapper {
+                border-color: #ffffff;
+            }
+
+            .dt-sc-icon-box.type5.rounded .icon-wrapper span {
+                color: #927d7d;
+            }
+
+            .dt-sc-icon-box.type5.rounded:hover .icon-wrapper span {
+                color: #ffffff;
+            }
+
+            .dt-sc-icon-box.type5 .icon-content h4 {
+                font-size: 16px;
+                color: #443838;
+                margin: 7px 0px 5px;
+                font-weight: bold;
+            }
+
+            .dt-sc-icon-box.type5 .icon-content p {
+                font-size: 14px;
+                line-height: 24px;
+                color: #443838;
+            }
+
+            .dt-sc-newsletter-section.type5 {
+                border-color: #c8dcdf;
+            }
+
+            .dt-sc-newsletter-section.type5 .dt-sc-subscribe-frm input[type="text"],
+            .dt-sc-newsletter-section.type5 .dt-sc-subscribe-frm input[type="email"] {
+                border-color: #c8dcdf;
+                color: #927d7d;
+            }
+
+            .dt-sc-newsletter-section.type5 .dt-sc-subscribe-frm input[type="submit"]:hover {
+                background: #3c939d;
+            }
+
+            .blog-entry {
+                border: 5px solid #c8dcdf;
+                box-sizing: border-box;
+                padding: 15px;
+                background: #ffffff;
+                -webkit-transition: all 0.3s linear;
+                -moz-transition: all 0.3s linear;
+                -o-transition: all 0.3s linear;
+                -ms-transition: all 0.3s linear;
+                transition: all 0.3s linear;
+            }
+
+            .blog-entry:hover {
+                border-color: #3c939d;
+            }
+
+            .blog-entry .entry-title h4 {
+                font-weight: bold;
+                text-transform: none;
+                margin-bottom: 15px;
+            }
+
+            .blog-entry .entry-body p {
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            .blog-entry.entry-date-left .entry-date span {
+                border-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .dt-sc-newsletter-section.type5 h2 {
+                font-size: 30px;
+            }
+
+            .footer-copyright {
+                font-size: 13px;
+            }
+
+            .portfolio.type3:before {
+                border-color: #ffffff;
+            }
+
+            .portfolio.type3 .image-overlay {
+                background: rgba(60, 147, 157, 0.8);
+            }
+
+            .portfolio.type3 .image-overlay .links a:hover {
+                color: #000000;
+            }
+
+            .dt-sc-portfolio-sorting a {
+                text-transform: none;
+                border-radius: 5px;
+                border: none;
+                background: #927d7d;
+                color: #ffffff;
+                font-family: 'Cuprum';
+            }
+
+            .dt-sc-yoga-video-single .entry-thumb-wrapper {
+                border-color: #c8dcdf;
+            }
+
+            .main-title-section-wrapper {
+                padding: 80px 0px 20px;
+                position: relative;
+                z-index: 1;
+                margin: 0px 0px 125px;
+            }
+
+            .main-title-section h1 {
+                font-size: 34px;
+                text-transform: none;
+                font-weight: normal;
+            }
+
+            .main-title-section-wrapper.breadcrumb-top-right-title-center .breadcrumb {
+                margin-top: -80px;
+            }
+
+            .main-title-section-wrapper:before {
+                /*content: "";
+                position: absolute;
+                left: 0px;
+                bottom: -35px !important;
+                background:#bcddec;*/
+                /*background: url(/Assets/uploads/sites/19/2015/11/breadcrumb-bottom-bg.png) center center no-repeat;*/
+                /*width: 1920px;
+                height: 60px;*/
+            }
+
+            .yoga-custom-title {
+                background: #c8dcdf;
+                padding: 13px 15px;
+                margin: 0px 0px 40px;
+            }
+
+            .yoga-custom-title h3 {
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0px;
+            }
+
+            .yoga-expert-form-container .vc_column-inner {
+                background: #fff;
+                border-left: 3px solid #feb929;
+                padding: 30px !important;
+            }
+
+            .yoga-expert-form-container .yoga-expert-form .dt-sc-subscribe-frm input[type="email"] {
+                width: 68%;
+            }
+
+            #bbpress-forums #subscription-toggle a.subscription-toggle,
+            .bbp-submit-wrapper #bbp_topic_submit {
+                border-radius: 5px;
+            }
+
+            #signup_form #signup_submit,
+            #whats-new-submit #aw-whats-new-submit,
+            #profile-group-edit-submit,
+            #buddypress div.message-search #messages_search_submit,
+            #settings-form .submit #submit,
+            #submit,
+            #save,
+            #group-settings-form input[type="submit"],
+            #notification-bulk-manage,
+            #messages-bulk-manage,
+            #buddypress .activity-list li.load-more a,
+            #buddypress .activity-list li.load-newest a {
+                border-radius: 5px;
+                font-weight: normal;
+            }
+
+            #buddypress div.item-list-tabs ul li.selected a,
+            #buddypress div.item-list-tabs#group-create-tabs ul li.current a,
+            #buddypress #item-body div.item-list-tabs#subnav ul li.current a {
+                border-bottom-color: #eeebe8;
+            }
+
+            #buddypress #item-nav #object-nav ul li.current a,
+            #buddypress ul.item-list {
+                border-color: rgba(0, 0, 0, 0.1);
+            }
+
+            #buddypress .dir-search input[type=text] {
+                border-color: rgba(0, 0, 0, 0.15);
+            }
+
+            #buddypress div.message-search #messages_search_submit {
+                border-radius: 0px 5px 5px 0px;
+            }
+
+            #buddypress div.message-search #messages_search {
+                border-radius: 5px 0px 0px 5px;
+            }
+
+            #buddypress div.message-search #messages_search_submit,
+            #buddypress div.message-search #messages_search {
+                min-height: 53px;
+            }
+
+            .tribe-events-list-separator-month,
+            #tribe-bar-form {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .tribe-events-list .tribe-events-event-cost span {
+                line-height: 30px;
+            }
+
+            .type-tribe_events.tribe-events-photo-event .tribe-events-photo-event-wrap {
+                border-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .tribe-events-back > a {
+                border-radius: 5px;
+            }
+
+            #tribe-events-footer:after,
+            #tribe-events-footer:before,
+            #tribe-events-header:after,
+            #tribe-events-header:before {
+                background-color: #eeebe8;
+            }
+
+            .woo-type20 ul.products li.product .product-thumb a.add_to_cart_button,
+            .woo-type20 ul.products li.product .product-thumb a.button.product_type_simple,
+            .woo-type20 ul.products li.product .product-thumb a.button.product_type_variable,
+            .woo-type20 ul.products li.product .product-thumb a.added_to_cart.wc-forward,
+            .woo-type20 ul.products li.product .product-thumb a.add_to_wishlist,
+            .woo-type20 ul.products li.product .product-thumb .yith-wcwl-wishlistaddedbrowse a,
+            .woo-type20 ul.products li.product .product-thumb .yith-wcwl-wishlistexistsbrowse a,
+            .woo-type20 ul.products li.product .product-wrapper:after,
+            .woo-type20.woocommerce ul.products li.product .product-details h5,
+            .woo-type20 .woocommerce ul.products li.product .product-details h5,
+            .woo-type20 ul.products li.product-category .product-wrapper h3 {
+                border-color: #927d7d;
+            }
+
+            .woo-type20 ul.products li.product .product-thumb a.add_to_cart_button:before,
+            .woo-type20 ul.products li.product .product-thumb a.button.product_type_simple:before,
+            .woo-type20 ul.products li.product .product-thumb a.button.product_type_variable:before,
+            .woo-type20 ul.products li.product .product-thumb a.added_to_cart.wc-forward:before,
+            .woo-type20 ul.products li.product .product-thumb a.add_to_wishlist:before,
+            .woo-type20 ul.products li.product .product-thumb .yith-wcwl-wishlistaddedbrowse a:before,
+            .woo-type20 ul.products li.product .product-thumb .yith-wcwl-wishlistexistsbrowse a:before,
+            .woo-type20 ul.products li.product .product-details h5 a,
+            .woo-type20 ul.products li.product-category .product-details h5,
+            .woo-type20 ul.products li.product-category .product-details h5 .count,
+            .woo-type20 ul.products li.product .product-details .product-price .amount,
+            .woo-type20 ul.products li.product .product-details span.price,
+            .woo-type20 ul.products li.product .product-details span.price del,
+            .woo-type20 ul.products li.product .product-details span.price del .amount,
+            .woo-type20 ul.products li.product .product-details span.price ins,
+            .woo-type20 ul.products li.product .product-details span.price ins .amount,
+            .woo-type20 ul.products li.product .product-details .product-rating-wrapper .star-rating:before,
+            .woo-type20 ul.products li.product .product-details .product-rating-wrapper .star-rating span:before {
+                color: #927d7d;
+            }
+
+            .woo-type20 ul.products li.product .product-wrapper {
+                -webkit-box-shadow: 0 0 0 5px #c8dcdf inset;
+                -moz-box-shadow: 0 0 0 5px #c8dcdf inset;
+                -ms-box-shadow: 0 0 0 5px #c8dcdf inset;
+                -o-box-shadow: 0 0 0 5px #c8dcdf inset;
+                box-shadow: 0 0 0 5px #c8dcdf inset;
+            }
+
+            .woo-type20.woocommerce a.button,
+            .woo-type20.woocommerce button.button,
+            .woo-type20.woocommerce button,
+            .woo-type20.woocommerce input.button,
+            .woo-type20.woocommerce input[type=button],
+            .woo-type20.woocommerce input[type=submit],
+            .woo-type20.woocommerce #respond input#submit,
+            .woo-type20.woocommerce a.button.alt,
+            .woo-type20.woocommerce button.button.alt,
+            .woo-type20.woocommerce input.button.alt,
+            .woo-type20.woocommerce #respond input#submit.alt,
+            .woo-type20 .woocommerce a.button,
+            .woo-type20 .woocommerce button.button,
+            .woo-type20 .woocommerce button,
+            .woo-type20 .woocommerce input.button,
+            .woo-type20 .woocommerce input[type=button],
+            .woo-type20 .woocommerce input[type=submit],
+            .woo-type20 .woocommerce #respond input#submit,
+            .woo-type20 .woocommerce a.button.alt,
+            .woo-type20 .woocommerce button.button.alt,
+            .woo-type20 .woocommerce input.button.alt,
+            .woo-type20 .woocommerce #respond input#submit.alt,
+            .woo-type20 .product .summary .add_to_wishlist,
+            .woo-type20 .wishlist_table .add_to_cart.button,
+            .woo-type20 .yith-wcwl-add-button a.add_to_wishlist,
+            .woo-type20 .yith-wcwl-popup-button a.add_to_wishlist,
+            .woo-type20 .wishlist_table a.ask-an-estimate-button,
+            .woo-type20 .wishlist-title a.show-title-form,
+            .woo-type20 .hidden-title-form a.hide-title-form,
+            .woo-type20 .yith-wcwl-wishlist-new button,
+            .woo-type20 .wishlist_manage_table a.create-new-wishlist,
+            .woo-type20 .wishlist_manage_table button.submit-wishlist-changes,
+            .woo-type20 .yith-wcwl-wishlist-search-form button.wishlist-search-button,
+            .woo-type20 .cart input.button {
+                background-color: #927d7d;
+            }
+
+            .woo-type20.woocommerce a.button:hover,
+            .woo-type20.woocommerce button.button:hover,
+            .woo-type20.woocommerce button:hover,
+            .woo-type20.woocommerce input.button:hover,
+            .woo-type20.woocommerce input[type=button]:hover,
+            .woo-type20.woocommerce input[type=submit]:hover,
+            .woo-type20.woocommerce #respond input#submit:hover,
+            .woo-type20.woocommerce a.button.alt:hover,
+            .woo-type20.woocommerce button.button.alt:hover,
+            .woo-type20.woocommerce input.button.alt:hover,
+            .woo-type20.woocommerce #respond input#submit.alt:hover,
+            .woo-type20 .woocommerce a.button:hover,
+            .woo-type20 .woocommerce button.button:hover,
+            .woo-type20 .woocommerce button:hover,
+            .woo-type20 .woocommerce input.button:hover,
+            .woo-type20 .woocommerce input[type=button]:hover,
+            .woo-type20 .woocommerce input[type=submit]:hover,
+            .woo-type20 .woocommerce #respond input#submit:hover,
+            .woo-type20 .woocommerce a.button.alt:hover,
+            .woo-type20 .woocommerce button.button.alt:hover,
+            .woo-type20 .woocommerce input.button.alt:hover,
+            .woo-type20 .woocommerce #respond input#submit.alt:hover,
+            .woo-type20 .product .summary .add_to_wishlist:hover,
+            .woo-type20 .wishlist_table .add_to_cart.button:hover,
+            .woo-type20 .yith-wcwl-add-button a.add_to_wishlist:hover,
+            .woo-type20 .yith-wcwl-popup-button a.add_to_wishlist:hover,
+            .woo-type20 .wishlist_table a.ask-an-estimate-button:hover,
+            .woo-type20 .wishlist-title a.show-title-form:hover,
+            .woo-type20 .hidden-title-form a.hide-title-form:hover,
+            .woo-type20 .yith-wcwl-wishlist-new button:hover,
+            .woo-type20 .wishlist_manage_table a.create-new-wishlist:hover,
+            .woo-type20 .wishlist_manage_table button.submit-wishlist-changes:hover,
+            .woo-type20 .yith-wcwl-wishlist-search-form button.wishlist-search-button:hover,
+            .woo-type20 .cart input.button:hover {
+                background-color: #3c939d;
+            }
+
+            #main-menu ul.menu > li.menu-item-has-children:hover > a::after {
+                border-bottom: 13px solid #ffffff;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                bottom: -4px;
+                content: "";
+                height: 0;
+                left: 0;
+                margin: auto;
+                position: absolute;
+                right: 0;
+                width: 0;
+                z-index: 99999;
+            }
+
+            .yoga-video-sorting input[type="submit"],
+            .dt-sc-yoga-classes .dt-sc-yoga-classes-image-overlay a:hover,
+            .dt-sc-yoga-courses-sorting a.active-sort,
+            .dt-sc-yoga-courses-sorting a:before,
+            .dt-sc-yoga-course .dt-sc-yoga-course-thumb-overlay a:hover,
+            .dt-sc-yoga-pose .dt-sc-yoga-pose-overlay a:hover,
+            .dt-sc-yoga-teacher .dt-sc-yoga-teacher-overlay a:hover,
+            .dt-sc-yoga-program .dt-sc-yoga-program-thumb-overlay a:hover {
+                background: #927d7d;
+            }
+
+            .dt-sc-yoga-video .dt-sc-yoga-video-overlay p a {
+                border-color: #927d7d;
+            }
+
+            .dt-sc-yoga-video .dt-sc-yoga-video-overlay p a,
+            .dt-sc-yoga-video .dt-sc-yoga-video-overlay h6 a:hover,
+            .dt-sc-yoga-courses-sorting a,
+            .dt-sc-yoga-course .dt-sc-yoga-course-meta p,
+            .dt-sc-yoga-course .dt-sc-yoga-course-details h6 a,
+            .dt-sc-yoga-program .dt-sc-yoga-program-meta p,
+            .dt-sc-yoga-program .dt-sc-yoga-program-details h6 a {
+                color: #927d7d;
+            }
+
+            .dt-sc-yoga-classes-sorting a:hover,
+            .dt-sc-yoga-classes-sorting a.active-sort {
+                background: #594c4c;
+            }
+
+            .yoga-single-meta li span {
+                color: #443838;
+            }
+
+            .dt-sc-newsletter-section.yoga-expert-form .dt-sc-subscribe-frm input[type="submit"]:hover,
+            .yoga-video-sorting input[type="submit"]:hover {
+                background: #3c939d;
+            }
+
+            @@media only screen and (min-width:992px) and (max-width:1199px) {
+                .fullwidth-menu-header .menu-wrapper:before {
+                    bottom: -70px;
+                    background-size: 100%;
+                }
+                .fullwidth-menu-header .sticky-wrapper .menu-wrapper:before {
+                    bottom: -35px;
+                }
+                #main-menu > ul.menu > li > a {
+                    padding: 0px 11px !important;
+                }
+                .yoga-expert-form-container .yoga-expert-form .dt-sc-subscribe-frm input[type="email"] {
+                    width: 58%;
+                }
+            }
+
+            @@media only screen and (min-width:768px) and (max-width:991px) {
+                .fullwidth-menu-header .menu-wrapper:before {
+                    bottom: -66px;
+                    background-size: 100%;
+                }
+                .fullwidth-menu-header .sticky-wrapper .menu-wrapper:before {
+                    bottom: -32px;
+                }
+                .yoga-expert-form-container .yoga-expert-form .dt-sc-subscribe-frm input[type="email"] {
+                    width: 45%;
+                }
+            }
+
+            @@media only screen and (max-width: 767px) {
+                .fullwidth-menu-header .menu-wrapper:before {
+                    background: none;
+                }
+                .fullwidth-menu-header .menu-wrapper {
+                    padding: 0px;
+                    margin-bottom: 0px;
+                }
+                .fullwidth-menu-header #main-menu {
+                    background: #3c939d;
+                }
+                .main-title-section-wrapper {
+                    padding-top: 55px;
+                }
+                #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li > a:hover,
+                #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li > a:hover,
+                #main-menu ul li.menu-item-simple-parent ul li:hover > a {
+                    color: #594c4c;
+                }
+                #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current_page_item > a,
+                #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current_page_ancestor > a,
+                #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current-menu-item > a,
+                #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li.current-menu-ancestor > a,
+                #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current_page_item > a,
+                #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current_page_ancestor > a,
+                #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current-menu-item > a,
+                #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li.current-menu-ancestor > a {
+                    background-color: transparent !important;
+                }
+                #main-menu .menu-item-megamenu-parent.menu-links-with-bg .megamenu-child-container ul.sub-menu > li > ul > li > a:hover,
+                #main-menu ul li.menu-item-simple-parent.menu-links-with-bg ul > li > a:hover {
+                    background-color: transparent;
+                }
+                .yoga-expert-form-container .yoga-expert-form .dt-sc-subscribe-frm input[type="email"] {
+                    width: 56%;
+                }
+            }
+
+            .nicescroll-rails {
+                left: auto !important;
+                right: 20px;
+            }
+
+.vc_custom_1464961345874 {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    /*background: #f3f3f3 url(/Assets/uploads/sites/19/2015/07/parallax-services54c81.png) !important;*/
+    background-image: url('../images/abt.png') !important;
+    background-position:top;
+    background-size: cover;
+    /*background-position: 0 0 !important;
+            background-repeat: no-repeat !important;*/
+}
+
+        .vc_custom_1458552248048 {
+            /*padding-top: 90px !important;
+            padding-bottom: 130px !important;
+            background: #eeebe8 url(/images/parallax-testimonial22111.png) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;*/
+        }
+
+        @media only screen and (max-width:520px) and (min-width:220px)
+        {
+            .vc_custom_1458552248048{
+                padding-top: 65px !important;
+                padding-bottom: 0px !important;
+                /*background: #eeebe8 url(/images/parallax-testimonial221.png) !important;*/
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+                height: 780px !important;
+            }
+        }
+
+        .vc_custom_1465023862529 {
+            padding-bottom: 90px !important;
+        }
+
+        .vc_custom_1464935147089 {
+            padding-top: 60px !important;
+            padding-bottom: 45px !important;
+            background-image: url(/Assets/uploads/sites/19/2015/06/bg-pattern.jpg?id=5440) !important;
+            background-position: 0 0 !important;
+            background-repeat: repeat !important;
+        }
+
+        .vc_custom_1464960576305 {
+            padding-top: 75px !important;
+            padding-bottom: 75px !important;
+            background-image: url(/Assets/uploads/sites/19/2015/06/video-bg.jpg?id=5442) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1464941878523 {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+            background-image: url(/Assets/uploads/sites/19/2015/07/parallax-newsletter.jpg?id=4370) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1450857878829 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1450857823564 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1450857878829 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1456324535242 {
+            margin-right: -30px !important;
+            margin-left: -30px !important;
+        }
+
+        .vc_custom_1465015658217 {
+            padding-right: 60px !important;
+            padding-left: 60px !important;
+        }
+
+        .vc_custom_1464934919318 {
+            background-position: 0 0 !important;
+            background-repeat: no-repeat !important;
+        }
+
+        .vc_custom_1464935261755 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1464960897157 {
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .vc_custom_1464938711625 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1464949250380 {
+            margin-bottom: 25px !important;
+        }
+         .main-title-section-wrapper {
+            padding: 80px 0px 20px;
+            position: relative;
+            z-index: 1;
+            margin: 0px 0px 125px;
+        }
+         @media only screen and (max-width:520px) and (min-width:220px)
+         {
+             .main-title-section-wrapper {
+                 padding: 30px 0px 0px !important; 
+             }
+         }
+            .main-title-section-wrapper:before {
+            content: "";
+            position: absolute;
+            left: 0px;
+            bottom: -60px;
+            /*background: url(http://veda.dttheme.com/yoga/wp-content/uploads/sites/19/2015/11/breadcrumb-bottom-bg.png) center center no-repeat;*/
+            width: 1920px;
+            height: 60px;
+        }

@@ -1,0 +1,440 @@
+﻿@*@model  ZaidiCorp.Models.customer*@
+@{
+    ViewBag.Title = "payment";
+}
+
+<section class="main-title-section-wrapper aligncenter dt-sc-dark-bg " style="background:url(/images/City_BackGround.png);background-size:contain;">
+    <div class="container">
+        <div class="main-title-section">
+            <h1>Payment</h1>
+        </div>
+    </div>
+</section>
+
+<style>
+    .form-control {
+        font-size: 16px;
+    }
+
+    .ProductDetails {
+        border: 2px solid #4a8bbc;
+        border-radius: 10px;
+        padding: 26px 26px 53px 24px;
+        margin: 10px 0px;
+        font-size: 20px;
+    }
+
+    .ProductImage {
+        border-bottom: 2px dashed #4a8bbc;
+        padding-bottom: 20px;
+        width: 100%;
+        height: 250px;
+    }
+
+    .chkmob {
+        margin-left: -33px;
+    }
+
+    .mob {
+        margin-left: -2px;
+    }
+
+    .amount {
+        margin-top: 25px;
+    }
+
+    .row {
+        margin-bottom: 10px;
+    }
+
+    label{
+        font-weight:500;
+    }
+    input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="range"], input[type="date"], textarea, input.text, input[type="search"], select, textarea {
+    font-size: 15px;
+}
+    @@media only screen and (max-width:520px) and (min-width:220px) {
+        .chkmob {
+            margin-left: 69%;
+            margin-top: -34px;
+        }
+
+        .mob {
+            width: 250px;
+        }
+
+        .amount {
+            margin-top: 25px;
+        }
+    }
+    .fullwidth-menu-header .menu-wrapper:before {
+    height: 60px;
+}
+</style>
+
+<div class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="row ProductDetails">
+                    @{
+                        var customerid = ViewBag.customerid;
+                        if (customerid == null)
+                        { <div class="col-md-4 col-lg-offset-4">
+                        @*<form id="chkmobile" method="post" action="payment">
+                            <label>Please Enter Mobile No.</label>
+                            <div class="col-sm-10 mob">
+                                <input type="text" class="form-control" placeholder="Please Enter Mobile No" name="primerymobile" style="font-size: 20px;" required />
+                            </div>
+                            <div class="col-sm-2 chkmob">
+                                <a href="#" class="btn btn-primary" onclick="submit()">Submit</a>
+                            </div>
+                        </form>*@
+                              <form id="chkmobile" method="post" action="payment">
+                                  <label style="padding-bottom:10px;">Please Enter Mobile No.</label>
+                                  <div class="input-group">
+                                      <input type="text" class="form-control" placeholder="Please Enter Mobile No" name="primerymobile" id="primerymobile" style="font-size:18px;">
+                                      <div class="input-group-btn">
+                                          <a class="btn btn-primary" onclick="submit()">
+                                              Submit
+                                          </a>
+                                      </div>
+                                  </div>
+                              </form>
+                    </div>}
+                        else if (customerid == 0)
+                        {
+                            <div class="col-md-6 col-lg-offset-4">
+                                @*<form id="chkmobile1" method="post" action="payment1">
+                                    <label style="margin-left: 16px;">Please Enter Alternet Mobile No.</label>
+                                    <div class="col-sm-6 mob">
+                                        <input type="text" class="form-control" placeholder="Please Enter Mobile No" name="secondmobile" style="font-size: 20px;" />
+                                    </div>
+                                    <div class="col-sm-6 chkmob">
+                                        <a href="#" class="btn btn-primary" onclick="submit1()">Submit</a>
+                                        <a href="#" class="btn btn-default" onclick="submit1()">i have no Alternet No</a>
+                                    </div>
+                                </form>*@
+
+                                <label style="padding-bottom:10px;">Please Enter Alternet Mobile No.</label>
+                                    <div class="col-md-7" style="padding:0px;">
+                                        <form id="chkmobile1" method="post" action="payment1">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Please Enter Mobile No" name="secondmobile" id="secondmobile" style="font-size:18px;">
+                                                <div class="input-group-btn">
+                                                    <a class="btn btn-primary" onclick="submit1()">
+                                                        Submit
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                     </div>
+
+                                    <div class="col-md-5">
+                                        <form id="chkmobile1" method="post" action="payment1">
+                                            <a href="#" id="secondmobile1" class="btn btn-default" onclick="submit2()">i have no Alternet No</a>
+                                        </form>
+                                    </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <form id="payment" method="post" action="payment2">
+                                @if (Model.Count != 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Name</label>
+                                                <input type="text" value="@item.customername" class="form-control" name="customername" id="customername" readonly />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Email id</label>
+                                                <input type="text" value="@item.emailid" class="form-control" name="emailid" id="emailid" readonly />
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Mobile No</label>
+                                                <input type="text" value="@item.personalcontact" class="form-control" name="personalcontact" id="personalcontact" readonly />
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>City</label>
+
+                                                <input type="text" value="@item.cityname" class="form-control" name="cityname" id="cityname" readonly />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>State</label>
+
+                                                <input type="text" value="@item.statename" class="form-control" name="statename" id="statename" readonly />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Pincode</label>
+                                                <input type="text" value="@item.pincode" class="form-control" name="pincode" id="pincode" readonly />
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            @*<div class="col-md-4 amount">
+                                                <label>Total Amount</label>
+                                                <label id="ttlamt">@Request.Cookies["price"].Value</label>
+                                            </div>*@
+                                            <div class="col-md-4 ">
+                                                <label>Total Amount</label>
+                                                <input type="text" class="form-control" value="@Request.Cookies["price"].Value" readonly />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Advance Amount</label>
+                                                <input type="text" class="form-control" name="advance" id="advance" required />
+                                                <span id="advmsg" style="color:red"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="btn btn-primary" onclick="minadvance()" style="margin-top: 7%;">Buy Now</a>
+                                                @*<input type="submit" class="btn btn-primary" value="Buy Now" />*@
+
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" name="customername" id="customername" required />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Email id</label>
+                                            <input type="text" class="form-control" name="emailid" id="emailid" required />
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Mobile No</label>
+                                            <input type="text" class="form-control" name="personalcontact" id="personalcontact" required readonly value="@Request.Cookies["mobile"].Value" />
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Pincode</label>
+                                            <input type="text" class="form-control" name="pincode" id="pincode" required onchange="pincodecheck();" />
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>City</label>
+
+                                            <input type="text" class="form-control" name="cityname" id="cityname" readonly />
+                                            <input type="hidden" value="0" id="cityid" name="cityid" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>State</label>
+
+                                            <input type="text" class="form-control" name="statename" id="statename" readonly />
+                                            <input type="hidden" value="0" id="stateid" name="stateid" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>LIC Branch Code</label>
+                                            <input type="text" class="form-control" name="licbranch" id="licbranch" required onchange="branchcheck();" />
+                                            <input type="hidden" value="0" id="licbranchid" name="licbranchid" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Division</label>
+                                            <input type="text" class="form-control" name="division" id="division" readonly />
+                                            <input type="hidden" value="0" id="divisionid" name="divisionid" />
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>Total Amount</label>
+                                            <input type="text" class="form-control" value="@Request.Cookies["price"].Value" readonly />
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        @*<div class="col-md-4 amount">
+                                            <label>Total Amount</label>
+                                            <label id="ttlamt">@Request.Cookies["price"].Value</label>
+                                        </div>*@
+                                        <div class="col-md-4">
+                                            <label>Advance Amount</label>
+                                            <input type="text" class="form-control" name="advance" id="advance" required />
+                                            <span id="advmsg" style="color:red"></span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="#" class="btn btn-primary" onclick="minadvance()" style="margin-top: 7%;">Buy Now</a>
+                                        </div>
+                                    </div>
+                                }
+                            </form>
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function submit() {
+        if ($("#primerymobile").val() != "")
+        {
+            $("#chkmobile").submit();
+        }
+        else {
+            alert("Please Enter Mobile No");
+            $("#primerymobile").css('border-color', 'red');
+        }
+      
+    }
+    function submit1() {
+        if ($("#secondmobile").val() != "" )
+        {
+            $("#chkmobile1").submit();
+        }
+        else {
+            alert("Please Enter Mobile No");
+            $("#secondmobile").css('border-color', 'red');
+        }
+    }
+    function submit2() {
+         $("#chkmobile1").submit();
+    }
+    function minadvance() {
+        if (Number($("#advance").val()) < 100) {
+            $("#advance").css('border-color', 'red');
+            $("#advmsg").html("Please Pay Minium 100 rs Advance");
+        }
+        else {
+            $("#advance").css('border-color', '#00000026');
+            $("#advmsg").html("");
+            $("#customername").focus();
+
+            var customername = $('#customername').val();
+            if (customername.length == 0) {
+                $('#customername').css('border-color', 'red');
+                    return false;
+                }
+                else {
+                $('#customername').css('border-color', '#00000026'); // *** this line have been added ***
+
+                }
+
+            $("#emailid").focus();
+
+            var emailid = $('#emailid').val();
+            if (emailid.length == 0) {
+                $('#emailid').css('border-color', 'red');
+                    return false;
+                }
+                else {
+                $('#emailid').css('border-color', '#00000026'); // *** this line have been added ***
+
+                }
+
+            $("#personalcontact").focus();
+
+            var personalcontact = $('#personalcontact').val();
+            if (personalcontact.length == 0) {
+                $('#personalcontact').css('border-color', 'red');
+                    return false;
+                }
+                else {
+                $('#personalcontact').css('border-color', '#00000026'); // *** this line have been added ***
+
+                }
+
+            $("#cityname").focus();
+
+            var cityname = $('#cityname').val();
+            if (cityname.length == 0) {
+                $('#cityname').css('border-color', 'red');
+                    return false;
+                }
+                else {
+                $('#cityname').css('border-color', '#00000026'); // *** this line have been added ***
+
+                }
+
+            $("#pincode").focus();
+
+
+            $("#statename").focus();
+
+            var statename = $('#statename').val();
+            if (statename.length == 0) {
+                $('#statename').css('border-color', 'red');
+                return false;
+                }
+                else {
+                $('#statename').css('border-color', '#00000026'); // *** this line have been added ***
+
+                }
+            var pincode = $('#pincode').val();
+            if (pincode.length == 0) {
+                $('#pincode').css('border-color', 'red');
+                return false;
+            }
+            else {
+                $('#pincode').css('border-color', '#00000026'); // *** this line have been added ***
+
+            }
+            var advance = $("#advance").val();
+            var ttlamt = $("#ttlamt").html()
+            if (Number(advance) > Number(ttlamt)) {
+                alert("Please Enter Valid Amount");
+                $('#advance').css('border-color', 'red');
+                $("#advance").focus()
+            }
+            else {
+                $("#payment").submit();
+            }
+
+        }
+    }
+
+    function pincodecheck() {
+
+        $.post("../Payment/getpincode?pincode=" + $("#pincode").val(), function (sucess) {
+            var result = sucess;
+            if (result.length > 0) {
+                $("#cityname").val(sucess[0].city_name);
+                $("#cityid").val(sucess[0].city_id);
+                $("#statename").val(sucess[0].state_name);
+                $("#stateid").val(sucess[0].state_id);
+            }
+            else {
+                alert("Please Enter Valid Pincode");
+                $('#pincode').css('border-color', 'red');
+                $('#pincode').focus();
+            }
+
+                });
+
+    }
+    function branchcheck() {
+
+        $.post("../Payment/getbranch?branch=" + $("#licbranch").val(), function (sucess) {
+            var result = sucess;
+            if (result.length > 0) {
+                $("#division").val(sucess[0].division);
+                $("#divisionid").val(sucess[0].licdivisionentryid);
+                $("#licbranchid").val(sucess[0].licbranchid);
+            }
+            else {
+                alert("Please Enter Valid LIC brach code");
+                $('#licbranch').css('border-color', 'red');
+                $('#licbranch').focus();
+            }
+        });
+
+    }
+</script>
+

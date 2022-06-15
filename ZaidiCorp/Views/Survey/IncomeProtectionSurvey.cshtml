@@ -1,0 +1,454 @@
+﻿
+@{
+    ViewBag.Title = "IncomeProtectionSurvey";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/Style.css" rel="stylesheet" />
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        color: #484848;
+        font-size: 13.3px !important;
+        font-family: 'Dosis';
+        line-height: normal;
+    }
+
+    .survey {
+        border: 1px solid #cacaca;
+        background: #fff;
+        /*padding: 10px;*/
+        border-radius: 5px;
+        box-shadow: 0px 0px 2px 2px #c7c7c7;
+    }
+
+    input[name='sex'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: none;
+    }
+
+        input[name='sex']:after {
+            font-family: 'FontAwesome';
+            display: inline-block;
+            text-align: center;
+            font-size: 35px;
+            content: attr(data-icon);
+            padding: 15px 20px;
+            border-radius: 15px;
+            color: #fdc236;
+            transition: box-shadow 1s, color 1s;
+        }
+
+    @@media only screen and (max-width:520px) and (min-width:220px) {
+        input[name='sex']:after {
+            font-family: 'FontAwesome';
+            display: inline-block;
+            text-align: center;
+            font-size: 25px;
+            content: attr(data-icon);
+            padding: 10px 15px;
+            border-radius: 15px;
+            color: #fdc236;
+            transition: box-shadow 1s, color 1s;
+        }
+    }
+
+    input[name='sex']:checked:after {
+        box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+        color: #00529c;
+    }
+
+    .form-group {
+        margin-bottom: 5px;
+    }
+</style>
+
+<style>
+    input[type='checkbox'] {
+        height: 0;
+        width: 0;
+        position: absolute;
+    }
+
+        input[type='checkbox'] + label {
+            position: relative;
+            display: flex;
+            /*margin: .6em 0;*/
+            align-items: center;
+            color: #484848;
+            transition: color 250ms cubic-bezier(.4,.0,.23,1);
+        }
+
+            input[type='checkbox'] + label > ins {
+                position: absolute;
+                display: none;
+                bottom: 0;
+                /*left: 2em;*/
+                height: 0;
+                width: 100%;
+                overflow: hidden;
+                text-decoration: none;
+                transition: height 300ms cubic-bezier(.4,.0,.23,1);
+            }
+
+                input[type='checkbox'] + label > ins > i {
+                    position: absolute;
+                    bottom: 0;
+                    font-style: normal;
+                    color: #4FC3F7;
+                }
+
+            input[type='checkbox'] + label > span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 1em;
+                width: 1em;
+                height: 1em;
+                background: transparent;
+                border: 2px solid #9E9E9E;
+                border-radius: 2px;
+                cursor: pointer;
+                transition: all 250ms cubic-bezier(.4,.0,.23,1);
+            }
+
+            input[type='checkbox'] + label:hover, input[type='checkbox']:focus + label {
+                /*color: #fff;*/
+            }
+
+                input[type='checkbox'] + label:hover > span, input[type='checkbox']:focus + label > span {
+                    background: rgba(255,255,255,.1);
+                }
+
+        input[type='checkbox']:checked + label > ins {
+            height: 100%;
+        }
+
+        input[type='checkbox']:checked + label > span {
+            border: 2px solid #ea4d34;
+            /*background: linear-gradient(180deg, #ff8a00, #da1b60);*/
+            animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1);
+        }
+
+            input[type='checkbox']:checked + label > span:before {
+                content: "";
+                position: absolute;
+                top: 0.7em;
+                left: 0.3em;
+                border-right: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+                transform: rotate(45deg);
+                transform-origin: 0% 100%;
+                animation: checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
+            }
+
+    @@keyframes shrink-bounce {
+        0% {
+            transform: scale(1);
+        }
+
+        33% {
+            transform: scale(.85);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @@keyframes checkbox-check {
+        0% {
+            width: 0;
+            height: 0;
+            border-color: #212121;
+            transform: translate3d(0,0,0) rotate(45deg);
+        }
+
+        33% {
+            width: .2em;
+            height: 0;
+            transform: translate3d(0,0,0) rotate(45deg);
+        }
+
+        100% {
+            width: .2em;
+            height: .5em;
+            border-color: #212121;
+            transform: translate3d(0,-.5em,0) rotate(45deg);
+        }
+    }
+</style>
+
+<style>
+    .containers .name {
+        margin-bottom: 0.675rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+        .containers .name h4 {
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #dadadf;
+            transform: scale(0);
+            transform-origin: 100% 50%;
+            transition: transform 500ms ease;
+        }
+
+    .containers svg {
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+        .containers svg.gear {
+            order: 1;
+            margin-left: 1.35rem;
+            cursor: help;
+        }
+
+            .containers svg.gear:hover ~ h4 {
+                transform: scale(1);
+            }
+
+    label {
+        position: relative;
+        margin: 0.675rem 0px;
+        display: flex;
+        width: auto;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .check {
+        margin-right: 7px;
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+        .check #border {
+            fill: none;
+            stroke: #7a7a8c;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .check #dot {
+            fill: url(#gradient);
+            transform: scale(0);
+            transform-origin: 50% 50%;
+        }
+
+    .input {
+        display: none;
+    }
+
+    input + label {
+        font-weight: 400;
+    }
+
+    input:checked + label {
+        background: linear-gradient(180deg, #ff8a00, #da1b60);
+        -webkit-background-clip: text;
+        /*-webkit-text-fill-color: transparent;*/
+    }
+
+        input:checked + label svg #border {
+            stroke: url(#gradient);
+            stroke-dasharray: 145;
+            stroke-dashoffset: 145;
+            animation: checked 500ms ease forwards;
+        }
+
+        input:checked + label svg #dot {
+            transform: scale(1);
+            transition: transform 500ms cubic-bezier(0.57, 0.21, 0.69, 3.25);
+        }
+
+    @@keyframes checked {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+</style>
+
+<style>
+    .input {
+        display: none;
+    }
+    input[type=radio] + .labels {
+        display: inline-block;
+        margin: -2px;
+        padding: 4px 3px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top,#fff,#bbbbbb);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#bbbbbb));
+        background-image: -webkit-linear-gradient(top,#fff,#bbbbbb);
+        background-image: -o-linear-gradient(top,#fff,#bbbbbb);
+        background-image: linear-gradient(to bottom,#fff,#bbbbbb);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    input[type=radio]:checked + labels {
+        background-image: none;
+        outline: 0;
+        color:#000;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        background-color: #e0e0e0;
+    }
+</style>
+
+<section style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="survey">
+                    <div style="background: #00529c;color: #fff;padding: 10px;border-top-left-radius: 5px;border-top-right-radius: 5px;margin: -1px;text-align: center;">
+                        <span style="font-size:16px;">
+                            Income Protection Survey
+                        </span>
+                    </div>
+                    <div style="padding:10px">
+                        <div class="form-group" style="margin-top:15px;">
+                            <label style="margin-top:15px;"> Name </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" />
+                        </div>
+
+                        <div class="" style="width:50%;float:left;">
+                            <div class="form-group">
+                                <label style="margin-top:15px;"> Marital Status </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="marital" id="Uno" class="input" onclick="show1();" />
+                                <label for="Uno">
+                                    <svg class="check" viewbox="0 0 40 40">
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8a00"></stop>
+                                                <stop offset="100%" stop-color="#da1b60"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                        <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                    </svg>
+                                    Single
+                                </label>
+                                <input type="radio" name="marital" id="Dos" class="input" onclick="show2();" />
+                                <label for="Dos">
+                                    <svg class="check" viewbox="0 0 40 40">
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8a00"></stop>
+                                                <stop offset="100%" stop-color="#da1b60"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                        <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                    </svg>
+                                    Marriage
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="" style="width:50%;float:left;">
+                            <div class="form-group" style="margin-top:15px;">
+                                <label style="margin-top:15px;"> Gender </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="sex" value="f" data-icon='' checked />
+                                <input type="radio" name="sex" value="m" data-icon='' />
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="float:left;">
+                            <label style="margin-top:15px;"> Mobile No </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Mobile No" />
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label style="margin-top:15px;"> Email ID </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email ID" />
+                        </div>
+
+                        <div class="form-group" style="margin-top:15px;">
+                            <label style="margin-top:15px;"> Do You Want To Secure Your Income ? </label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Secure Your Income" />
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> How Much Do You Want To Save Per Month </label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Save Per Month" />
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Best Time To Contact You </label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="radio" id="radio1" name="radios" value="all" class="input"  checked>
+                            <label class="labels" for="radio1"><img src="~/images/sun.svg" style="width:15px;" /> <span> 10am - 1pm </span> </label>
+                            <input type="radio" id="radio2" name="radios" value="false" class="input">
+                            <label class="labels" for="radio2"><img src="~/images/sun (1).svg" style="width:15px;" /> 2pm - 5pm </label>
+                            <input type="radio" id="radio3" name="radios" value="true" class="input">
+                            <label class="labels" for="radio3"><img src="~/images/moon.svg" style="width:15px;" /> 6pm - 9pm </label>
+                        </div>
+
+                    </div>
+                    <div style="background: #00529c;color: #fff;padding: 10px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;margin: -1px;text-align: right;">
+                        <a class="btn btn-primary" href="">
+                            Submit
+                        </a>
+                        <a class="btn btn-warning" href="">
+                            Cancel
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

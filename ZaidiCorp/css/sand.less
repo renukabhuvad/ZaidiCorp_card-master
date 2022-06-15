@@ -1,0 +1,122 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Aladin);
+.sandwrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+   background: url(http://heyvian.com/misc/sand-text.jpg) repeat;
+}
+
+.info {
+  position: absolute;
+  width: 100%;
+  bottom: 20%;
+}
+
+h1 {
+  text-align: center;
+  font-family: Aladin,sans-serif;
+  font-size: 72px;
+  color: rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 4px 6px #ffe9ae, 0 0 0 rgba(0, 0, 0, 0.1), 1px 4px 6px #ffe9ae;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  bottom: 20%;
+  font-family: Aladin,sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.info a {
+  color: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.info a:hover {
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+.wave {
+  position: fixed;
+  height: 100%;
+  width: 150%;/*top: -120%;*/
+  
+  background-color: rgba(157, 231, 255, 0.7);
+  box-shadow: 0 10px 20px 10px rgba(255, 255, 255, 0.8), inset 0 -80px 50px -60px white;
+  animation: crash 9s ease-in-out infinite;
+  transform: rotate(3deg);
+  margin: 0 auto;
+}
+
+.wave + .wave {
+  transform: rotate(-2deg);
+  left: -2%;
+}
+
+.wave + .wave + .wave {
+  transform: rotate(-1deg);
+}
+
+.wave:after {
+  content: "";
+  position: absolute;
+  background: transparent;
+  height: 20%;
+  width: 100%;
+  bottom: -20%;
+  box-shadow: 0 10px 60px 60px transparent;
+  animation: fadeInLate 9s infinite;
+}
+
+.wave + .wave, .wave + .wave:after {
+  animation-delay: 3s;
+}
+
+.wave + .wave + .wave, .wave + .wave + .wave:after {
+  animation-delay: 7s;
+}
+
+@keyframes crash {
+  0% {
+    top: -145%;
+    z-index: 10;
+  }
+  10% {
+    top: -145%;
+  }
+  50% {
+    top: -20%;
+  }
+  90% {
+    box-shadow: 0 10px 20px 10px rgba(157, 231, 255, 0.7);
+    z-index: 1;
+  }
+  100% {
+    top: -230%;
+  }
+}
+@keyframes fadeInLate {
+  0% {
+    background: transparent;
+    box-shadow: 0 10px 50px 20px transparent;
+  }
+  49% {
+    background: transparent;
+    box-shadow: 0 10px 50px 20px transparent;
+  }
+  70% {
+    background: rgba(179, 163, 121, 0.4);
+    box-shadow: 0 10px 80px 30px rgba(179, 163, 121, 0.4);
+  }
+  100% {
+    background: rgba(179, 163, 121, 0.4);
+    box-shadow: 0 10px 80px 30px rgba(179, 163, 121, 0.4);
+  }
+}

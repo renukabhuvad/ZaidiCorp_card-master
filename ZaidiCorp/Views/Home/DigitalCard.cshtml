@@ -1,0 +1,1569 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+@foreach (var item in Model.customerinfo)
+{
+    <title> @item.customername </title>
+}
+
+    <style>
+        #mobile-bottom-fixed button 
+        {
+            background: none;
+            border: none;
+            box-shadow: none;
+            color: #fff;
+            padding: 10px 5px;
+        }
+
+        #mobile-bottom-fixed button i {
+            font-size: 120%;
+        }
+
+        #mobile-bottom-fixed button span 
+        {
+            display: block;
+        }
+
+        @@media only screen and (max-width:520px) and (min-width:220px)
+        {
+            #mobile-bottom-fixed button
+            {
+                font-size: 18px;
+            }
+        }
+    </style>
+
+    <link href="~/DigitalCard/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/DigitalCard/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <link href="~/DigitalCard/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/DigitalCard/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/DigitalCard/css/style.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <style>
+        .testimonials-box i {
+            transform: scaleX(-1) rotate(180deg) !important;
+        }
+
+        .mfp-3d-unfold.mfp-ready.mfp-bg {
+            opacity: 1 !important;
+        }
+
+        @@media (max-width: 767px) {
+            .mfp-3d-unfold {
+                margin: auto;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100% !important;
+                z-index: 1000;
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                backface-visibility: hidden;
+                overflow-y: auto;
+            }
+        }
+    </style>
+
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(68, 147, 228, 1) 50%, rgba(2, 56, 130, 1) 100%);
+        }
+
+        #sharenumberBox {
+            padding: 15px;
+            background: #f1f1f1;
+            margin-bottom: 15px;
+        }
+
+            #sharenumberBox #sharenumber {
+                margin-bottom: 0;
+            }
+
+            #sharenumberBox .note {
+                margin-bottom: 5px;
+                text-align: left;
+            }
+
+            #sharenumberBox .title {
+                font-size: 110%;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+
+            #sharenumberBox button {
+                background-color: #25d366;
+                padding: 10px;
+            }
+
+        hr.popupHr {
+            margin: 10px 0;
+            border-color: #ddd;
+        }
+
+        #sharenumberBox button i {
+            color: #fff !important;
+            font-size: 150%;
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            top: 2px;
+        }
+
+        .contact-details.contactDetails a {
+            display: table;
+        }
+
+            .contact-details.contactDetails a i {
+                display: table-cell;
+            }
+
+            .contact-details.contactDetails a span {
+                word-break: break-all;
+                display: table-cell;
+                padding-left: 10px;
+                vertical-align: middle;
+            }
+
+            .contact-details.contactDetails a i::before {
+                position: static;
+            }
+    </style>
+
+    <style>
+        .row {
+            display: flex;
+        }
+
+        @@media only screen and (max-width: 760px) and (min-width: 220px) {
+            .row {
+                display: block !important;
+            }
+        }
+    </style>
+
+    <div id="profile">
+        <div class="container">
+
+            @foreach (var item in Model.customerinfo)
+            {
+                <meta name="keywords" content="">
+                <meta name="description" content="@item.customername">
+
+                <!-- Twitter Card data -->
+                <meta name="twitter:site" content="@item.customername">
+                <meta name="twitter:title" content="@item.customername">
+                <meta name="twitter:description" content="">
+                <meta name="twitter:creator" content="http://mydc.in/?a=@item.callme-1">
+                <meta name="twitter:image:src" content="@item.imageurl">
+
+                <!-- Open Graph data -->
+                <meta property="og:title" content="@item.customername" />
+                <meta property="og:type" content="@item.customername" />
+                <meta property="og:description" content="We are group of life insurance professionals, helping people with professional and expert advice on different types of life insurance as per their needs. We also provide support to people searching for career in life insurance sector." />
+                <meta property="og:site_name" content="http://mydc.in/?a=@item.callme-1" />
+                <meta property="og:image" content="@item.imageurl" />
+                <meta property="article:section" content="@item.customername" />
+
+                <div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-5 col-left" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/DigitalCard/images/934837-new-amazing-computer-background-pictures-1920x1080.jpg);background-position: center; background-repeat: no-repeat; background-size: cover;">
+
+                                <center>
+                                    @if (item.imageurl != "")
+                                    {
+                                        <img src="@item.imageurl" class="profile-img">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/abc.png" class="profile-img">
+                                    }
+                                </center>
+
+                                <h3 class="contact-name text-white text-center" style="margin-bottom:5px;font-size:37px">
+                                    @item.customername
+                                </h3>
+
+                                <span class="text-white text-center" style="margin:0 auto;display:block;font-size: 22px;">
+                                    @item.designation
+                                </span>
+
+                                <div class="contact-details-box hidden-xs">
+                                    <div class="row">
+                                        <div class="col-md-2">
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="contact-social">
+                                                <div class="contact-details">
+                                                    <a href="tel:@item.callme" id="call_me">
+                                                        <i class="fa fa-phone"></i>
+                                                        @*<span class="">Call</span>*@
+                                                    </a>
+                                                </div>
+                                                <div class="contact-details">
+                                                    <a href="mailto:@item.emailid" class="icons" aria-label="email">
+                                                        <i class="fa fa-envelope"></i>
+                                                        @*<span class=""><span>E-Mail</span></span>*@
+                                                    </a>
+                                                </div>
+
+                                                <div class="contact-details">
+                                                    <a href="#" target="_blank" rel="noreferrer" id="whatsapp">
+                                                        <i class="fa fa-whatsapp"></i>
+                                                        <!--+91 92222 65555-->
+                                                        @*<span>Whatsapp</span>*@
+                                                    </a>
+                                                </div>
+
+                                                <div class="contact-details">
+                                                    <a href="@item.direction" target="_blank" rel="noreferrer">
+                                                        <i class="fa fa-map-marker"></i>
+                                                        @*<span>Direction</span>*@
+                                                    </a>
+                                                </div>
+
+                                                <div class="contact-details">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script type="text/javascript">
+                                document.getElementById("whatsapp").onclick = function () {
+                                    document.getElementById("whatsapp").href = "https://api.whatsapp.com/send?phone=91"+"@item.whatsapp&text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me";
+                                return false;
+                                };
+                                </script>
+
+                                <div class="contact-details-box mb-contact visible-xs">
+                                    <div class="mb-contact-box contact-details">
+                                        <a href="tel:@item.callme">
+                                            <i class="fa fa-phone"></i>
+                                            @*<span>Call Me</span>*@
+                                        </a>
+                                    </div>
+                                    <div class="mb-contact-box contact-details">
+                                        <a href="mailto:@item.emailid" class="icons" aria-label="email">
+                                            <i class="fa fa-envelope"></i>
+                                            @*<span class=""><span>E-Mail</span></span>*@
+                                        </a>
+                                    </div>
+
+                                    <div class="mb-contact-box contact-details">
+                                        <a href="https://api.whatsapp.com/send?phone=91 @item.whatsapp&amp;text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me" target="_blank" rel="noreferrer" id="whatsapps">
+                                            <i class="fa fa-whatsapp"></i>
+                                            <!--+91 92222 65555-->
+                                            @*<span>Whatsapp</span>*@
+                                        </a>
+                                    </div>
+
+                                    <div class="mb-contact-box contact-details">
+                                        <a href="@item.direction" target="_blank" rel="noreferrer">
+                                            <i class="fa fa-map-marker"></i>
+                                            @*<span>Direction</span>*@
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="paid-profile-view visible-xs" style="margin-top: 15%;">
+                                    <a href="#paid-content" class="scroll"><i class="fa fa-eye"></i> <span>View full profile</span></a>
+                                </div>
+
+                                <div id="profile-btn-box">
+                                    <div id="button-popups">
+                                        <a href="#save-me-popup" data-effect="mfp-3d-unfold">Save Me <i class="fa fa-bookmark"></i></a>
+                                        <a href="#enquire-now-popup" data-effect="mfp-3d-unfold" class="text-align: right;">Enquire Now <i class="fa fa-send-o"></i></a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-7" style="background:#fff;" id="paid-content">
+                                <div class="icons-content">
+                                    <div class="content-title">
+                                        <p>About Us</p>
+                                    </div>
+                                    <div class="icons-content-box">
+                                        <p>
+                                            <div>
+                                                @Html.Raw(item.about)
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="icons-content">
+                                    <div class="content-title">
+                                        <p>About My Company</p>
+                                    </div>
+                                    <div class="icons-content-box">
+                                        <div id="profile-popups" style="display:inline;">
+                                            <a href="#company-details-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                <i class="fa fa-building"></i>
+                                                <p>Company</p>
+                                            </a>
+                                            <a href="#solutions-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                <i class="fa fa-thumbs-up"></i>
+                                                <p>Solutions</p>
+                                            </a>
+                                            <a href="#testimonials-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                <i class="fa fa-comments-o"></i>
+                                                <p>Testimonial</p>
+                                            </a>
+
+                                            @*<a href="#team-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                    <i class="fa fa-users"></i>
+                                                    <p>Team</p>
+                                                </a>*@
+
+
+                                            <a href="#gallery-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                <i class="fa fa-lightbulb-o"></i>
+                                                <p> Recommend </p>
+                                            </a>
+
+                                            @*<a href="#clients-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                    <i class="fa fa-user-circle-o"></i>
+                                                    <p>Clients</p>
+                                                </a>*@
+                                            <a href="#address-popup" data-effect="mfp-3d-unfold" class="icons">
+                                                <i class="fa fa-map-marker"></i>
+                                                <p>Address</p>
+                                            </a>
+                                        </div>
+
+                                        <a href="@item.website" id="website" target="_blank" rel="noreferrer" class="icons">
+                                            <i class="fa fa-globe"></i>
+                                            <p>Website</p>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <div class="icons-content">
+                                    <div class="content-title">
+                                        <p>Company social</p>
+                                    </div>
+                                    <div class="icons-content-box">
+                                        <div class="social-media-box">
+                                            <div class="social-links">
+                                                @if (item.fblink != null)
+                                                {
+                                                    <a href="@item.fblink" target="_blank" rel="noreferrer" aria-label="facebook" class="iconso"><i class="fa fa-facebook"></i></a>
+                                                }
+                                                @if (item.twilink != null)
+                                                {
+                                                    <a href="@item.twilink" target="_blank" rel="noreferrer" aria-label="twitter" class="iconso"><i class="fa fa-twitter"></i></a>
+                                                }
+                                                @*<a href="https://www.instagram.com/?hl=en" target="_blank" rel="noreferrer" aria-label="instagram" class="icons"><i class="fa fa-instagram"></i></a>*@
+                                                @if (item.linkedin != null)
+                                                {
+                                                    <a href="@item.linkedin" target="_blank" rel="noreferrer" aria-label="linkedin" class="iconso"><i class="fa fa-linkedin"></i></a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="icons-content hidden-lg hidden-md" style="background:#fff;">
+                                    <div class="">
+                                        <div class="content-title">
+                                            <p> Our Recommended Images </p>
+                                        </div>
+                                        <div class="icons-content-box">
+                                            @if (Model.concept != null)
+                                            {
+                                                foreach (var items in Model.concept)
+                                                {
+                                                    <div class="col-md-4 col-sm-6">
+                                                        <div class="box_gallery">
+                                                            <img src="@items.Image">
+                                                            <div class="box-content">
+                                                                <div class="inner-content">
+                                                                    @*<h3 class="title">Williamson</h3>*@
+                                                                    <ul class="icon">
+                                                                        <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row hidden-sm hidden-xs">
+                                        <div class="profile-powered-by">
+                                            <p>Powered by <a href="http://new.zaidicorp.in/" target="_blank">Zaidi Corporation</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background:#fff;" class="hidden-sm hidden-xs">
+                        <div class="conatiner">
+                            <div class="col-md-12" style="background:#fff;">
+                                <div class="">
+                                    <div class="content-title">
+                                        <p> Our Recommended Images </p>
+                                    </div>
+                                    <div class="icons-content-box">
+                                        @if (Model.concept != null)
+                                        {
+                                            foreach (var items in Model.concept)
+                                            {
+                                                <div class="col-md-4 col-sm-6">
+                                                    <div class="box_gallery">
+                                                        <img src="@items.Image">
+                                                        <div class="box-content">
+                                                            <div class="inner-content">
+                                                                <ul class="icon">
+                                                                    <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="profile-powered-by">
+                                    <p style="text-align:left;float:left;">Powered by <a href="http://zaidicorp.in/" target="_blank">Zaidi Corporation</a></p>
+                                    <p style="text-align:right;"><a href="http://digitalcard.live/Home/PrivacyPolicy?customerid=@ViewBag.id" target="_blank"> Privacy Policy </a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+            <style>
+                img.lazy {
+                    display: block;
+                    width: 100%;
+                    height: 250px;
+                    margin-bottom: 10px;
+                }
+            </style>
+
+            <style>
+                    .box_gallery {
+                        overflow: hidden;
+                        position: relative;
+                    }
+
+                        .box_gallery img {
+                            width: 100%;
+                            height: 300px;
+                            margin-bottom: 10px;
+                        }
+
+                        .box_gallery .box-content {
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            z-index: 2;
+                            transform: translate(-50%, -50%);
+                        }
+
+                            .box_gallery:before,
+                            .box_gallery:after,
+                            .box_gallery .box-content:before,
+                            .box_gallery .box-content:after {
+                                /*content: "";
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                position: absolute;
+                top: -100%;
+                left: 50%;
+                opacity: 0;
+                transform: translateX(-50%) rotate(45deg);
+                transition: all 0.3s steps(4);*/
+                            }
+
+                        .box_gallery:after {
+                            /*top: 100%;
+                background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                transform: translateX(-50%) rotate(45deg);*/
+                        }
+
+                        .box_gallery .box-content:before {
+                            /*top: 50%;
+                left: -100%;
+                background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                transform: translateY(-50%) rotate(45deg);*/
+                        }
+
+                        .box_gallery .box-content:after {
+                            /*top: 50%;
+                left: 100%;
+                background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                transform: translateY(-50%) rotate(45deg);*/
+                        }
+
+                        .box_gallery:hover:before {
+                            top: -70%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery:hover:after {
+                            top: 70%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery:hover .box-content:before {
+                            top: 50%;
+                            left: -71%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery:hover .box-content:after {
+                            top: 50%;
+                            left: 71%;
+                            opacity: 1;
+                        }
+
+                        .box_gallery .inner-content {
+                            width: 100%;
+                            height: 50%;
+                            text-align: center;
+                            color: #fff;
+                            position: absolute;
+                            top: 65%;
+                            left: 50%;
+                            z-index: 2;
+                            transform: translate(-50%, 50%) scale(0);
+                            transition: all 0.3s ease 0.2s;
+                        }
+
+                            .box_gallery .inner-content:after {
+                                content: "";
+                                width: 180px;
+                                height: 180px;
+                                border-radius: 50%;
+                                background: rgb(24, 86, 163);
+                                position: absolute;
+                                top: 20%;
+                                left: 50%;
+                                z-index: -1;
+                                transform: translate(-50%, -50%);
+                            }
+
+                        .box_gallery:hover .inner-content {
+                            transform: translate(-50%, -50%) scale(1);
+                            transition: all 0.3s ease 0s;
+                        }
+
+                        .box_gallery .title {
+                            font-size: 22px;
+                            font-weight: 700;
+                            text-transform: capitalize;
+                            margin: 0 0 5px 0;
+                        }
+
+                        .box_gallery .post {
+                            display: block;
+                            font-size: 14px;
+                            font-style: italic;
+                            text-transform: uppercase;
+                            margin-bottom: 7px;
+                        }
+
+                        .box_gallery .icon {
+                            padding: 0;
+                            margin: 0;
+                            list-style: none;
+                        }
+
+                            .box_gallery .icon li {
+                                display: inline-block;
+                                margin: 0 10px;
+                                opacity: 0;
+                                transition: all 0.3s ease 0s;
+                            }
+
+                        .box_gallery:hover .icon li {
+                            margin: 0 3px;
+                            opacity: 1;
+                        }
+
+                        .box_gallery .icon li a {
+                            display: block;
+                            width: 28px;
+                            height: 28px;
+                            line-height: 28px;
+                            border-radius: 20%;
+                            background: #fff;
+                            font-size: 16px;
+                            color: #505050;
+                            transition: all 0.3s ease 0s;
+                        }
+
+                            .box_gallery .icon li a:hover {
+                                background: #fff;
+                                color: #1856a3;
+                                box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                            }
+
+                    @@media only screen and (max-width:990px) {
+                        .box_gallery {
+                            margin-bottom: 30px;
+                        }
+                    }
+            </style>
+
+
+        </div>
+    </div>
+
+    <div id="mobile-bottom-fixed" class="visible-xs">
+        <div class="container-fluid">
+            <div class="row">
+                @*<div class="col-xs-4">
+                        <a href="#mb-social-share-popup" data-effect="mfp-3d-unfold">
+                            <i class="fa fa-share-alt"></i>
+                            <span>Share my card</span>
+                        </a>
+                    </div>*@
+                <div class="col-xs-6" style="padding:0px;">
+                    <a class="bordered" href="#enquire-now-popup" data-effect="mfp-3d-unfold">
+                        <i class="fa fa-send-o"></i>
+                        <span>Enquire now</span>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <form method="post" action="savecontact">
+                        <button type="submit" class="btn">
+                            <i class="fa fa-save"></i>
+                            <span>Save to contacts</span>
+                        </button>
+                    </form>
+                    @*<a href="#save-me-popup" data-effect="mfp-3d-unfold">
+
+                        </a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup itself -->
+    <style>
+        .testimonial {
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            padding: 30px;
+            margin: 0 15px;
+        }
+
+            .testimonial .pic {
+                width: 130px;
+                height: 130px;
+                margin: 0 30px 15px 0;
+                float: left;
+            }
+
+                .testimonial .pic img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 50%;
+                }
+
+            .testimonial .testimonial-title {
+                color: #000000;
+                font-size: 16px;
+                margin-top: 5px;
+                font-weight: 800;
+                text-transform: capitalize;
+            }
+
+                .testimonial .testimonial-title small {
+                    display: block;
+                    color: #dc005a;
+                    font-size: 14px;
+                    font-weight: 800;
+                    margin-top: 10px;
+                }
+
+            .testimonial .testimonial-review p {
+                color: #888888;
+                font-size: 15px;
+                font-style: italic;
+                line-height: 19px;
+                margin-bottom: 0;
+            }
+
+        .owl-theme .owl-controls {
+            margin-top: 20px;
+        }
+
+            .owl-theme .owl-controls .owl-page span {
+                width: 10px;
+                height: 10px;
+                background: #fff;
+                opacity: 1;
+            }
+
+            .owl-theme .owl-controls .owl-page.active span,
+            .owl-theme .owl-controls.clickable .owl-page:hover span {
+                background: #fff;
+                border: 1px solid #cdcdcd;
+            }
+
+        @@media screen and (max-width: 990px) {
+            .testimonial-parallax h2 {
+                margin-bottom: 40px;
+            }
+
+            .testimonial {
+                margin: 0;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+
+    <style>
+        .container1 {
+            border: 2px solid #d6d6d6;
+            background-color: #ececec;
+            border-radius: 5px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+            .container1::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            .container1 img {
+                float: left;
+                margin-right: 20px;
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+            }
+
+            .container1 span {
+                font-size: 20px;
+                margin-right: 15px;
+                color: #000;
+                font-weight: 700;
+            }
+
+        @@media (max-width: 500px) {
+            .container1 span {
+                text-align: center;
+                display: block;
+            }
+
+            .container1 img {
+                margin: auto;
+                float: none;
+                display: block;
+            }
+        }
+    </style>
+
+    <div id="testimonials-popup" class="white-popup mfp-with-anim mfp-hide">
+        <p class="popup-title">Testimonial</p>
+
+        <div class="popup-content">
+            <div class="">
+                @if (Model.testimonials != null)
+                {
+                    foreach (var item in Model.testimonials)
+                    {
+                        <div class="row" style="display:block;">
+                            <div class="">
+                                <div class="container1">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <div class="col-md-3">
+                                                @if (item.image != null)
+                                                {
+                                                    <img src="@item.image" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/DigitalCard/images/abc.png" alt="">
+                                                }
+                                            </div>
+                                            <div class="col-md-9">
+                                                <span>@item.name</span>
+                                                <p style="color:#000">@item.description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <div id="gallery-popup" class="white-popup mfp-with-anim mfp-hide">
+        <p class="popup-title"> Recommendation </p>
+
+        <div class="popup-content">
+
+            <style>
+                /*.demo{ background: #505050; }*/
+                .box {
+                    background: #2b75d0;
+                    border: 10px solid rgba(255,255,255,0.8);
+                    text-align: center;
+                    overflow: hidden;
+                    z-index: 1;
+                    position: relative;
+                    height: 300px;
+                }
+
+                    .box:before {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        background: repeating-linear-gradient(45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1), 10px, transparent 20px, transparent 30px), repeating-linear-gradient(-45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3), 10px, transparent 20px, transparent 30px);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: -1;
+                    }
+
+                    .box img {
+                        width: 100%;
+                        height: 100%;
+                        transform: scale(1);
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box:hover img {
+                        transform: scale(1,0);
+                    }
+
+                    .box .box-content {
+                        width: 100%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 0;
+                        z-index: -1;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                        transition: all 0.3s ease 0.3s;
+                    }
+
+                    .box:hover .box-content {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) rotate(0);
+                    }
+
+                    .box .title {
+                        font-size: 22px;
+                        font-weight: 600;
+                        color: #fff;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        margin: 0;
+                    }
+
+                    .box .post {
+                        display: block;
+                        font-size: 14px;
+                        font-style: italic;
+                        color: #fff;
+                        letter-spacing: 2px;
+                    }
+
+                    .box .icon {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                    }
+
+                        .box .icon li {
+                            display: inline-block;
+                            margin: 10px 5px;
+                        }
+
+                            .box .icon li a {
+                                display: block;
+                                width: 35px;
+                                height: 35px;
+                                line-height: 35px;
+                                border-radius: 50% 50% 50% 0;
+                                background: #fff;
+                                font-size: 18px;
+                                color: #2b75d0;
+                                transition: all 0.3s ease 0s;
+                            }
+
+                /*.box .icon li a:hover {
+                                box-shadow: 0 0 10px rgba(0,0,0,0.2) inset,0 0 0 2px #2b75d0,0 0 0 5px #fff;
+                            }*/
+
+                @@media only screen and (max-width:990px) {
+                    .box {
+                        margin-bottom: 30px;
+                    }
+                }
+            </style>
+
+            <div class="demo">
+                <div class="">
+                    <div class="row" style="display:block;">
+
+                        @if (Model.gallery != null)
+                        {
+                            foreach (var items in Model.gallery)
+                            {
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="box_gallery">
+                                        <img src="@items.Image">
+                                        <div class="box-content">
+                                            <div class="inner-content">
+                                                @*<h3 class="title">Williamson</h3>*@
+                                                <ul class="icon">
+                                                    <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        @*@if (Model.gallery != null)
+                            {
+                            foreach (var item in Model.gallery)
+                            {
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="box">
+                                    @if (item.Image != null)
+                                    {
+                                        <a href="@item.Image" data-magnify="gallery">
+                                            <img src="@item.Image" style="width:100%;" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <img src="~/DigitalCard/images/abc.png" />
+                                    }
+                                    <div class="box-content">
+                                    <ul class="icon">
+                                    @if (item.Image != null)
+                                    {
+                                        <li><a href="@item.Image" data-magnify="gallery" class="fa fa-search"></a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="/DigitalCard/images/abc.png" data-magnify="gallery"></a></li>
+                                    }
+
+                                    </ul>
+                                    </div>
+                                    </div>
+                                    </div>
+                            }
+                            }*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @foreach (var item in Model.customerinfo)
+    {
+        <div id="company-details-popup" class="white-popup mfp-with-anim mfp-hide">
+            <p class="popup-title">Company details</p>
+            <div class="popup-content text-justify">
+                <div class="row" style="display:block;">
+                    <p>
+                        @Html.Raw(item.vision)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="solutions-popup" class="white-popup mfp-with-anim mfp-hide">
+            <p class="popup-title">Solutions We Offer</p>
+            <div class="popup-content">
+                <div class="row" style="padding: 20px;display:block;">
+                    <p>
+                        @Html.Raw(item.service)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="gst-details-popup" class="white-popup mfp-with-anim mfp-hide">
+            <p class="popup-title">GSTIN</p>
+            <div class="popup-content text-justify">
+            </div>
+        </div>
+
+        <div id="address-popup" class="white-popup mfp-with-anim mfp-hide">
+            <p class="popup-title">Address</p>
+            <div class="popup-content">
+                <div>
+                    <i class="fa fa-map-marker" style="font-size: 35px; color: #1856a3;"></i>  @item.address
+                </div>
+                <a href="@item.direction" target="_blank" class="btn btn-primary" style="border-radius: 12px;padding: 5px;margin: 20px 0px;background: #1856a3;color: #fff;width:100%; font-weight: bold; font-size: 20px;" rel="noreferrer"><i class="fa fa-location-arrow"></i> Get Location</a>
+
+            </div>
+
+        </div>
+    }
+
+    <div id="save-me-popup" class="white-popup mfp-with-anim mfp-hide">
+        <p class="popup-title">Save to phone book</p>
+        <div class="popup-content">
+            <p class="save-me-title">Save my Contact Information in your phone book</p>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <div class="qr-code-steps">
+                        <div class="qr-code-step-box">
+                            <span class="text-bold">Step : 1</span>Download this <a href="/VCard.vcf"> File </a>
+                        </div>
+                        <div class="qr-code-step-box">
+                            <span class="text-bold">Step : 2</span>Open the File
+                        </div>
+                        <div class="qr-code-step-box">
+                            <span class="text-bold">Step : 3</span>Save To Contacts
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <style>
+        .error {
+            color: #fff
+        }
+    </style>
+
+    <div id="enquire-now-popup" class="white-popup mfp-with-anim mfp-hide">
+        <p class="popup-title">Enquire Now</p>
+        <div class="popup-content">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="contact-form">
+                        <form method="post" id="register" name="register" action="sendenquiry">
+                            @foreach (var item in Model.customerinfo)
+                            {
+                                <input type="hidden" name="toname" value="@item.customername">
+                                <input type="hidden" name="toemail" value="@item.emailid">
+                            }
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control alphabetOnly" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email Id</label>
+                                <input type="email" class="form-control" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Phone</label>
+                                <input type="text" class="form-control numbersOnly" name="number" pattern="[1-9]{1}[0-9]{9}" maxlength="10">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Query</label>
+                                <textarea name="query" class="form-control"></textarea>
+                            </div>
+
+                            <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback" style="padding:5px 15px;"></div>
+                            <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+
+                            <div class="common-btn">
+                                <button type="submit" name="subquery"> Submit </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @foreach (var item in Model.customerinfo)
+    {
+        <div id="mb-social-share-popup" class="white-popup mfp-with-anim mfp-hide">
+            <p class="popup-title"> Share Profile </p>
+            <p class="share-title"> Share my Digital Card in your network. </p>
+            <div class="mb-social-share-box">
+                <a href="#" class="icons" aria-label="whatsapp" onClick="window.open('https://api.whatsapp.com/send?text=http://@item.website', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=525')"><i class="fa fa-whatsapp"></i></a>
+
+                @*<a href="#" class="icons" aria-label="facebook" onClick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://@item.website', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=525')"><i class="fa fa-facebook"></i></a>*@
+
+                <a href="#" class="icons" aria-label="email" onClick="window.open('mailto:?&cc=&subject=&body=Link: http://@item.website', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=525')"><i class="fa fa-envelope"></i></a>
+                <hr class="popupHr">
+
+                <!-- <a href="sms://+91 92222 65555?body=Got reference from your Digital Card. Want to know more about your products and services" class="icons" aria-label="sms"><i class="fa fa-mobile-phone"></i></a>-->
+            </div>
+        </div>
+    }
+
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Alert</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="msg">Enquiry Send Successfully</p>
+
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="clearcookies">
+                        <button type="submit" class="btn btn-success"> OK </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="~/DigitalCard/js/bootstrap.js"></script>
+        <script src="~/DigitalCard/js/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <script src="~/DigitalCard/js/main.js"></script>
+
+        <script>
+            $(window).load(function () {
+                var msg = "@ViewBag.msg";
+                if (msg != "") {
+                    $(".modal-title").html("Alert!")
+                    $("#msg").html(msg);
+                    $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+                }
+            })
+            $(document).ready(function ()
+            {
+                (function () {
+                    if (window.history && window.history.pushState) {
+
+                        $(window).on('popstate', function () {
+
+                            alert('Back button was pressed.');
+                        });
+                    }
+                })();
+
+                /* profile gallery */
+
+                var sync1 = $("#sync1");
+                var sync2 = $("#sync2");
+                var slidesPerPage = 4; //globaly define number of elements per page
+                var syncedSecondary = true;
+
+                sync1.owlCarousel({
+                    items: 1,
+                    slideSpeed: 2000,
+                    nav: true,
+                    autoplay: true,
+                    dots: true,
+                    loop: true,
+                    responsiveRefreshRate: 200,
+                    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+                }).on('changed.owl.carousel', syncPosition);
+
+                sync2
+                    .on('initialized.owl.carousel', function () {
+                        sync2.find(".owl-item").eq(0).addClass("current");
+                    })
+                    .owlCarousel({
+                        items: slidesPerPage,
+                        dots: true,
+                        nav: true,
+                        smartSpeed: 200,
+                        slideSpeed: 500,
+                        slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+                        responsiveRefreshRate: 100
+                    }).on('changed.owl.carousel', syncPosition2);
+
+                function syncPosition(el) {
+                    //if you set loop to false, you have to restore this next line
+                    //var current = el.item.index;
+
+                    //if you disable loop you have to comment this block
+                    var count = el.item.count - 1;
+                    var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+                    if (current < 0) {
+                        current = count;
+                    }
+                    if (current > count) {
+                        current = 0;
+                    }
+
+                    //end block
+
+                    sync2
+                        .find(".owl-item")
+                        .removeClass("current")
+                        .eq(current)
+                        .addClass("current");
+                    var onscreen = sync2.find('.owl-item.active').length - 1;
+                    var start = sync2.find('.owl-item.active').first().index();
+                    var end = sync2.find('.owl-item.active').last().index();
+
+                    if (current > end) {
+                        sync2.data('owl.carousel').to(current, 100, true);
+                    }
+                    if (current < start) {
+                        sync2.data('owl.carousel').to(current - onscreen, 100, true);
+                    }
+                }
+
+                function syncPosition2(el) {
+                    if (syncedSecondary) {
+                        var number = el.item.index;
+                        sync1.data('owl.carousel').to(number, 100, true);
+                    }
+                }
+
+                sync2.on("click", ".owl-item", function (e) {
+                    e.preventDefault();
+                    var number = $(this).index();
+                    sync1.data('owl.carousel').to(number, 300, true);
+                });
+
+                /* profile gallery */
+
+                /* client carousel */
+
+                $("#clients-carousel").owlCarousel({
+                    items: 4,
+                    responsive: {
+                        // breakpoint from 0 up
+                        0: {
+                            items: 1
+                        },
+                        // breakpoint from 480 up
+                        480: {
+                            items: 1
+                        },
+                        // breakpoint from 768 up
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 3
+                        },
+                        1024: {
+                            items: 4
+                        }
+                    },
+                    slideSpeed: 2000,
+                    nav: true,
+                    autoplay: true,
+                    dots: true,
+                    loop: false,
+                    responsiveRefreshRate: 200,
+                    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+                })
+
+                /* //client carousel */
+
+                /* testimonials carousel */
+
+                $("#testimonials-carousel").owlCarousel({
+                    items: 2,
+                    responsive: {
+                        // breakpoint from 0 up
+                        0: {
+                            items: 1
+                        },
+                        // breakpoint from 480 up
+                        480: {
+                            items: 1
+                        },
+                        // breakpoint from 768 up
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 2
+                        },
+                        1024: {
+                            items: 2
+                        }
+                    },
+                    slideSpeed: 2000,
+                    nav: true,
+                    autoplay: true,
+                    dots: true,
+                    loop: false,
+                    responsiveRefreshRate: 200,
+                    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+                })
+
+                /* //testimonials carousel */
+
+                /* team carousel */
+
+                $("#team-carousel").owlCarousel({
+                    items: 3,
+                    responsive: {
+                        // breakpoint from 0 up
+                        0: {
+                            items: 1
+                        },
+                        // breakpoint from 480 up
+                        480: {
+                            items: 1
+                        },
+                        // breakpoint from 768 up
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 3
+                        }
+                    },
+                    slideSpeed: 2000,
+                    nav: true,
+                    autoplay: false,
+                    dots: true,
+                    loop: false,
+                    responsiveRefreshRate: 200,
+                    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 3px;stroke: #fff;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+                })
+                /* //team carousel */
+
+            });
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#register").validate({
+                    ignore: ".ignore",
+                    rules: {
+                        name: {
+                            required: true
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        number: {
+                            required: true,
+                            number: true,
+                            minlength: 10
+                        },
+                        query: {
+                            required: true
+                        },
+                        hiddenRecaptcha: {
+                            required: function () {
+                                if (grecaptcha.getResponse() == '') {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    },
+                    messages: {
+                        name: {
+                            required: "Enter name"
+                        },
+                        email: {
+                            required: "Enter email Id",
+                            email: "Enter valid email Id"
+                        },
+                        number: {
+                            required: "Enter phone number",
+                            number: "Enter Phone number"
+                        },
+                        hiddenRecaptcha:
+                        {
+                            required: "This Field Required"
+                        }
+                    }
+
+                }); //validate
+            });
+        </script>
+
+        <script>
+            function recaptchaCallback() {
+                $('#hiddenRecaptcha').valid();
+            };
+        </script>
+
+        <script>
+            $('#subshare').click(function (e) {
+                var number = $('#sharenumber').val();
+                window.open('https://api.whatsapp.com/send?phone=' + number + '&text=', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=525');
+            });
+
+            //function callinc(type, comp_id, href = ''){
+            function callinc(type, comp_id, href) {
+                console.log(type + ' increment');
+                $.ajax({
+                    url: "",
+                    type: "POST",
+                    data: {
+                        'type': type,
+                        'comp_id': comp_id
+                    },
+                    success: function (res) {
+
+                        console.log(res);
+
+                        if (href != '')
+                            location.href = href;
+                    }
+                });
+            }
+
+            $("body").on("click", "#call_me", function () {
+
+                var comp_id = $('#comp_id').val();
+
+                callinc('call_mecnt', comp_id);
+
+            });
+
+            $("body").on("click", "#email", function () {
+
+                var comp_id = $('#comp_id').val();
+
+                callinc('emailcnt', comp_id);
+
+            });
+
+            $("body").on("click", "#whatsapp", function (e) {
+
+                e.preventDefault();
+
+                var whref = $(this).attr('href');
+
+                var comp_id = $('#comp_id').val();
+
+                callinc('whatsappcnt', comp_id, whref);
+
+            });
+
+            var windowwidth = $(window).width();
+
+            if (windowwidth >= 992) {
+                $(document).ready(function () {
+                    $('#profile-theme2').addClass('active');
+                });
+            }
+        </script>
+
+        <link href="~/DigitalCard/css/jquery.fancybox.css" rel="stylesheet" />
+        <script src="~/DigitalCard/js/jquery.fancybox.pack.js"></script>
+
+        <script>
+            if ($('.lightbox-image').length) {
+                $('.lightbox-image').fancybox({
+                    openEffect: 'fade',
+                    closeEffect: 'fade',
+                    helpers: {
+                        media: {}
+                    }
+                });
+            }
+            $('.fancybox').fancybox();
+        </script>
+
+        <link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+        <script src="~/js/jQueryMagnify.js"></script>
+
+        <script>
+            $('[data-magnify]').magnify({
+                resizable: true,
+                initMaximized: true
+            })
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@11.0.6/dist/lazyload.min.js"></script>
+
+        <script>
+            var lazyLoadInstance = new LazyLoad({
+                elements_selector: ".lazy"
+            });
+        </script>
+        <script>
+            $(".numbersOnly").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
+            $(".alphabetOnly").keypress(function (e) {
+                var keyCode = e.keyCode || e.which;
+
+                //Regex for Valid Characters i.e. Alphabets.
+                //var regex = /^[A-Za-z]+$/;
+                var regex = /^[a-zA-Z ]*$/;
+
+                //Validate TextBox value against the Regex.
+                var isValid = regex.test(String.fromCharCode(keyCode));
+                if (!isValid) {
+                    return false;
+                }
+            });
+        </script>
+
+    }
+
+
+
+

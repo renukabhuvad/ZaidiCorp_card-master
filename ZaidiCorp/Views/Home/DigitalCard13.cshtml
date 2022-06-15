@@ -1,0 +1,921 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard13";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+@foreach (var item in Model.customerinfo)
+{
+    <title> @item.customername </title>
+}
+
+
+<style>
+    body {
+        background: url(/DigitalCard13/images/DigitalCard13Back.jpg);
+    }
+</style>
+<!-- CSS only -->
+<link href="~/DigitalCard13/css/bootstrap.min.css" rel="stylesheet">
+@*<link href="/DigitalCard13/plugin/fontawesome/css/all.min.css" rel="stylesheet">*@
+
+<!-- JS, Popper.js, and jQuery -->
+
+<link href="/DigitalCard13/css/card_tpl_common.css" rel="stylesheet">
+<link href="/DigitalCard13/css/tpl_business_4.css" rel="stylesheet">
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@foreach (var item in Model.customerinfo)
+{
+
+    <meta name="keywords" content="">
+    <meta name="description" content="@item.customername">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:site" content="@item.customername">
+    <meta name="twitter:title" content="@item.customername">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:creator" content="http://mydc.in/?a=@item.callme-13">
+    <meta name="twitter:image:src" content="@item.imageurl">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="@item.customername" />
+    <meta property="og:type" content="@item.customername" />
+    <meta property="og:description" content="We are group of life insurance professionals, helping people with professional and expert advice on different types of life insurance as per their needs. We also provide support to people searching for career in life insurance sector." />
+    <meta property="og:site_name" content="http://mydc.in/?a=@item.callme-13" />
+    <meta property="og:image" content="@item.imageurl" />
+    <meta property="article:section" content="@item.customername" />
+
+    <div class="card_view" style=" background:url('/DigitalCard13/images/texture/35.jpg'); background-size: initial !important;">
+        <div class="cover_img cover_square" style="height:auto !important;">
+            <img src="~/DigitalCard13/images/lic2.png" />
+        </div>
+
+        <div class="cv_page" style=" background:url('includes/images/texture/35.jpg'); background-size: initial !important; ">
+            @if (item.imageurl != "")
+            {
+                <div class="photo photo_circle" style="background:url(@item.imageurl); "></div>
+            }
+            else
+            {
+                <div class="photo photo_circle" style="background:url('/images/abc.png'); "></div>
+            }
+
+            <div class="card_name" style="background-color:#00529c; ">
+                <h1><span> @item.customername </span></h1>
+                <h4><span> @item.designation </span></h4>
+                <div class="arrow-left" style=""></div>
+                <div class="arrow-right" style="border-bottom: 100px solid #00529c; "></div>
+            </div>
+
+            <hr class="hr1" style="background-color:#00519e; ">
+            <div class="quick_btns_div" style="">
+                <ul class="quick_btns">
+                    <li><a style="background-color:#00529c;" target="_blank" href="tel:@item.callme"><i class="fa fa-phone"></i></a></li>
+                    <li><a style="background-color:#00529c;" target="_blank" href="https://api.whatsapp.com/send?phone=91 @item.whatsapp&text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me"><i class="fa fa-whatsapp"></i></a></li>
+                    <li><a style="background-color:#00529c;" target="_blank" href="@item.website"><i class="fa fa-globe"></i></a></li>
+                    <li><a style="background-color:#00529c;" target="_blank" href="mailto:@item.emailid"><i class="fa fa-envelope"></i></a></li>
+                    <li><a style="background-color:#00529c;" target="_blank" href="@item.fblink"><i class="fa fa-facebook"></i></a></li>
+                    @*<li><a style="background-color:#00529c;" target="_blank" href="#"><i class="fa fa-map-marker"></i></a></li>*@
+                </ul>
+            </div>
+            <hr class="hr2" style="background-color:#00519e; ">
+
+            <div style="padding:10px;padding-top:30px;" class="input-group">
+                <input id="whatsapp-input" type="text" class="form-control" placeholder="Enter Mobile No">
+                <span class="input-group-addon"><a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)" style="color:#fff;" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"><i class="fa fa-whatsapp"></i> Share On Whatsapp </a> </span>
+            </div>
+            <style>
+                .input-group-addon {
+                    padding: 6px 12px;
+                    font-size: 14px;
+                    font-weight: normal;
+                    line-height: 1.8;
+                    text-align: center;
+                    background-color: #13730f;
+                    /* border: 1px solid #cccccc; */
+                    /*border-radius: 4px;*/
+                    color: #fff;
+                    /* background-color: white; */
+                }
+            </style>
+            <script>
+                 function handleWhatsappShare(e) {
+                     const {value} = document.getElementById('whatsapp-input');
+                     if (value.length < 10) {
+                         e.preventDefault();
+                         return;
+                     }
+                     var msg = encodeURIComponent('Hello,\n To Know more about our provided services click on given link...\n http://mydc.in/?a=@item.callme-13 \n Thanks & Regards \n @item.customername')
+                     e.href = `https://wa.me/91${document.getElementById('whatsapp-input').value}?text=${msg}`;
+                     }
+                     function handleDirectWhatsappShare(e) {
+                         e.href = `whatsapp: \/\/send?text=${window.location.href}`;
+                   }
+            </script>
+
+        </div>
+
+        <div class="cv_page" style="padding-bottom:20px; background:url('includes/images/texture/35.jpg'); background-size: initial !important; ">
+            <div class="othr_list" id="othr_list">
+                <!--About Me-->
+                <div class="ol_h" style="border-color:#00529c; background-color:#00519e; " data-toggle="collapse" data-target="#profiles_info">
+                    <div class="l" style="color:#00519e; background-color:#ffdf68; border-color:#00529c; "><i class="fa fa-address-card"></i></div>
+                    <div class="t" style="background-color:#00519e; border-color:#00529c; "> Profile </div>
+                    <div class="p" style="color:#00519e; background-color:#ffdf68; ">+</div>
+                </div>
+                <div class="ol_v collapse" id="profiles_info" style="max-height:300px; overflow:auto; color:#000;">
+                    <span style="font-size:16px;">
+                        <b> Name : </b> @item.customername
+                    </span>
+                    <p style="margin-bottom:3px;"></p>
+                    <span style="font-size:16px;">
+                        <b> Designation : </b> @item.designation
+                    </span>
+                    <p style="margin-bottom:3px;"></p>
+                    <span style="font-size:16px;">
+                        <b> Email: </b> @item.emailid
+                    </span>
+                    <p style="margin-bottom:3px;"></p>
+                    <span style="font-size:16px;">
+                        <b>  Phone: </b> @item.callme
+                    </span>
+                    <p style="margin-bottom:3px;"></p>
+                    <span style="font-size:16px;">
+                        <b>  Website: </b> @item.website
+                    </span>
+                    <p style="margin-bottom:3px;"></p>
+                    <span style="font-size:16px;">
+                        <b> Address: </b> @item.address
+                    </span>
+                    <p style="margin-bottom:3px;"></p>
+                </div>
+                <!--End About Me-->
+                <!--About Me-->
+                <div class="ol_h" style="border-color:#00529c; background-color:#00519e; " data-toggle="collapse" data-target="#profile_info">
+                    <div class="l" style="color:#00519e; background-color:#ffdf68; border-color:#00529c; "><i class="fa fa-user"></i></div>
+                    <div class="t" style="background-color:#00519e; border-color:#00529c; "> About Me </div>
+                    <div class="p" style="color:#00519e; background-color:#ffdf68; ">+</div>
+                </div>
+                <div class="ol_v collapse" id="profile_info" style="max-height:300px; overflow:auto; color:#000;">
+                    <p></p>
+                    <span style="font-size:16px;">
+                        @Html.Raw(item.about)
+                    </span>
+                </div>
+                <!--End About Me-->
+                <!--Vision-->
+                <div class="ol_h" style="border-color:#00529c; background-color:#00519e; " data-toggle="collapse" data-target="#vision_info">
+                    <div class="l" style="color:#00519e; background-color:#ffdf68; border-color:#00529c; "><i class="fa fa-building"></i></div>
+                    <div class="t" style="background-color:#00519e; border-color:#00529c; "> Company Details </div>
+                    <div class="p" style="color:#00519e; background-color:#ffdf68; ">+</div>
+                </div>
+                <div class="ol_v collapse" id="vision_info" style="max-height:300px; overflow:auto; color:#000;">
+                    <p></p>
+                    <span style="font-size:16px;">
+                        @Html.Raw(item.vision)
+                    </span>
+                </div>
+                <!--End Vision-->
+                <!--Services-->
+                <div class="ol_h" style="border-color:#00529c; background-color:#00519e; " data-toggle="collapse" data-target="#service_info">
+                    <div class="l" style="color:#00519e; background-color:#ffdf68; border-color:#00529c; "><i class="fa fa-thumbs-up"></i></div>
+                    <div class="t" style="background-color:#00519e; border-color:#00529c; "> Solution We Offer </div>
+                    <div class="p" style="color:#00519e; background-color:#ffdf68; ">+</div>
+                </div>
+                <div class="ol_v collapse" id="service_info" style="max-height:300px; overflow:auto; color:#000;">
+                    <p></p>
+                    <span style="font-size:16px;">
+                        @Html.Raw(item.service)
+                    </span>
+                </div>
+                <!--End Services-->
+                <!--Testimonials-->
+                <style>
+
+                    .testimonial {
+                        border: 1px solid #7dbef9;
+                        padding: 10px;
+                        border-radius: 10px;
+                        background: #bedcf7;
+                        position: absolute;
+                        margin-bottom: 10px;
+                    }
+
+                        .testimonial img {
+                            width: 150px;
+                            height: 150px;
+                            text-align: center;
+                            display: block;
+                            margin: auto;
+                            border-radius: 50%;
+                        }
+
+                        .testimonial h2 {
+                            font-size: 18px;
+                            text-align: left;
+                            font-weight: 600;
+                        }
+
+                        .testimonial p {
+                            font-size: 17px;
+                        }
+
+                    @@media only screen and (max-width:520px) and (min-width:220px) {
+
+                        .testimonial {
+                            position: initial;
+                        }
+
+                            .testimonial h2 {
+                                text-align: center;
+                            }
+                    }
+                </style>
+                <div class="ol_h" style="border-color:#00529c; background-color:#00519e; " data-toggle="collapse" data-target="#testimonial_info">
+                    <div class="l" style="color:#00519e; background-color:#ffdf68; border-color:#00529c; "><i class="fa fa-comments"></i></div>
+                    <div class="t" style="background-color:#00519e; border-color:#00529c; "> Team </div>
+                    <div class="p" style="color:#00519e; background-color:#ffdf68; ">+</div>
+                </div>
+                <div class="ol_v collapse" id="testimonial_info" style="max-height:300px; overflow:auto; color:#000;">
+                    <p></p>
+                    <span style="font-size:16px;">
+                        @if (Model.testimonials != null)
+                        {
+                            foreach (var items in Model.testimonials)
+                            {
+                                <div class="testimonial">
+                                    <div class="col-md-2 col-sm-12 col-xs-12">
+                                        @if (items.image != null)
+                                        {
+                                            <img src="@items.image" alt="" class="img-responsive">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/DigitalCard/images/abc.png" alt="" class="img-responsive">
+                                        }
+                                    </div>
+                                    <div class="col-md-10 col-sm-12 col-xs-12">
+                                        <h2>
+                                            @items.name
+                                        </h2>
+                                        <p>
+                                            @items.description
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </span>
+                </div>
+                <!--End Testimonials-->
+                <!--Videos-->
+                <style>
+
+                    .Video_blcok .blocks .greenhead {
+                        background: #fff;
+                        text-align: center;
+                        color: #00283a;
+                        font-size: 14px;
+                        /*border-bottom: 1px solid #558f02;*/
+                        line-height: 43px;
+                        font-weight: 600;
+                    }
+
+                    .blockstart {
+                        border: 2px solid #000;
+                        padding: 2px;
+                        height: 300px;
+                        margin: 10px 0px;
+                    }
+
+                        .blockstart a {
+                            width: 100%;
+                        }
+
+                    .blockimg {
+                        width: 100%;
+                        height: 250px !important;
+                    }
+
+                    .Video_blcok .blocks .blockstart span {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        margin-top: -25px;
+                        margin-left: -25px;
+                        width: 58px;
+                        height: 41px;
+                        line-height: 50px;
+                        font-size: 60px;
+                        color: #48c7f6;
+                    }
+                </style>
+                <div class="ol_h" style="border-color:#00529c; background-color:#00519e; " data-toggle="collapse" data-target="#video_info">
+                    <div class="l" style="color:#00519e; background-color:#ffdf68; border-color:#00529c; "><i class="fa fa-video-camera"></i></div>
+                    <div class="t" style="background-color:#00519e; border-color:#00529c; "> Videos </div>
+                    <div class="p" style="color:#00519e; background-color:#ffdf68; ">+</div>
+                </div>
+                <div class="ol_v collapse" id="video_info" style="max-height:300px; overflow:auto; color:#000;">
+                    <div class="Video_blcok">
+                        <section>
+                            @{
+                                if (Model.videos != null)
+                                {
+                                    foreach (var itm in Model.videos)
+                                    {
+                                        <div class="blocks col-md-6">
+                                            <div class="blockstart">
+                                                <a id="pIASsr9TcKA" rel="fancyvideo" class="fancybox-media" href="https://youtu.be/@itm.url">
+                                                    <img src="https://img.youtube.com/vi/@itm.url/0.jpg" class="img-responsive blockimg">
+                                                    <span class="fa fa-play" id="@itm.url"></span>
+                                                </a>
+                                                <div class="greenhead"> @itm.title</div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                            }
+                        </section>
+                    </div>
+                </div>
+                <!--End Videos-->
+
+                <div style="border-bottom:1px dashed #000"></div>
+            </div>
+            <!--Gallery-->
+            <style>
+
+                .box_gallery {
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                    .box_gallery img {
+                        width: 100%;
+                        height: 300px;
+                        margin-bottom: 10px;
+                    }
+
+                    .box_gallery .box-content {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translate(-50%, -50%);
+                    }
+
+                        .box_gallery:before,
+                        .box_gallery:after,
+                        .box_gallery .box-content:before,
+                        .box_gallery .box-content:after {
+                            /*content: "";
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                        position: absolute;
+                        top: -100%;
+                        left: 50%;
+                        opacity: 0;
+                        transform: translateX(-50%) rotate(45deg);
+                        transition: all 0.3s steps(4);*/
+                        }
+
+                    .box_gallery:after {
+                        /*top: 100%;
+                            background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                            transform: translateX(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery .box-content:before {
+                        /*top: 50%;
+                            left: -100%;
+                            background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                            transform: translateY(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery .box-content:after {
+                        /*top: 50%;
+                            left: 100%;
+                            background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                            transform: translateY(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery:hover:before {
+                        top: -70%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover:after {
+                        top: 70%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover .box-content:before {
+                        top: 50%;
+                        left: -71%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover .box-content:after {
+                        top: 50%;
+                        left: 71%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery .inner-content {
+                        width: 100%;
+                        height: 50%;
+                        text-align: center;
+                        color: #fff;
+                        position: absolute;
+                        top: 65%;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translate(-50%, 50%) scale(0);
+                        transition: all 0.3s ease 0.2s;
+                    }
+
+                        .box_gallery .inner-content:after {
+                            content: "";
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 50%;
+                            background: #00529c;
+                            position: absolute;
+                            top: 20%;
+                            left: 50%;
+                            z-index: -1;
+                            transform: translate(-50%, -50%);
+                        }
+
+                    .box_gallery:hover .inner-content {
+                        transform: translate(-50%, -50%) scale(1);
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box_gallery .title {
+                        font-size: 22px;
+                        font-weight: 700;
+                        text-transform: capitalize;
+                        margin: 0 0 5px 0;
+                    }
+
+                    .box_gallery .post {
+                        display: block;
+                        font-size: 14px;
+                        font-style: italic;
+                        text-transform: uppercase;
+                        margin-bottom: 7px;
+                    }
+
+                    .box_gallery .icon {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                    }
+
+                        .box_gallery .icon li {
+                            display: inline-block;
+                            margin: 0 10px;
+                            opacity: 0;
+                            transition: all 0.3s ease 0s;
+                        }
+
+                    .box_gallery:hover .icon li {
+                        margin: 0 3px;
+                        opacity: 1;
+                    }
+
+                    .box_gallery .icon li a {
+                        display: block;
+                        width: 28px;
+                        height: 28px;
+                        line-height: 28px;
+                        border-radius: 20%;
+                        background: #fff;
+                        font-size: 16px;
+                        color: #505050;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                        .box_gallery .icon li a:hover {
+                            background: #fff;
+                            color: #1856a3;
+                            box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                        }
+
+                @@media only screen and (max-width:990px) {
+                    .box_gallery {
+                        margin-bottom: 30px;
+                    }
+                }
+            </style>
+            <style>
+                .box {
+                    position: relative;
+                    text-align: center;
+                    overflow: hidden;
+                    margin-bottom:15px;
+                }
+
+                    .box img {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    .box .option {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        transition: all 0.5s ease 0s;
+                    }
+
+                    .box:hover .option {
+                        background: rgba(0, 0, 0,0.8);
+                    }
+
+                    .box .link {
+                        border: 4px solid #fff;
+                        position: relative;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        line-height: 40px;
+                        font-size: 18px;
+                        display: inline-block;
+                        color: #fff;
+                        transition: all 0.5s ease 0s;
+                        opacity: 0;
+                    }
+
+                        .box .link:hover {
+                            color: #fff;
+                        }
+
+                    .box:hover .link {
+                        top: 40%;
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                        opacity: 1;
+                    }
+
+                @@media only screen and (max-width: 990px) {
+                    .box {
+                        margin-bottom: 20px;
+                    }
+                }
+            </style>
+
+            <div>
+                <h4 style="font-size:20px;margin-bottom:20px;"> Our Recommended Images </h4>
+                <div class="col-md-12">
+                    @if (Model.gallery != null)
+                    {
+                        foreach (var items in Model.gallery)
+                        {
+                            @*<div class="col-sm-12">
+                                <div class="box_gallery">
+                                    <img src="@items.Image" class="img-responsive">
+                                    <div class="box-content">
+                                        <div class="inner-content">
+                                            <ul class="icon">
+                                                <li>
+                                                    <a href="@items.Image" data-magnify="gallery">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="col-sm-12">
+                                <div class="box">
+                                    <img src="@items.Image" alt="">
+                                    <div class="option">
+                                        <a href="@items.Image" data-magnify="gallery" class="link"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <!--End Gallery-->
+        </div>
+
+        <div class="card_footer" style="">
+            <div class="row">
+                <div class="col-6 col-md-6 r" style="border-right:1px dashed #00529c;">
+
+                    <form method="post" action="savecontact">
+                        <button role="button" type="submit" class="add_to_card_hldr" style="background: transparent;border: 0;font-size: 15px;margin: 15px 0 0 5px;color: #000;font-weight: 500;text-decoration: none;"> <i class="fa fa-save"></i> Add To Contact </button>
+                    </form>
+
+                </div>
+                <div class="col-6 col-md-6 r">
+                    <button role="button" type="submit" data-toggle="modal" data-target="#enquire" class="add_to_card_hldr" style="background: transparent;border: 0;font-size: 15px;margin: 15px 0 0 5px;color: #000;font-weight: 500;text-decoration: none;"> <i class="fa fa-send-o"></i> Send Enquiry </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-12 col-md-12 l">
+                    <a class="cpy_rgt" href="https://zaidicorp.in/" target="_blank"> Design by zaidicorp.in </a>
+                    <a href="http://digitalcard.live/Home/PrivacyPolicy?customerid=@ViewBag.id" target="_blank" style="color:#fff;"> Priavcy Policy </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <style>
+        .g-recaptcha {
+            /*transform: scale(1);
+            transform-origin: 0 0;*/
+            padding: 5px 15px;
+        }
+
+            .g-recaptcha div {
+                width: 100% !important;
+                text-align: center;
+                margin: auto;
+            }
+
+        @@media only screen and (max-width:520px) and (min-width:220px) {
+            .g-recaptcha {
+                transform: scale(1);
+                transform-origin: 0 0;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+    <div class="modal fade" id="enquire" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Enquire Now </h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" align="left">
+                    <form method="post" id="register" name="register" action="sendenquiry">
+
+                        <input type="hidden" name="toname" value="@item.customername">
+                        <input type="hidden" name="toemail" value="@item.emailid">
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control alphabetOnly" name="name" id="name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email" id="email" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mobile No</label>
+                            <input type="text" class="form-control numbersOnly" name="number" id="number" pattern="[1-9]{1}[0-9]{9}" maxlength="10" />
+                        </div>
+
+                        <div class="form-group">
+                            <label> Query </label>
+                            <textarea rows="4" class="form-control" name="query" id="query"></textarea>
+                        </div>
+
+                        <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                        <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" name="subquery"> Send </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Alert</h4>
+            </div>
+            <div class="modal-body">
+                <p id="msg">Enquiry Send Successfully</p>
+
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="clearcookies">
+                    <button type="submit" class="btn btn-success"> OK </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="/DigitalCard13/js/jquery-3.5.1.min.js"></script>
+    <script src="/DigitalCard13/js/bootstrap.min.js"></script>
+
+    <script defer src="/DigitalCard13/js/menu.js"></script>
+    <script defer src="/DigitalCard13/js/script_card.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+    <script>
+        $(window).on('load', function ()
+        {
+            var msg = "@ViewBag.msg";
+            if (msg != "") {
+                $(".modal-title").html("Alert!")
+                $("#msg").html(msg);
+                $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Panel Open/Close
+            $('.ol_h').click(function () {
+
+                if (!$(this).next('.ol_v').is(':visible')) {
+                    $(this).find('.p').text('-');
+                }
+                else {
+                    $(this).find('.p').text('+');
+                }
+            });
+
+            // Share Menu
+            var Menu = {
+                body: $('.share-menu'),
+                button: $('.share-button'),
+                tools: $('.share-tools')
+            };
+            Menu.button.click(function () {
+                Menu.body.toggleClass('share-menu--closed');
+                Menu.body.toggleClass('share-menu--open');
+                Menu.tools.toggleClass('share-tools--visible');
+                Menu.tools.toggleClass('share-tools--hidden');
+            });
+
+        });
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#register").validate({
+                ignore: ".ignore",
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    number: {
+                        required: true,
+                        number: true,
+                        minlength: 10
+                    },
+                    query: {
+                        required: true
+                    },
+                    hiddenRecaptcha: {
+                        required: function () {
+                            if (grecaptcha.getResponse() == '') {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Enter name"
+                    },
+                    email: {
+                        required: "Enter email Id",
+                        email: "Enter valid email Id"
+                    },
+                    number: {
+                        required: "Enter phone number",
+                        number: "Enter Phone number"
+                    },
+                    hiddenRecaptcha:
+                    {
+                        required: "This Field Required"
+                    }
+                }
+
+            }); //validate
+        });
+    </script>
+
+    <script>
+        function recaptchaCallback() {
+            $('#hiddenRecaptcha').valid();
+        };
+    </script>
+
+    <link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+    <script src="~/js/jQueryMagnify.js"></script>
+    <script>
+        $('[data-magnify]').magnify({
+            resizable: true,
+            initMaximized: true
+        })
+    </script>
+
+    <link href="~/DigitalCard12/css/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/DigitalCard12/js/jquery.fancybox.pack.js"></script>
+    <script src="~/DigitalCard12/js/jquery.fancybox-media.js"></script>
+
+    <script>
+        var $ = jQuery.noConflict();
+        $('.fancybox-media')
+            .attr('rel', 'media-gallery')
+            .fancybox({
+                openEffect: 'none',
+                closeEffect: 'false',
+                prevEffect: 'none',
+                nextEffect: 'none',
+
+                arrows: false,
+                helpers: {
+                    media: {},
+                    buttons: {}
+                }
+            });
+        function ImageCall(id) {
+            $('.fancybox-media')
+                .attr('rel', 'media-gallery')
+                .fancybox({
+                    openEffect: 'none',
+                    closeEffect: 'none',
+                    prevEffect: 'none',
+                    nextEffect: 'none',
+
+                    arrows: false,
+                    helpers: {
+                        media: {},
+                        buttons: {}
+                    }
+                });
+            document.getElementById(id).click();
+        }
+    </script>
+    <script>
+        $(".numbersOnly").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+
+        $(".alphabetOnly").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[a-zA-Z ]*$/;
+
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                return false;
+            }
+        });
+    </script>
+}
+
+

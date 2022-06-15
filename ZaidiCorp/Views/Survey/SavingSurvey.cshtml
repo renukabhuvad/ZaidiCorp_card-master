@@ -1,0 +1,810 @@
+﻿
+@{
+    ViewBag.Title = "SavingSurvey";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/Style.css" rel="stylesheet" />
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        color: #484848;
+        font-size:13.3px !important;
+        font-family: 'Dosis';
+        line-height:normal;
+    }
+    .survey {
+        border: 1px solid #cacaca;
+        background: #fff;
+        /*padding: 10px;*/
+        border-radius: 5px;
+        box-shadow: 0px 0px 2px 2px #c7c7c7;
+    }
+    input[name='sex'] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: none;
+    }
+    input[name='sex']:after {
+        font-family: 'FontAwesome';
+        display: inline-block;
+        text-align: center;
+        font-size: 50px;
+        content: attr(data-icon);
+        padding: 15px 20px;
+        border-radius: 15px;
+        color: #fdc236;
+        transition: box-shadow 1s, color 1s;
+    }
+    input[name='sex']:checked:after {
+        box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+        color: #00529c;
+    }
+    .form-group {
+        margin-bottom: 5px;
+    }
+</style>
+
+<style>
+    input[type='checkbox']{ height: 0; width: 0;position:absolute; }
+
+input[type='checkbox'] + label {
+    position: relative;
+    display: flex;
+    /*margin: .6em 0;*/
+    align-items: center;
+    color: #484848;
+    transition: color 250ms cubic-bezier(.4,.0,.23,1);
+}
+input[type='checkbox'] + label > ins{
+  position: absolute;
+  display: none;
+  bottom: 0;
+  /*left: 2em;*/
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  transition: height 300ms cubic-bezier(.4,.0,.23,1);
+}
+input[type='checkbox'] + label > ins > i{
+  position: absolute;
+  bottom: 0;
+  font-style: normal;
+  color: #4FC3F7;
+}
+input[type='checkbox'] + label > span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1em;
+  width: 1em;
+  height: 1em;
+  background: transparent;
+  border: 2px solid #9E9E9E;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(.4,.0,.23,1);
+}
+
+input[type='checkbox'] + label:hover, input[type='checkbox']:focus + label{
+  /*color: #fff;*/
+}
+input[type='checkbox'] + label:hover > span, input[type='checkbox']:focus + label > span{
+  background: rgba(255,255,255,.1);
+}
+input[type='checkbox']:checked + label > ins{ height: 100%; }
+
+input[type='checkbox']:checked + label > span {
+    border: 2px solid #ea4d34;
+    /*background: linear-gradient(180deg, #ff8a00, #da1b60);*/
+    animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1);
+}
+
+input[type='checkbox']:checked + label > span:before {
+    content: "";
+    position: absolute;
+    top: 0.7em;
+    left: 0.3em;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    transform: rotate(45deg);
+    transform-origin: 0% 100%;
+    animation: checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
+}
+
+@@keyframes shrink-bounce{
+  0%{
+    transform: scale(1);
+  }
+  33%{
+    transform: scale(.85);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+@@keyframes checkbox-check{
+  0%{
+    width: 0;
+    height: 0;
+    border-color: #212121;
+    transform: translate3d(0,0,0) rotate(45deg);
+  }
+  33%{
+    width: .2em;
+    height: 0;
+    transform: translate3d(0,0,0) rotate(45deg);
+  }
+  100%{
+    width: .2em;
+    height: .5em;
+    border-color: #212121;
+    transform: translate3d(0,-.5em,0) rotate(45deg);
+  }
+}
+</style>
+
+<style>
+    .containers .name {
+	 margin-bottom: 0.675rem;
+	 display: flex;
+	 justify-content: flex-end;
+}
+ .containers .name h4 {
+	 margin: 0;
+	 text-transform: uppercase;
+	 font-size: 0.9rem;
+	 font-weight: normal;
+	 color: #dadadf;
+	 transform: scale(0);
+	 transform-origin: 100% 50%;
+	 transition: transform 500ms ease;
+}
+ .containers svg {
+	 width: 1.35rem;
+	 height: 1.35rem;
+}
+ .containers svg.gear {
+	 order: 1;
+	 margin-left: 1.35rem;
+	 cursor: help;
+}
+ .containers svg.gear:hover ~ h4 {
+	 transform: scale(1);
+}
+
+ label {
+	 position: relative;
+	 margin: 0.675rem 0px;
+	 display: flex;
+	 width: auto;
+	 align-items: center;
+	 cursor: pointer;
+     font-weight:500;
+}
+ .check {
+	 margin-right: 7px;
+	 width: 1.35rem;
+	 height: 1.35rem;
+}
+ .check #border {
+	 fill: none;
+	 stroke: #7a7a8c;
+	 stroke-width: 3;
+	 stroke-linecap: round;
+}
+ .check #dot {
+	 fill: url(#gradient);
+	 transform: scale(0);
+	 transform-origin: 50% 50%;
+}
+ .input {
+	 display: none;
+}
+ input + label{
+     font-weight:400;
+ }
+ input:checked + label {
+	 background: linear-gradient(180deg, #ff8a00, #da1b60);
+	 -webkit-background-clip: text;
+	 -webkit-text-fill-color: transparent;
+}
+ input:checked + label svg #border {
+	 stroke: url(#gradient);
+	 stroke-dasharray: 145;
+	 stroke-dashoffset: 145;
+	 animation: checked 500ms ease forwards;
+}
+ input:checked + label svg #dot {
+	 transform: scale(1);
+	 transition: transform 500ms cubic-bezier(0.57, 0.21, 0.69, 3.25);
+}
+ @@keyframes checked {
+	 to {
+		 stroke-dashoffset: 0;
+	}
+}
+
+</style>
+
+<section style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="survey">
+                    <div style="background: #00529c;color: #fff;padding: 10px;border-top-left-radius: 5px;border-top-right-radius: 5px;margin: -1px;text-align: center;">
+                        <span style="font-size:16px;">
+                            Saving Survey
+                        </span>
+                    </div>
+                    <div style="padding:10px">
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Name </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Gender </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="sex" value="f" data-icon='' checked />
+                            <input type="radio" name="sex" value="m" data-icon='' />
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Mobile No </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Mobile No" />
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Email ID </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email ID" />
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> About how often do you think about saving money </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="field" id="Uno" class="input" />
+                            <label for="Uno">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Never
+                            </label>
+                            <input type="radio" name="field" id="Dos" class="input" />
+                            <label for="Dos">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                About once a month
+                            </label>
+                            <input type="radio" name="field" id="Tres" class="input" />
+                            <label for="Tres">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Once a year or less
+                            </label>
+                            <input type="radio" name="field" id="daily" class="input" />
+                            <label for="daily">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Daily
+                            </label>
+                            <input type="radio" name="field" id="Weekly" class="input" />
+                            <label for="Weekly">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Weekly
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> How strongly do you agree that taking advantage of sales, coupons, and discounts is a good way to save money? </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="advantage" id="a1" class="input" />
+                            <label for="a1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Disagree
+                            </label>
+                            <input type="radio" name="advantage" id="a2" class="input" />
+                            <label for="a2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Disagree
+                            </label>
+                            <input type="radio" name="advantage" id="a3" class="input" />
+                            <label for="a3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Neither Agree Nor Disagree
+                            </label>
+                            <input type="radio" name="advantage" id="a4" class="input" />
+                            <label for="a4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Agree
+                            </label>
+                            <input type="radio" name="advantage" id="a5" class="input" />
+                            <label for="a5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Agree
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> How strongly do you agree that using less energy is a good way to save money? </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="energy" id="b1" class="input" />
+                            <label for="b1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Disagree
+                            </label>
+                            <input type="radio" name="energy" id="b2" class="input" />
+                            <label for="b2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Disagree
+                            </label>
+                            <input type="radio" name="energy" id="b3" class="input" />
+                            <label for="b3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Neither Agree Nor Disagree
+                            </label>
+                            <input type="radio" name="energy" id="b4" class="input" />
+                            <label for="b4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Agree
+                            </label>
+                            <input type="radio" name="energy" id="b5" class="input" />
+                            <label for="b5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Agree
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> How strongly do you agree with this statement?: I feel that I am very good at saving money. </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="statement" id="c1" class="input" />
+                            <label for="c1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Disagree
+                            </label>
+                            <input type="radio" name="statement" id="c2" class="input" />
+                            <label for="c2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Disagree
+                            </label>
+                            <input type="radio" name="statement" id="c3" class="input" />
+                            <label for="c3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Neither Agree Nor Disagree
+                            </label>
+                            <input type="radio" name="statement" id="c4" class="input" />
+                            <label for="c4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Agree
+                            </label>
+                            <input type="radio" name="statement" id="c5" class="input" />
+                            <label for="c5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Agree
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> In what vehicles are you likely to save money? Choose as many as appropriate. </label>
+                        </div>
+                        <input id='one' type='checkbox' />
+                        <label for='one'>
+                            <span></span>
+                            Savings Accounts
+                            <ins><i> Savings Accounts </i></ins>
+                        </label>
+
+                        <input id='two' type='checkbox' />
+                        <label for='two'>
+                            <span></span>
+                            IRAs or Other Retirement Vehicles
+                            <ins><i> IRAs or Other Retirement Vehicles </i></ins>
+                        </label>
+
+                        <input id='three' type='checkbox' />
+                        <label for='three'>
+                            <span></span>
+                            Certificates of Deposit
+                            <ins><i> Certificates of Deposit </i></ins>
+                        </label>
+
+                        <input id='four' type='checkbox' />
+                        <label for='four'>
+                            <span></span>
+                            Stocks, Bonds, and Mutual Funds
+                            <ins><i> Stocks, Bonds, and Mutual Funds </i></ins>
+                        </label>
+
+                        <input id='five' type='checkbox' />
+                        <label for='five'>
+                            <span></span>
+                            Checking Accounts
+                            <ins><i> Checking Accounts </i></ins>
+                        </label>
+
+                        <input id='six' type='checkbox' />
+                        <label for='six'>
+                            <span></span>
+                            Financial Derivatives
+                            <ins><i> Financial Derivatives </i></ins>
+                        </label>
+
+                        <input id='seven' type='checkbox' />
+                        <label for='seven'>
+                            <span></span>
+                            In Cash In My Home
+                            <ins><i> In Cash In My Home </i></ins>
+                        </label>
+
+                        <input id='eight' type='checkbox' />
+                        <label for='eight'>
+                            <span></span>
+                            Specially Designated Accounts
+                            <ins><i> Specially Designated Accounts </i></ins>
+                        </label>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> How strongly do you agree with this statement?: I understand the risks associated with various savings and investment vehicles. </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="saving" id="d1" class="input" />
+                            <label for="d1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Disagree
+                            </label>
+                            <input type="radio" name="saving" id="d2" class="input" />
+                            <label for="d2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Disagree
+                            </label>
+                            <input type="radio" name="saving" id="d3" class="input" />
+                            <label for="d3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Neither Agree Nor Disagree
+                            </label>
+                            <input type="radio" name="saving" id="d4" class="input" />
+                            <label for="d4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Agree
+                            </label>
+                            <input type="radio" name="saving" id="d5" class="input" />
+                            <label for="d5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Agree
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> How strongly do you agree with the following statement: I understand the difference between spending less money and saving money. </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="save_money" id="e1" class="input" />
+                            <label for="e1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Disagree
+                            </label>
+                            <input type="radio" name="save_money" id="e2" class="input" />
+                            <label for="e2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Disagree
+                            </label>
+                            <input type="radio" name="save_money" id="e3" class="input" />
+                            <label for="e3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Neither Agree Nor Disagree
+                            </label>
+                            <input type="radio" name="save_money" id="e4" class="input" />
+                            <label for="e4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Agree
+                            </label>
+                            <input type="radio" name="save_money" id="e5" class="input" />
+                            <label for="e5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Strongly Agree
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Please list the best way(s) to save money that you can quickly think of. </label>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Money Is the" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <a class="btn btn-primary" href="">
+                                Submit
+                            </a>
+                        </div>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

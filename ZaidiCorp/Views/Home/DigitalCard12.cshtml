@@ -1,0 +1,957 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard12";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+@foreach (var item in Model.customerinfo)
+{
+    <title> @item.customername </title>
+}
+
+
+<link href="~/DigitalCard12/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/DigitalCard12/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="~/DigitalCard12/css/style.css" />
+@*<link rel="stylesheet" type="text/css" href="/DigitalCard12/css/prettyPhoto.css" />*@
+
+@*<script type="text/javascript" src="/DigitalCard12/js/jquery.min.js"></script>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/DigitalCard12/js/jquery.easytabs.min.js"></script>
+@*<script type="text/javascript" src="/DigitalCard12/js/respond.min.js"></script>
+    <script type="text/javascript" src="/DigitalCard12/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="/DigitalCard12/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="/DigitalCard12/js/jquery-ui-map.js"></script>*@
+<script type="text/javascript" src="/DigitalCard12/js/jquery.carouFredSel.js"></script>
+<script type="text/javascript" src="/DigitalCard12/js/plugins.js"></script>
+<script type="text/javascript" src="/DigitalCard12/js/custom.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
+@foreach (var item in Model.customerinfo)
+{
+    <meta name="keywords" content="">
+    <meta name="description" content="@item.customername">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:site" content="@item.customername">
+    <meta name="twitter:title" content="@item.customername">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:creator" content="http://mydc.in/?a=@item.callme-12">
+    <meta name="twitter:image:src" content="@item.imageurl">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="@item.customername" />
+    <meta property="og:type" content="@item.customername" />
+    <meta property="og:description" content="We are group of life insurance professionals, helping people with professional and expert advice on different types of life insurance as per their needs. We also provide support to people searching for career in life insurance sector." />
+    <meta property="og:site_name" content="http://mydc.in/?a=@item.callme-12" />
+    <meta property="og:image" content="@item.imageurl" />
+    <meta property="article:section" content="@item.customername" />
+
+    <!-- Container -->
+    <section id="container">
+        <!-- Content -->
+        <section id="content">
+            <!-- Profile -->
+            <div id="profile">
+                <!-- About section -->
+                <div class="about">
+                    <div class="photo-inner">
+                        @if (item.imageurl != "")
+                        {
+                            <img src="@item.imageurl" height="186" width="153">
+                        }
+                        else
+                        {
+                            <img src="~/images/abc.png" height="186" width="153">
+                        }
+                    </div>
+                    <p>
+                        We specialize in Wealth Management Services and Insurance Consultancy services for all types of Insurances, such as Pension Plan, Health Insurance, Term Plan, Children education , Financial Planning etc.
+                    </p>
+                    <style>
+
+                        .social_link a, .social_link button {
+                            border: 2px solid #fbc801;
+                            color: #01559b;
+                            border-radius: 50%;
+                            padding: 10px;
+                            font-size: 20px;
+                            margin: 0px 3px;
+                            background: #fff6d5;
+                            display: block;
+                            width: 45px;
+                            height: 45px;
+                            text-align: center;
+                        }
+                    </style>
+                    <ul style="float:left;">
+                        <li style="float:left;" class="social_link">
+                            <a href="tel:@item.callme" target="_blank">
+                                <i class="fa fa-phone"></i>
+                            </a>
+                        </li>
+                        <li style="float:left;" class="social_link">
+                            <a href="mailto:@item.emailid" target="_blank">
+                                <i class="fa fa-envelope-o"></i>
+                            </a>
+                        </li>
+                        <li style="float:left;" class="social_link">
+                            <a href="@item.fblink" target="_blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li style="float:left;" class="social_link">
+                            <a href="https://api.whatsapp.com/send?phone=91 @item.whatsapp&text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me" target="_blank'">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                        </li>
+                        <li style="float:left;" class="social_link">
+                            <form method="post" action="savecontact">
+                                <button type="submit"> <i class="fa fa-save"></i></button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /About section -->
+                <!-- Personal info section -->
+                <ul class="personal-info">
+                    <li> <span> <i class="fa fa-user"></i> @item.customername </span></li>
+                    <li> <span> <i class="fa fa-briefcase"></i> @item.designation </span></li>
+                    <li> <a href="mailto:@item.emailid"><i class="fa fa-envelope"></i> <span class="word-wrap"> @item.emailid </span> </a> </li>
+                    <li> <a href="tel:@item.callme"> <i class="fa fa-phone"></i> <span>  +91 @item.callme  </span> </a></li>
+                    <li> <a href="@item.website"> <i class="fa fa-globe"></i> <span class="word-wrap"> @item.website </span> </a> </li>
+                    <li>
+                        <div style="padding:10px;" class="input-group">
+                            <input id="whatsapp-input" type="text" class="form-control" placeholder="Enter Mobile No">
+                            <span class="input-group-addon"><a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)" style="color:#fff;" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"><i class="fa fa-whatsapp"></i> Share On Whatsapp </a> </span>
+                        </div>
+                    </li>
+                </ul>
+                <style>
+
+                    .input-group-addon {
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        font-weight: normal;
+                        line-height: 1;
+                        text-align: center;
+                        background-color: #13730f;
+                        /* border: 1px solid #cccccc; */
+                        border-radius: 4px;
+                        color: #fff;
+                        /* background-color: white; */
+                    }
+                </style>
+                <script>
+                 function handleWhatsappShare(e) {
+                     const {value} = document.getElementById('whatsapp-input');
+                     if (value.length < 10) {
+                         e.preventDefault();
+                         return;
+                     }
+                     var msg = encodeURIComponent('Hello,\n To Know more about our provided services click on given link...\n http://mydc.in/?a=@item.callme-12 \n Thanks & Regards \n @item.customername')
+                     e.href = `https://wa.me/91${document.getElementById('whatsapp-input').value}?text=${msg}`;
+         }
+         function handleDirectWhatsappShare(e) {
+             e.href = `whatsapp: \/\/send?text=${window.location.href}`;
+         }
+
+                </script>
+                <!-- /Personal info section -->
+            </div>
+            <!-- /Profile -->
+            <!-- Menu -->
+            <nav class="menu">
+                <ul class="tabs">
+                    <li class="tmenu"><a href="#profile" class="tab-profile"><i class="fa fa-user"></i>Profile</a></li>
+                    <li class="tmenu"><a href="#AboutMe"><i class="fa fa-user-circle-o"></i> About Me </a></li>
+                    <li class="tmenu"><a href="#Services"><i class="fa fa-cog"></i> Services </a></li>
+                    <li class="tmenu"><a href="#vision"><i class="fa fa-eye"></i> Vision </a></li>
+                    <li class="tmenu"><a href="#Testimonials"><i class="fa fa-comment"></i> Team </a></li>
+                    <li class="tmenu"><a href="#gallery"><i class="fa fa-image"></i> Gallery </a></li>
+                    <li class="tmenu"><a href="#Videos"><i class="fa fa-video-camera"></i> Videos </a></li>
+                    <li class="tmenu"><a href="#contact"><i class="fa fa-send-o"></i> Contact </a></li>
+                </ul>
+                <a class="prev" id="menu-prev" href="#"><i class="fa fa-arrow-left"></i></a>
+                <a class="next" id="menu-next" href="#"><i class="fa fa-arrow-right"></i></a>
+            </nav>
+            <!-- /Menu -->
+            <!-- About Me -->
+            <section id="AboutMe">
+                <div style="padding:20px;">
+                    <p>
+                        @Html.Raw(item.about)
+                    </p>
+                </div>
+            </section>
+            <!-- End About Me -->
+            <!-- Services -->
+            <section id="Services">
+                <div style="padding:20px;">
+                    <p>
+                        @Html.Raw(item.service)
+                    </p>
+                </div>
+            </section>
+            <!-- End Services -->
+            <!-- Vision -->
+            <section id="vision">
+                <div style="padding:20px;">
+                    <p>
+                        @Html.Raw(item.vision)
+                    </p>
+                </div>
+            </section>
+            <!-- End Vision -->
+            <!-- Contact -->
+            <section id="contact">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3 class="main-heading"><span>Contact info</span></h3>
+                    <ul>
+                        <li> <b>Name :</b> @item.customername </li>
+                        <li> <b>Email:</b> @item.emailid </li>
+                        <li> <b>Phone:</b> +91 @item.callme </li>
+                        <li> <b>Address:</b> @item.address </li>
+                        <li> <b>Website:</b> @item.website </li>
+                    </ul>
+                </div>
+                <!-- /Contact Info -->
+                <style>
+
+                    .g-recaptcha {
+                        /*transform: scale(1);
+                    transform-origin: 0 0;*/
+                        padding: 5px 15px;
+                    }
+
+                        .g-recaptcha div {
+                            width: 100% !important;
+                            text-align: center;
+                            margin: auto;
+                        }
+
+                    @@media only screen and (max-width:520px) and (min-width:220px) {
+                        .g-recaptcha {
+                            transform: scale(1);
+                            transform-origin: 0 0;
+                            padding: 5px 10px;
+                        }
+                    }
+                </style>
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3 class="main-heading">
+                        <span>Let's keep in touch</span>
+                    </h3>
+                    <div id="contact-status"></div>
+                    <form method="post" id="register" name="register" action="sendenquiry">
+                        <input type="hidden" name="toname" value="@item.customername">
+                        <input type="hidden" name="toemail" value="@item.emailid">
+                        <p>
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control alphabetOnly" name="name" id="name" />
+                        </p>
+                        <p>
+                            <label for="email">Your Email</label>
+                            <input type="text" class="form-control" name="email" id="Email" />
+                        </p>
+                        <p>
+                            <label for="email">Your Mobile No</label>
+                            <input type="text" class="form-control numbersOnly" name="number" id="number" pattern="[1-9]{1}[0-9]{9}" maxlength="10" />
+                        </p>
+                        <p>
+                            <label for="message">Your Message</label>
+                            <textarea cols="88" rows="6" class="textarea" name="query" id="query"></textarea>
+                        </p>
+                        <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                        <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                        <button class="button" name="subquery"> Send your message </button>
+                        @*<input type="submit"  name="subquery" value="Send your message" class="button">*@
+                    </form>
+                </div>
+                <!-- /Contact Form -->
+            </section>
+            <!-- /contact -->
+            <!-- Gallery -->
+            <style>
+
+
+                .box_gallery {
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                    .box_gallery img {
+                        width: 100%;
+                        height: 300px;
+                        margin-bottom: 10px;
+                    }
+
+                    .box_gallery .box-content {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translate(-50%, -50%);
+                    }
+
+                        .box_gallery:before,
+                        .box_gallery:after,
+                        .box_gallery .box-content:before,
+                        .box_gallery .box-content:after {
+                            /*content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                    position: absolute;
+                    top: -100%;
+                    left: 50%;
+                    opacity: 0;
+                    transform: translateX(-50%) rotate(45deg);
+                    transition: all 0.3s steps(4);*/
+                        }
+
+                    .box_gallery:after {
+                        /*top: 100%;
+                        background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                        transform: translateX(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery .box-content:before {
+                        /*top: 50%;
+                        left: -100%;
+                        background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                        transform: translateY(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery .box-content:after {
+                        /*top: 50%;
+                        left: 100%;
+                        background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                        transform: translateY(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery:hover:before {
+                        top: -70%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover:after {
+                        top: 70%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover .box-content:before {
+                        top: 50%;
+                        left: -71%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover .box-content:after {
+                        top: 50%;
+                        left: 71%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery .inner-content {
+                        width: 100%;
+                        height: 50%;
+                        text-align: center;
+                        color: #fff;
+                        position: absolute;
+                        top: 65%;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translate(-50%, 50%) scale(0);
+                        transition: all 0.3s ease 0.2s;
+                    }
+
+                        .box_gallery .inner-content:after {
+                            content: "";
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 50%;
+                            background: #00529c;
+                            position: absolute;
+                            top: 20%;
+                            left: 50%;
+                            z-index: -1;
+                            transform: translate(-50%, -50%);
+                        }
+
+                    .box_gallery:hover .inner-content {
+                        transform: translate(-50%, -50%) scale(1);
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box_gallery .title {
+                        font-size: 22px;
+                        font-weight: 700;
+                        text-transform: capitalize;
+                        margin: 0 0 5px 0;
+                    }
+
+                    .box_gallery .post {
+                        display: block;
+                        font-size: 14px;
+                        font-style: italic;
+                        text-transform: uppercase;
+                        margin-bottom: 7px;
+                    }
+
+                    .box_gallery .icon {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                    }
+
+                        .box_gallery .icon li {
+                            display: inline-block;
+                            margin: 0 10px;
+                            opacity: 0;
+                            transition: all 0.3s ease 0s;
+                        }
+
+                    .box_gallery:hover .icon li {
+                        margin: 0 3px;
+                        opacity: 1;
+                    }
+
+                    .box_gallery .icon li a {
+                        display: block;
+                        width: 28px;
+                        height: 28px;
+                        line-height: 28px;
+                        border-radius: 20%;
+                        background: #fff;
+                        font-size: 16px;
+                        color: #505050;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                        .box_gallery .icon li a:hover {
+                            background: #fff;
+                            color: #1856a3;
+                            box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                        }
+
+                @@media only screen and (max-width:990px) {
+                    .box_gallery {
+                        margin-bottom: 30px;
+                    }
+                }
+            </style>
+            <style>
+                .box {
+                    position: relative;
+                    overflow: hidden;
+                    text-align: center;
+                    color: #fff;
+                    margin-bottom: 10px;
+                }
+
+                .box img {
+                    width: 100%;
+                    height: 300px;
+                }
+
+                .box:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: rgba(0, 0, 0, 0.2);
+                    transition: all 0.3s ease 0s;
+                }
+
+                .box:hover:before {
+                    background: rgba(0, 0, 0, 0.5);
+                }
+
+                .box .box-content {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 120px 0;
+                    z-index: 1;
+                    transition: all 0.3s ease 0s;
+                }
+
+                    .box .box-content:before {
+                        content: "";
+                        border-left: 1px solid #fff;
+                        border-right: 1px solid #fff;
+                        position: absolute;
+                        top: 100%;
+                        left: 30px;
+                        bottom: 15px;
+                        right: 30px;
+                        opacity: 0;
+                        z-index: -1;
+                        transition: all 0.3s ease 0.3s;
+                    }
+
+                    .box:hover .box-content:before {
+                        top: 15px;
+                        opacity: 1;
+                    }
+
+                    .box .box-content:after {
+                        content: "";
+                        border-top: 1px solid #fff;
+                        border-bottom: 1px solid #fff;
+                        position: absolute;
+                        top: 30px;
+                        left: 15px;
+                        bottom: 30px;
+                        right: 15px;
+                        opacity: 0;
+                        z-index: -1;
+                        transform: skew(-100deg);
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box:hover .box-content:after {
+                        opacity: 1;
+                        transform: skew(0deg);
+                    }
+
+                    .box .title {
+                        margin: 30px 0 20px 0;
+                        font-size: 25px;
+                        font-weight: 700;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box:hover .title {
+                        margin-top: 10px;
+                    }
+
+                    .box .post {
+                        display: block;
+                        font-size: 14px;
+                        text-transform: capitalize;
+                        margin-bottom: 30px;
+                        opacity: 0;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box .icon {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                        width: 100%;
+                    }
+
+                    .box .icon li {
+                        display: inline-block;
+                    }
+
+                    .box .icon li a {
+                        display: inline-block;
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        border-radius: 50%;
+                        background: #242424;
+                        color: #fff;
+                        margin-right: 10px;
+                        opacity: 0;
+                        z-index: 1;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box .icon li a:hover {
+                        background: #028090;
+                    }
+
+                    .box:hover .post,
+                    .box:hover .icon a {
+                        opacity: 1;
+                    }
+
+                @@media only screen and (max-width:990px) {
+                    .box {
+                        margin-bottom: 30px;
+                    }
+                }
+            </style>
+            <section id="gallery">
+                <div style="padding:10px;">
+                    @if (Model.gallery != null)
+                    {
+                        foreach (var items in Model.gallery)
+                        {
+                            @*<div class="col-md-6 col-sm-12">
+                                <div class="box_gallery">
+                                    <img src="@items.Image" class="img-responsive">
+                                    <div class="box-content">
+                                        <div class="inner-content">
+                                            <ul class="icon">
+                                                <li>
+                                                    <a href="@items.Image" data-magnify="gallery">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="box">
+                                    <img src="@items.Image">
+                                    <div class="box-content">
+                                        <ul class="icon">
+                                            <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+            </section>
+            <!-- End Gallery -->
+            <!--Videos-->
+            <style>
+
+                .Video_blcok .blocks .greenhead {
+                    background: #fff;
+                    text-align: center;
+                    color: #00283a;
+                    font-size: 14px;
+                    /*border-bottom: 1px solid #558f02;*/
+                    line-height: 43px;
+                    font-weight: 600;
+                }
+
+                .blockstart {
+                    border: 2px solid #000;
+                    padding: 2px;
+                    height: 300px;
+                    margin: 10px 0px;
+                }
+
+                    .blockstart a {
+                        width: 100%;
+                    }
+
+                .blockimg {
+                    width: 100%;
+                    height: 250px !important;
+                }
+
+                .Video_blcok .blocks .blockstart span {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    margin-top: -25px;
+                    margin-left: -25px;
+                    width: 58px;
+                    height: 41px;
+                    line-height: 50px;
+                    font-size: 60px;
+                    color: #48c7f6;
+                }
+            </style>
+            <section id="Videos">
+                <div style="padding:20px;">
+                    <div class="Video_blcok">
+                        <section>
+                            @{
+                                if (Model.videos != null)
+                                {
+                                    foreach (var itm in Model.videos)
+                                    {
+                                        <div class="blocks col-md-6">
+                                            <div class="blockstart">
+                                                <a id="pIASsr9TcKA" rel="fancyvideo" class="fancybox-media" href="https://youtu.be/@itm.url">
+                                                    <img src="https://img.youtube.com/vi/@itm.url/0.jpg" class="img-responsive blockimg">
+                                                    <span class="fa fa-play" id="@itm.url"></span>
+                                                </a>
+                                                <div class="greenhead"> @itm.title</div>
+                                            </div>
+                                        </div>
+
+
+                                    }
+                                }
+
+                            }
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <!--End Videos-->
+            <!--Testimonials-->
+            <style>
+
+                .testimonial {
+                    border: 1px solid #7dbef9;
+                    padding: 10px;
+                    border-radius: 10px;
+                    background: #bedcf7;
+                    margin-bottom: 10px;
+                }
+
+                    .testimonial img {
+                        width: 150px;
+                        height: 150px;
+                        text-align: center;
+                        display: block;
+                        margin: auto;
+                        border-radius: 50%;
+                    }
+
+                    .testimonial h2 {
+                        font-size: 18px;
+                        text-align: left;
+                        font-weight: 600;
+                    }
+
+                    .testimonial p {
+                        font-size: 17px;
+                    }
+
+                @@media only screen and (max-width:520px) and (min-width:220px) {
+                    .page-footer ul li img {
+                        width: 30%;
+                    }
+
+                    .testimonial {
+                        position: initial;
+                    }
+
+                        .testimonial h2 {
+                            text-align: center;
+                        }
+                }
+            </style>
+            <section id="Testimonials">
+                <div style="padding:20px;">
+                    @if (Model.testimonials != null)
+                    {
+                        foreach (var items in Model.testimonials)
+                        {
+                            <div class="testimonial">
+                                <div class="">
+                                    @if (items.image != null)
+                                    {
+                                        <img src="@items.image" alt="" class="img-responsive">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/DigitalCard/images/abc.png" alt="" class="img-responsive">
+                                    }
+                                </div>
+                                <div class="">
+                                    <h2>
+                                        @items.name
+                                    </h2>
+                                    <p>
+                                        @items.description
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </section>
+            <!--End Testimonials-->
+        </section>
+        <!-- /Content -->
+
+        <!-- Footer -->
+        <footer style="display: block;line-height: 40px;padding: 0px 10px;">
+            <div class="copyright" style="float: left;text-align: left;">Copyright © 2020 Zaidi Corporation </div>
+            <div style="text-align:right;color:#fff;"><a href="http://digitalcard.live/Home/PrivacyPolicy?customerid=@ViewBag.id" target="_blank" style="color:#fff;"> Privacy Policy </a></div>
+        </footer>
+        <!-- /Footer -->
+        
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Alert</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="msg">Enquiry Send Successfully</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="clearcookies">
+                            <button type="submit" class="btn btn-success"> OK </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Container -->
+}
+
+@section scripts
+{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+    <script src="~/js/jQueryMagnify.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        $(window).load(function () {
+            var msg = "@ViewBag.msg";
+            if (msg != "") {
+                $(".modal-title").html("Alert!")
+                $("#msg").html(msg);
+                $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+            }
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#register").validate({
+                ignore: ".ignore",
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    number: {
+                        required: true,
+                        number: true,
+                        minlength: 10
+                    },
+                    query: {
+                        required: true
+                    },
+                    hiddenRecaptcha: {
+                        required: function () {
+                            if (grecaptcha.getResponse() == '') {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Enter name"
+                    },
+                    email: {
+                        required: "Enter email Id",
+                        email: "Enter valid email Id"
+                    },
+                    number: {
+                        required: "Enter phone number",
+                        number: "Enter Phone number"
+                    },
+                    hiddenRecaptcha:
+                    {
+                        required: "This Field Required"
+                    }
+                }
+
+            }); //validate
+        });
+    </script>
+
+    <script>
+        function recaptchaCallback() {
+            $('#hiddenRecaptcha').valid();
+        };
+    </script>
+
+
+    <script>
+        $('[data-magnify]').magnify({
+            resizable: true,
+            initMaximized: true
+        })
+    </script>
+
+    <link href="~/DigitalCard12/css/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/DigitalCard12/js/jquery.fancybox.pack.js"></script>
+    <script src="~/DigitalCard12/js/jquery.fancybox-media.js"></script>
+    <script>
+        var $ = jQuery.noConflict();
+        $('.fancybox-media')
+            .attr('rel', 'media-gallery')
+            .fancybox({
+                openEffect: 'none',
+                closeEffect: 'false',
+                prevEffect: 'none',
+                nextEffect: 'none',
+
+                arrows: false,
+                helpers: {
+                    media: {},
+                    buttons: {}
+                }
+            });
+        function ImageCall(id) {
+            $('.fancybox-media')
+                .attr('rel', 'media-gallery')
+                .fancybox({
+                    openEffect: 'none',
+                    closeEffect: 'none',
+                    prevEffect: 'none',
+                    nextEffect: 'none',
+
+                    arrows: false,
+                    helpers: {
+                        media: {},
+                        buttons: {}
+                    }
+                });
+            document.getElementById(id).click();
+        }
+    </script>
+    <script>
+        $(".numbersOnly").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+
+        $(".alphabetOnly").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[a-zA-Z ]*$/;
+
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                return false;
+            }
+        });
+    </script>
+
+}

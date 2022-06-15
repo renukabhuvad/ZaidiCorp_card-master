@@ -1,0 +1,1137 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard7";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+<link href="~/DigitalCard7/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,500,600,700&display=swap" rel="stylesheet">
+
+<style>
+    /* Coded with love by Mutiullah Samim */
+    .user_card {
+        height: 100%;
+        width: 100%;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #01559b;
+        position: relative;
+        /*background-image:linear-gradient(to bottom right,#01559b,#FFC107);*/
+        /*display: flex;
+            justify-content: center;
+            flex-direction: column;*/
+        padding: 10px;
+        margin-top: 15%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+    }
+
+
+    .brand_logo_container {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        top: -75px;
+        border-radius: 50%;
+        background: #ffffff;
+        padding: 5px;
+        text-align: center;
+        left: 32%;
+    }
+
+    .brand_logo {
+        height: 190px;
+        width: 190px;
+        border-radius: 50%;
+        border: 0px solid white;
+    }
+
+    .form_container {
+        margin-top: 125px;
+        color: #fff;
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .login_btn {
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+    }
+
+        .login_btn:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+
+    .login_container {
+        padding: 0 2rem;
+    }
+
+    .input-group-text {
+        background: #c0392b !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0.25rem 0 0 0.25rem !important;
+    }
+
+    .input_user,
+    .input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #c0392b !important;
+    }
+
+    .phoneicon {
+        list-style: none;
+        padding: 0px;
+        margin: 10px 0px;
+        padding-left: 16%;
+    }
+
+        .phoneicon li {
+            float: left;
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .phoneicon .phone {
+            background: #4caf50;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        .phoneicon .mail {
+            background: #e42929;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        .phoneicon .whatsapp {
+            background: #18ab4f;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        .phoneicon .direction {
+            background: #64abe8;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        .phoneicon .facebook {
+            background: #64abe8;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        .phoneicon .phone i {
+            line-height: 50px;
+            color: #fff;
+            font-size: 25px;
+            margin: auto 15px;
+        }
+
+        .phoneicon .mail i {
+            line-height: 50px;
+            color: #fff;
+            font-size: 25px;
+            margin: auto 12px;
+        }
+
+        .phoneicon .whatsapp i {
+            line-height: 50px;
+            color: #fff;
+            font-size: 27px;
+            margin: auto 14px;
+        }
+
+        .phoneicon .direction i {
+            line-height: 50px;
+            color: #fff;
+            font-size: 26px;
+            margin: auto 17px;
+        }
+
+        .phoneicon .facebook i {
+            line-height: 50px;
+            color: #fff;
+            font-size: 26px;
+            margin: auto 17px;
+        }
+
+    p {
+        color: #fff;
+    }
+
+    .modal-content {
+        background: #01559b;
+    }
+
+    .close {
+        color: #fff;
+        opacity: 1;
+    }
+
+    body {
+        color: #fff;
+    }
+
+    .container {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    @@media only screen and (max-width:520px) and (min-width:220px) {
+        .user_card {
+            margin-top: 25%;
+            margin-bottom: 10%;
+        }
+
+        .phoneicon .phone, .phoneicon .mail, .phoneicon .direction, .phoneicon .whatsapp, .phoneicon .facebook {
+            width: 40px;
+            height: 40px;
+        }
+
+            .phoneicon .phone i {
+                line-height: 40px;
+                color: #fff;
+                font-size: 20px;
+                margin: auto 12px;
+            }
+
+            .phoneicon .mail i {
+                line-height: 40px;
+                color: #fff;
+                font-size: 20px;
+                margin: auto 10px;
+            }
+
+            .phoneicon .direction i {
+                line-height: 40px;
+                color: #fff;
+                font-size: 20px;
+                margin: auto 14px;
+            }
+
+            .phoneicon .whatsapp i {
+                line-height: 40px;
+                color: #fff;
+                font-size: 21px;
+                margin: auto 12px;
+            }
+
+            .phoneicon .facebook i {
+                line-height: 40px;
+                color: #fff;
+                font-size: 20px;
+                margin: auto 14px;
+            }
+
+        .brand_logo {
+            background: #fff;
+        }
+
+        .col-md-6 {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+
+    @@media only screen and (max-width:1024) and (min-width:768px) {
+        .container {
+            width: 550px !important;
+        }
+    }
+
+    @@media only screen and (max-width:640px) and (min-width:480px) {
+        .brand_logo_container {
+            left: 26%;
+        }
+
+        .container {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+
+    @@media only screen and (max-width:480px) and (min-width:320px) {
+        .brand_logo_container {
+            height: 180px;
+            width: 180px;
+            left: 23%;
+        }
+
+        .brand_logo {
+            height: 170px;
+            width: 170px;
+        }
+
+        .phoneicon {
+            padding-left: 0%;
+        }
+
+            .phoneicon li {
+                /*margin-left:10px;*/
+            }
+    }
+</style>
+
+@foreach (var item in Model.customerinfo)
+{
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="user_card">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            <div class="brand_logo_container">
+
+                                @if (item.imageurl != "")
+                                {
+                                    <img src="@item.imageurl" class="brand_logo">
+                                }
+                                else
+                                {
+                                    <img src="~/images/abc.png" class="brand_logo">
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex form_container col-md-12">
+                        <span style="text-align:center;"> @item.customername </span>
+                    </div>
+
+                    <div class="d-flex col-md-12" style="text-align:center;">
+                        <span style="color:#fff;"> @item.designation </span>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <ul class="phoneicon">
+                                <li class="phone">
+                                    <a href="tel:@item.callme"><i class="fa fa-phone"></i></a>
+                                </li>
+                                <li class="mail">
+                                    <a href="mailto:@item.emailid"><i class="fa fa-envelope-o"></i></a>
+                                </li>
+
+                                <li class="direction">
+                                    <a href="@item.direction" rel="noreferrer"><i class="fa fa-map-marker"></i></a>
+                                </li>
+                                <li class="whatsapp">
+                                    <a href="https://api.whatsapp.com/send?phone=91 @item.whatsapp&text=@item.website"><i class="fa fa-whatsapp"></i></a>
+                                </li>
+                                <li class="facebook">
+                                    <a href="@item.fblink" target="_blank" rel="noreferrer"><i class="fa fa-facebook"></i></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <hr />
+                    </div>
+
+                    <div class="col-md-12">
+                        <p>ABOUT ME</p>
+                        <p>
+                            @Html.Raw(item.about)
+                        </p>
+                    </div>
+
+                    <div class="col-md-12">
+                        <hr />
+                        <p>ABOUT MY COMPANY</p>
+                        <ul class="company">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#company">
+                                    Comapny <span><i class="fa fa-building"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#solution">
+                                    Solution <span><i class="fa fa-thumbs-up"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#address">
+                                    Address <span><i class="fa fa-map-marker"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@item.website" target="_blank" rel="noreferrer">
+                                    Website <span><i class="fa fa-globe"></i></span>
+                                </a>
+                            </li>
+
+                            <li class="hidden-lg hidden-md">
+                                <a href="#" data-toggle="modal" data-target="#testimonials">
+                                    Testimonials <span><i class="fa fa-comments-o"></i></span>
+                                </a>
+                            </li>
+
+                            <li class="hidden-lg hidden-md">
+                                <a href="#" data-toggle="modal" data-target="#gallery">
+                                    Concept <span><i class="fa fa-lightbulb-o"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <style>
+                        .box_gallery {
+                            overflow: hidden;
+                            position: relative;
+                        }
+
+                            .box_gallery img {
+                                width: 100%;
+                                height: 300px;
+                                margin-bottom: 10px;
+                            }
+
+                            .box_gallery .box-content {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                z-index: 2;
+                                transform: translate(-50%, -50%);
+                            }
+
+                                .box_gallery:before,
+                                .box_gallery:after,
+                                .box_gallery .box-content:before,
+                                .box_gallery .box-content:after {
+                                    /*content: "";
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                        position: absolute;
+                        top: -100%;
+                        left: 50%;
+                        opacity: 0;
+                        transform: translateX(-50%) rotate(45deg);
+                        transition: all 0.3s steps(4);*/
+                                }
+
+                            .box_gallery:after {
+                                /*top: 100%;
+                            background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                            transform: translateX(-50%) rotate(45deg);*/
+                            }
+
+                            .box_gallery .box-content:before {
+                                /*top: 50%;
+                            left: -100%;
+                            background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                            transform: translateY(-50%) rotate(45deg);*/
+                            }
+
+                            .box_gallery .box-content:after {
+                                /*top: 50%;
+                            left: 100%;
+                            background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                            transform: translateY(-50%) rotate(45deg);*/
+                            }
+
+                            .box_gallery:hover:before {
+                                top: -70%;
+                                opacity: 1;
+                            }
+
+                            .box_gallery:hover:after {
+                                top: 70%;
+                                opacity: 1;
+                            }
+
+                            .box_gallery:hover .box-content:before {
+                                top: 50%;
+                                left: -71%;
+                                opacity: 1;
+                            }
+
+                            .box_gallery:hover .box-content:after {
+                                top: 50%;
+                                left: 71%;
+                                opacity: 1;
+                            }
+
+                            .box_gallery .inner-content {
+                                width: 100%;
+                                height: 50%;
+                                text-align: center;
+                                color: #fff;
+                                position: absolute;
+                                top: 65%;
+                                left: 50%;
+                                z-index: 2;
+                                transform: translate(-50%, 50%) scale(0);
+                                transition: all 0.3s ease 0.2s;
+                            }
+
+                                .box_gallery .inner-content:after {
+                                    content: "";
+                                    width: 180px;
+                                    height: 180px;
+                                    border-radius: 50%;
+                                    background: #01559b;
+                                    position: absolute;
+                                    top: 20%;
+                                    left: 50%;
+                                    z-index: -1;
+                                    transform: translate(-50%, -50%);
+                                }
+
+                            .box_gallery:hover .inner-content {
+                                transform: translate(-50%, -50%) scale(1);
+                                transition: all 0.3s ease 0s;
+                            }
+
+                            .box_gallery .title {
+                                font-size: 22px;
+                                font-weight: 700;
+                                text-transform: capitalize;
+                                margin: 0 0 5px 0;
+                            }
+
+                            .box_gallery .post {
+                                display: block;
+                                font-size: 14px;
+                                font-style: italic;
+                                text-transform: uppercase;
+                                margin-bottom: 7px;
+                            }
+
+                            .box_gallery .icon {
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+                            }
+
+                                .box_gallery .icon li {
+                                    display: inline-block;
+                                    margin: 0 10px;
+                                    opacity: 0;
+                                    transition: all 0.3s ease 0s;
+                                }
+
+                            .box_gallery:hover .icon li {
+                                margin: 0 3px;
+                                opacity: 1;
+                            }
+
+                            .box_gallery .icon li a {
+                                display: block;
+                                width: 28px;
+                                height: 28px;
+                                line-height: 28px;
+                                border-radius: 20%;
+                                background: #fff;
+                                font-size: 16px;
+                                color: #505050;
+                                transition: all 0.3s ease 0s;
+                            }
+
+                                .box_gallery .icon li a:hover {
+                                    background: #fff;
+                                    color: #1856a3;
+                                    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                                }
+
+                        @@media only screen and (max-width:990px) {
+                            .box_gallery {
+                                margin-bottom: 30px;
+                            }
+                        }
+                    </style>
+
+                    <div class="col-md-12">
+                        <hr />
+                        <p>Our Recommended Images</p>
+
+                        <div>
+                            <div class="">
+                                @if (Model.concept != null)
+                                {
+                                    foreach (var items in Model.concept)
+                                    {
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="box_gallery">
+                                                <img src="@items.Image">
+                                                <div class="box-content">
+                                                    <div class="inner-content">
+                                                        <ul class="icon">
+                                                            <li>
+                                                                <a href="@items.Image" data-magnify="gallery">
+                                                                    <i class="fa fa-search"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <style>
+                        .company {
+                            list-style: none;
+                            padding: 0px;
+                        }
+
+                            .company li {
+                                background: linear-gradient(to right, #b78b07,#ead597);
+                                border-radius: 8px;
+                                padding: 10px;
+                                margin: 10px 0px;
+                            }
+
+                                .company li a {
+                                    text-decoration: none;
+                                    color: #fff;
+                                }
+
+                                    .company li a:hover {
+                                        text-decoration: none;
+                                    }
+
+                            .company li {
+                                text-align: left;
+                                text-transform: uppercase;
+                                font-weight: 600;
+                            }
+
+                                .company li span {
+                                    width: 30px;
+                                    height: 30px;
+                                    background: #01559b;
+                                    border-radius: 20px;
+                                    float: right;
+                                    margin-top: -4px;
+                                }
+
+                                    .company li span i {
+                                        line-height: 30px;
+                                        margin: auto 10px;
+                                    }
+
+                        .sharebutton {
+                            left: 26%;
+                        }
+
+                        @@media only screen and (max-width:520px) and (min-width:220px) {
+                            .sharebutton {
+                                left: 3%;
+                            }
+                        }
+                    </style>
+
+                    <div class="row">
+                        <div class="col-md-12 sharebutton">
+                            <div> <a href="#" class="sim-button button28" data-toggle="modal" data-target="#saveme"><span>Save Me <i class="fa fa-bookmark"></i></span></a> </div>
+                            <div> <a href="#" class="sim-button button28" data-toggle="modal" data-target="#enquire"><span>Enquire Now <i class="fa fa-send-o"></i></span></a> </div>
+                        </div>
+                    </div>
+
+                    <style>
+                        a, a:hover {
+                            color: #fff;
+                            text-decoration: none;
+                        }
+
+                        .sim-button {
+                            line-height: 50px;
+                            height: 50px;
+                            text-align: center;
+                            margin-right: auto;
+                            margin-left: auto;
+                            /* margin-top: 125px; */
+                            width: auto;
+                            padding: 0px 28px;
+                            margin: auto 5px;
+                            cursor: pointer;
+                            float: left;
+                        }
+
+                        .button28 {
+                            color: rgba(255,255,255,1);
+                            -webkit-transition: all 0.3s;
+                            -moz-transition: all 0.3s;
+                            -o-transition: all 0.3s;
+                            transition: all 0.3s;
+                            position: relative;
+                        }
+
+                            .button28 span {
+                                -webkit-transition: all 0.3s;
+                                -moz-transition: all 0.3s;
+                                -o-transition: all 0.3s;
+                                transition: all 0.3s;
+                            }
+
+                            .button28 a {
+                                color: rgba(51,51,51,1);
+                                text-decoration: none;
+                                display: block;
+                            }
+
+                            .button28::before {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                z-index: 1;
+                                opacity: 0;
+                                -webkit-transition: all 0.3s;
+                                -moz-transition: all 0.3s;
+                                -o-transition: all 0.3s;
+                                transition: all 0.3s;
+                                border-top-width: 1px;
+                                border-bottom-width: 1px;
+                                border-top-style: solid;
+                                border-bottom-style: solid;
+                                border-top-color: rgba(255,255,255,0.5);
+                                border-bottom-color: rgba(255,255,255,0.5);
+                                -webkit-transform: scale(0.1, 1);
+                                transform: scale(0.1, 1);
+                            }
+
+                            .button28:hover span {
+                                /*letter-spacing: 2px;*/
+                            }
+
+                            .button28:hover::before {
+                                opacity: 1;
+                                -webkit-transform: scale(1, 1);
+                                transform: scale(1, 1);
+                            }
+
+                            .button28::after {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                z-index: 1;
+                                -webkit-transition: all 0.3s;
+                                -moz-transition: all 0.3s;
+                                -o-transition: all 0.3s;
+                                transition: all 0.3s;
+                                background-color: rgba(255,255,255,0.25);
+                            }
+
+                            .button28:hover::after {
+                                opacity: 0;
+                                -webkit-transform: scale(0.1, 1);
+                                transform: scale(0.1, 1);
+                            }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Popup-->
+    <div class="modal fade" id="company" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Company Details </h4>
+                </div>
+                <div class="modal-body">
+                    <p>@Html.Raw(item.vision)</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="solution" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Solutions We Offer </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    @Html.Raw(item.service)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="address" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Address </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <p style="color: #000;margin-bottom: 15px;border-radius: 5px;padding: 10px;background: #ffbf00;">
+                        <i class="fa fa-map-marker" style="font-size:20px;"></i>
+                        @item.address
+                    </p>
+                    <a href="@item.direction" class="button28 btn btn-primary" style="width:100%;" rel="noreferrer"> <i class="fa fa-location-arrow"></i> Get Location</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .container1 {
+            border: 2px solid #d6d6d6;
+            background-color: #ececec;
+            border-radius: 5px;
+            padding: 16px 0px;
+            margin: 16px 0;
+        }
+
+            .container1::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            .container1 img {
+                float: left;
+                margin-right: 20px;
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+            }
+
+            .container1 span {
+                font-size: 20px;
+                margin-right: 15px;
+                color: #000;
+                font-weight: 700;
+            }
+
+        @@media (max-width: 500px) {
+            .container1 span {
+                text-align: center;
+                display: block;
+            }
+
+            .container1 img {
+                margin: auto;
+                float: none;
+                display: block;
+            }
+        }
+    </style>
+
+    <div class="modal fade" id="testimonials" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Testimonials </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <div class="">
+                        @if (Model.testimonials != null)
+                        {
+                            foreach (var items in Model.testimonials)
+                            {
+                                <div class="" style="display:block;">
+                                    <div class="">
+                                        <div class="container1">
+                                            <div class="col-md-12">
+                                                <div>
+                                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                                        @if (items.image != null)
+                                                        {
+                                                            <img src="@items.image" alt="">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/DigitalCard/images/abc.png" alt="">
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-9 col-sm-12 col-xs-12">
+                                                        <span>@items.name</span>
+                                                        <p style="color:#000">@items.description</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="gallery" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Concept </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <div class="row">
+                        @if (Model.concept != null)
+                        {
+                            foreach (var items in Model.gallery)
+                            {
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="box_gallery">
+                                        <img src="@items.Image">
+                                        <div class="box-content">
+                                            <div class="inner-content">
+                                                <ul class="icon">
+                                                    <li>
+                                                        <a href="@items.Image" data-magnify="gallery">
+                                                            <i class="fa fa-search"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveme" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Save to Phone Book </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <p> Save my Contact Information in your phone book </p>
+                    <form method="post" action="savecontact">
+                        <p class="vjModalNiAndarNaText">
+                            <strong>Step : 1 - </strong>Download this
+                            <button class="button28 btn btn-primary"> <i class="fa fa-save"></i> File </button>
+                        </p>
+                    </form>
+
+                    <p class="vjModalNiAndarNaText"><strong>Step : 2 - </strong>Open the File</p>
+                    <p class="vjModalNiAndarNaText"><strong>Step : 3 - </strong>Save To Contacts</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="enquire" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Enquire Now </h4>
+                </div>
+                <div class="modal-body" align="left">
+
+                    <div class="modal-body" align="left">
+                        <form method="post" id="register" name="register" action="sendenquiry">
+                            <input type="hidden" name="toname" value="@item.customername">
+                            <input type="hidden" name="toemail" value="@item.emailid">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email Id</label>
+                                <input type="email" class="form-control" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Phone</label>
+                                <input type="text" class="form-control" name="number">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Query</label>
+                                <textarea name="query" class="form-control"></textarea>
+                            </div>
+
+                            <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                            <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+
+                            <div class="common-btn">
+                                <button role="button" type="submit" name="subquery" class="sim-button button28" style="margin:-8px 0px;background:#fff0;border: 0px;"> Submit </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Popup-->
+}
+
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p id="msg">Do you want to delete record?</p>
+
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="clearcookies">
+                    <button type="submit" class="btn btn-success">OK</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*<script src="~/DigitalCard7/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+    $(".hover").mouseleave(
+        function () {
+            $(this).removeClass("hover");
+        }
+    );
+</script>
+
+<script>
+    $(window).load(function () {
+        var msg = "@ViewBag.msg";
+        if (msg != "") {
+            $(".modal-title").html("Alert!")
+            $("#msg").html(msg);
+            $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+        }
+    })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    $(document).ready(function () {
+        $("#register").validate({
+            ignore: ".ignore",
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                number: {
+                    required: true,
+                    number: true,
+                    minlength: 10
+                },
+                query: {
+                    required: true
+                },
+                hiddenRecaptcha: {
+                    required: function () {
+                        if (grecaptcha.getResponse() == '') {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+            messages: {
+                name: {
+                    required: "Enter name"
+                },
+                email: {
+                    required: "Enter email Id",
+                    email: "Enter valid email Id"
+                },
+                number: {
+                    required: "Enter phone number",
+                    number: "Enter Phone number"
+                },
+                hiddenRecaptcha:
+                {
+                    required: "This Field Required"
+                }
+            }
+
+        }); //validate
+    });
+</script>
+
+<script>
+    function recaptchaCallback() {
+        $('#hiddenRecaptcha').valid();
+    };
+</script>
+
+
+<link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+<script src="~/js/jQueryMagnify.js"></script>
+
+<script>
+    $('[data-magnify]').magnify({
+        resizable: true,
+        initMaximized: true
+    })
+</script>

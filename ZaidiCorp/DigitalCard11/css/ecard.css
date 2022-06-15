@@ -1,0 +1,677 @@
+@font-face {
+    font-family: "gotham";
+    src: url("http://www.goodoldgeek.com/vcard/fonts/GothamBook.ttf");
+}
+.lst-share {
+    margin-top: 40px !important;
+}
+/*
+.addressDiv {
+    text-align: right;
+    width: 50%;
+}
+#vcrd {
+    text-align: left;
+    margin-left: 15px;
+    width: 50%;
+}
+.smvistcrd {
+    float: left;
+}
+#vcrd {
+    float: left;
+    display: contents;
+}*/
+.riht.first {
+    float: right;
+    margin-right: 18px;
+}
+.riht.effect4.imgeff {
+    float: right;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+.imgefpngr {
+    margin-top: 4px !important;
+}
+.lft.effect4.imgeff {
+    float: left;
+    margin-left: 50px;
+    margin-top: 8px;
+}
+.lft.first {
+    float: left;
+    margin-left: 20px;
+    /* margin-top: 10px; */
+    position: absolute;
+    bottom: 6px;
+    right: 92% !important;
+}
+body {
+    background: url("/DigitalCard11/images/BackgroundDigital.jpg");
+    /*background-repeat: no-repeat;*/
+}
+.card {
+    padding-top: 150px !important;
+}
+#vcrd {
+    font-size: 13px;
+    margin-bottom: 6px;
+    padding:0px 20px;
+}
+#fist {
+    /*margin-top: 10px;*/
+}
+.addressDiv {
+    margin-top: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#sec {
+    margin-top: 20px;
+}
+
+html, body, div, ul {
+    box-sizing: border-box;
+    font-family: 'Dosis';
+}
+a {
+    text-decoration: none !important;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis';
+}
+
+
+.card {
+    height: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    width: 600px;
+}
+
+.card a.thumb {
+    float: left;
+    width: 100px;
+    height: 60px;
+    margin: 0 5px 10px 0;
+}
+
+.card a.thumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.front {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    height: 350px;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    width: 100%;
+    border-radius: 20px;
+    /*background-image: url("/DigitalCard11/images/digitalCard11.jpg");*/
+    background: #ffffff url(/DigitalCard11/images/dots.svg);
+}
+
+.line-center {
+    margin: 0;
+    padding: 0 10px;
+    background: #000;
+    display: inline-block;
+}
+
+h6 {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #000;
+}
+
+h6:before,
+h6:after {
+    height: 1px;
+    content: '\a0';
+    background-color: #000;
+
+    top: 0.5em;
+    width: 100px;
+}
+
+h6:before {
+    margin-right: 10px;
+}
+
+h6:after {
+    margin-left: 10px;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 42px;
+    border-radius: 0 0 20px 20px;
+}
+
+.services p {
+    margin-bottom: 0px;
+}
+
+
+/*.front-main{
+	float: left;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	height: 100%;
+	border-radius: 25px 0px 0px 25px;
+}*/
+.logo {
+    float: none;
+    width: 250px;
+    margin-top: 30px;
+}
+
+
+.info-div {
+    float: none;
+    color: rgb(63, 29, 11);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.info-div a {
+    color: rgb(63, 29, 11);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1;
+    font-size: 12px;
+}
+
+.info-div a:hover {
+    text-decoration: none;
+    color: rgb(63, 29, 11);
+}
+
+.info-web {
+    margin-top: 10px;
+    display: inline-flex;
+    margin-left: 2px;
+}
+
+.info-web i {
+    font-size: 17px;
+    margin-top: -4px;
+    margin-left: -3px;
+}
+
+.info-web a {
+    color: black !important;
+    text-decoration: none;
+    font-size: 22px;
+    letter-spacing: 0.5;
+    margin-top: 2px;
+}
+
+.info-web a:hover {
+    color: black !important;
+    text-decoration: none;
+}
+
+.img-div {
+    width: 100%;
+    float: none;
+    margin-top: 20px;
+}
+
+/*.back-main{
+	float: left;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	height: 100%;
+	border-radius: 0px 25px 25px 0px;
+}*/
+
+.social a {
+    margin-right: 5px;
+}
+
+.social a img {
+    width: 20px;
+}
+
+.social {
+    margin-top: 0px;
+}
+
+.back {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    height: 350px;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url("/DigitalCard11/images/digitalCard11.jpg");
+    background: #ffffff url(/DigitalCard11/images/dots.svg);
+}
+
+.back-div {
+    float: left;
+    width: 100%;
+}
+
+.services {
+    margin-top: 20px;
+    color: #30271e;
+    font-size: 15px;
+}
+
+.services .p-title {
+    font-size: 26px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 0px;
+}
+
+.services ul {
+    padding: 0px 0px 0px 30px;
+    text-align: left;
+    color: rgb(51, 153, 204);
+}
+
+.services ul li {
+    list-style-type: square
+}
+
+
+.enq-div {
+    margin-top: 0px;
+    font-size: 15px;
+    color: #30271e;
+    float: right;
+    margin-right: 30px;
+}
+
+.enq-div .p-title {
+    font-size: 17px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.enq-div p {
+    margin: 0px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.enq-div a {
+    text-decoration: none;
+    color: rgb(51, 153, 204);
+}
+
+.addressDiv {
+    width: 100%;
+    float: left;
+    margin-top: 0px;
+    font-size: 15px;
+}
+.social-links{
+    width: 100%;
+    float: left;
+    margin-top:8px;
+    font-size: 15px;
+}
+
+.addressDiv a {
+    text-decoration: none;
+    color: #30271e;
+}
+
+.addressDiv a:hover {
+    text-decoration: none;
+    color: #30271e;
+}
+
+.right-arrow {
+    /*
+    float: right;
+    margin-right: 24px;
+    margin-top: 8px;
+    */
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+}
+
+.right-arrow img {
+    width: 30px
+}
+
+.left-arrow {
+    /*
+    float: left;
+    margin-left: 15px;
+    margin-top: 10px;
+    */
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+
+}
+
+.left-arrow img {
+    width: 30px;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg); /*opera*/
+    transform: rotate(180deg); /*likely future standard*/
+}
+
+.effect, .effect1, .effect2, .effect3, .effect4, .effect5, .effect6, .effect7, .effect8, .effect9, .effect12, .effect13, .effect14 {
+    /*display: none;*/
+}
+
+    /*.effect4 
+    {
+        display:none;
+    }*/
+
+    .enq-div img {
+        width: 155px;
+        margin-right: 0px;
+    }
+
+.addressDiv p {
+    color: #30271e;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 10px 25px;
+    margin-top:0px !important;
+
+}
+
+a {
+    /*color:#30271e !important;*/
+    color: #000 !important;
+}
+
+.right-arr-sug {
+    color: #000;
+    text-align: right;
+    margin-right: 70px;
+    margin-top: 9px;
+}
+
+.left-arr-sug {
+    color: #000;
+    margin-left: 70px;
+    margin-top: 9px;
+    text-align: left;
+
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+/****************************************RESPONSIVE CSS START *******************************************************/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+
+    .card {
+        width: 95%;
+        padding: 5px 10px 1px 10px;
+        margin: 0;
+        height: 700px;
+        margin-top: 1px;
+        
+    
+
+    }
+
+    .logo {
+        width: 170px;
+        margin-top: 2px;
+    }
+
+    .front {
+        padding: 20px 20px 20px 20px;
+        /*background-repeat: no-repeat;*/
+    }
+
+    .right-arrow img {
+        width: 20px;
+    }
+
+    .right-arrow {
+        margin-right: 15px;
+        bottom: 12px;
+    }
+
+    .info-div {
+        font-size: 13px;
+        margin-right: 0px;
+        margin-top: 10px;
+    }
+    
+#pfmob {
+    margin-bottom: 25px !important;
+}
+
+    .info-web {
+        margin-top: 14px;
+    }
+    .info-web a {
+    font-size: 15px !important;
+}
+
+    h6:before,
+    h6:after {
+        height: 1px;
+        content: '\a0';
+        background-color: #000;
+        top: 0.5em;
+        width: 44px;
+    }
+
+    .img-div {
+        margin-top: 0px;
+    }
+
+    .right-arr-sug {
+        margin-right: 45px;
+        margin-top: 6px;
+    }
+
+    .left-arr-sug {
+        margin-left: 45px;
+        margin-top: 6px;
+    }
+
+    .social a img {
+        width: 18px;
+    }
+
+    .backlogo {
+        width: 140px;
+        margin-top: 0px;
+    }
+
+    .back {
+        padding: 10px 10px 20px 10px;
+        height: 375px !important;
+    }
+    .front{
+        height: 375px !important;
+    }
+
+    .services {
+        margin-top: 30px;
+        font-size: 12px;
+    }
+
+    .services .p-title {
+        font-size: 20px;
+        margin-top: -20px;
+        margin-left: 10px;
+margin-right: 10px;
+margin-bottom: 0px;    }
+    #pfmob {
+    margin-top: 12px !important;
+font-size: 11px !important;
+}
+
+.nsec {
+    font-size: 16px !important;
+    padding-bottom: 5px !important;
+}
+    .enq-div {
+        margin-top: 4px;
+    }
+    .lst-share {
+    margin-top: 30px !important;
+}
+    .enq-div .p-title {
+        font-size: 12px;
+        margin-top: 110px;
+    }
+
+    .enq-div p {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .addressDiv {
+        margin-top: 4px;
+            font-size: 12px !important;
+    }
+
+    .enq-div img {
+        width: 110px;
+    }
+
+.social-links {
+    margin-top: 0px !important;
+}
+.left-arr-sug.effect12.imgeff {
+    font-size: 12px !important;
+    margin-top: 10px !important;
+}
+/* Other css*/
+#sec {
+    padding-top: 0px !important;
+    margin-top: 10px;
+}
+#sec {
+    width: 100%;
+    padding: 10px;
+        padding-bottom: 10px;
+}
+
+/* END Other css*/
+    .addressDiv p {
+        font-size: 11px;
+margin-left: 0px !important;
+margin-right: 0px;
+    }
+
+    .left-arrow img {
+        width: 20px;
+    }
+
+    .left-arrow {
+        margin-left: 15px;
+        bottom: 3px;
+    }
+.imgefpng {
+    width: 20px !important;
+    margin-top: -1px !important;
+}
+.lft.effect4.imgeff {
+    margin-top: 7px;
+}
+.lft.first {
+bottom: 2px;
+    right: 90% !important;
+}
+
+.lft.effect4.imgeff {
+    float: left;
+    margin-left: 44px;
+}
+.riht.effect4.imgeff {
+    margin-top: 10px !important;
+}
+.imgefpngr {
+    width: 20px !important;
+    margin-top: 8px !important;
+}
+.riht.effect4.imgeff {
+    font-size: 12px !important;
+}
+    .footer {
+        height: 30px;
+        margin-bottom:10px;
+    }
+}
+
+@media (min-width:220px)
+{
+    .front {
+        padding: 20px 0px 20px 0px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .card {
+        padding: 17px 10px 13px 20px;
+        margin: 0;
+
+    }
+
+    .addressDiv p {
+        font-size: 11px;
+
+    }
+}
+
+
+/****** popover css**********/
+.popover-content {
+    font-size: 12px;
+}
+
+.left-popoverarrow img {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg); /*opera*/
+    transform: rotate(180deg); /*likely future standard*/
+}
+
+
+.popover-remove {
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.8);
+    margin: auto;
+    position: absolute;
+    z-index: 1070;
+    background-color: rgb(255, 255, 255);
+    left: 10%;
+    bottom: 10%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: rgb(70, 70, 178);
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+/******popover css **********/

@@ -1,0 +1,1301 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard1";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+
+@foreach (var item in Model.customerinfo)
+{
+    <title> @item.customername </title>
+}
+
+
+<link href="~/DigitalCard1/css/style.css" rel="stylesheet" />
+<link href="~/DigitalCard1/css/Component.css" rel="stylesheet" />
+<script src="~/DigitalCard1/js/custom.js"></script>
+@*<link href="~/DigitalCard/css/bootstrap.css" rel="stylesheet" />*@
+
+<style>
+    .modal-open {
+        overflow: hidden;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+    }
+
+        .modal.fade .modal-dialog {
+            -webkit-transition: -webkit-transform .3s ease-out;
+            -o-transition: -o-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            -webkit-transform: translate(0, -25%);
+            -ms-transform: translate(0, -25%);
+            -o-transform: translate(0, -25%);
+            transform: translate(0, -25%);
+        }
+
+        .modal.in .modal-dialog {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+
+    .modal-open .modal {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #999;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 6px;
+        outline: 0;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    }
+
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        background-color: #000;
+    }
+
+        .modal-backdrop.fade {
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+
+        .modal-backdrop.in {
+            filter: alpha(opacity=50);
+            opacity: .5;
+        }
+
+    .modal-header {
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+        .modal-header .close {
+            margin-top: -2px;
+        }
+
+    .modal-title {
+        margin: 0;
+        line-height: 1.42857143;
+    }
+
+    .modal-body {
+        position: relative;
+        padding: 15px;
+    }
+
+    .modal-footer {
+        padding: 15px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+    }
+
+        .modal-footer .btn + .btn {
+            margin-bottom: 0;
+            margin-left: 5px;
+        }
+
+        .modal-footer .btn-group .btn + .btn {
+            margin-left: -1px;
+        }
+
+        .modal-footer .btn-block + .btn-block {
+            margin-left: 0;
+        }
+
+    .modal-scrollbar-measure {
+        position: absolute;
+        top: -9999px;
+        width: 50px;
+        height: 50px;
+        overflow: scroll;
+    }
+
+    @@media (min-width: 768px) {
+        .modal-dialog {
+            width: 600px;
+            margin: 30px auto;
+        }
+
+        .modal-content {
+            -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        }
+
+        .modal-sm {
+            width: 300px;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        .modal-lg {
+            width: 900px;
+        }
+    }
+</style>
+
+<script src="~/DigitalCard1/js/shareholic.js" data-shr-siteid="5d09917d770a7f192471edb5e1053235" async="async" type="text/javascript" data-cfasync="false"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Mali:200,300,400,500,600,700&display=swap" rel="stylesheet">
+
+<style>
+    .vjCTAdabuicon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 38px;
+        height: 38px;
+        text-align: center;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        line-height: 38px;
+        color: white;
+        background-color: #02A9DC;
+        font-size: 15px;
+    }
+
+    h1 {
+        color: #000 !important;
+    }
+</style>
+
+@foreach (var item in Model.customerinfo)
+{
+
+    <meta name="keywords" content="">
+    <meta name="description" content="@item.customername">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:site" content="@item.customername">
+    <meta name="twitter:title" content="@item.customername">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:creator" content="http://mydc.in/?a=@item.callme-2">
+    <meta name="twitter:image:src" content="@item.imageurl">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="@item.customername" />
+    <meta property="og:type" content="@item.customername" />
+    <meta property="og:description" content="We are group of life insurance professionals, helping people with professional and expert advice on different types of life insurance as per their needs. We also provide support to people searching for career in life insurance sector." />
+    <meta property="og:site_name" content="http://mydc.in/?a=@item.callme-2" />
+    <meta property="og:image" content="@item.imageurl" />
+    <meta property="article:section" content="@item.customername" />
+
+    <div>
+        <img src="~/DigitalCard1/images/realty.png" style="width:100%;height:auto;background:white;margin-top:15px;">
+        <!-- User No Profile Pic -->
+        <div style="margin-top:-310px;">
+
+            @if (item.imageurl != "")
+            {
+                <img src="@item.imageurl" class="vjUserPhoto">
+            }
+            else
+            {
+                <img class="vjUserPhoto" src="~/images/abc.png" />
+            }
+            <!-- User nu First Name and Last Name -->
+            <h1 style="color:#fff !important;">@item.customername</h1>
+
+            <!-- User nu Profession -->
+            <p class="vjProfession">@item.designation</p>
+
+            <div class="vjJagya20"></div>
+            <!-- Cover Photo, Photo, Name and Profession PATYU -->
+        </div>
+    </div>
+
+    <style>
+        .phone_no {
+            /*background: none;
+            border: none;
+            color: #2196F3;*/
+            margin-top: -29px !important;
+            margin-left: 215px;
+            margin-bottom: 0px;
+        }
+
+        @@media only screen and (max-width:520px) and (min-width:220px) {
+            .phone_no {
+                margin-top: -33px !important;
+                margin-right: 15px !important;
+            }
+        }
+    </style>
+
+    <div class="vjModalContainer">
+        <!--Save-->
+        <div class="md-modal md-effect-1" id="savemepopup">
+            <div class="md-content">
+                <h3>Save to Phone Book</h3>
+                <div align="center">
+                    <div class="vjJagya10"></div>
+                    <p>Save my Contact Information In Your Phone Book</p>
+                    <div class="vjJagya10"></div>
+                    <form method="post" action="savecontact">
+                        <p class="vjModalNiAndarNaText">
+                            <strong>Step : 1 - </strong>Download this File
+                            <button type="submit" class="phone_no vjModalChokdi">
+                                <span><i class="fa fa-save"></i></span>
+                            </button>
+                        </p>
+                    </form>
+                    <p class="vjModalNiAndarNaText"><strong>Step : 2 - </strong>Open the File </p>
+                    <p class="vjModalNiAndarNaText"><strong>Step : 3 - </strong>Save To Contacts </p>
+
+                    <div class="vjJagya20"></div>
+                    <button class="vjModalChokdi md-close">Close Me!</button>
+                </div>
+            </div>
+        </div>
+        <!--End Save-->
+        <!-- Company -->
+        <div class="md-modal md-effect-1" id="companypopup">
+            <div class="md-content">
+                <h3>Company Details</h3>
+                <div align="center">
+                    <p>
+                        @Html.Raw(item.vision)
+                    </p>
+
+                    <button class="vjModalChokdi md-close">Close Me!</button>
+                </div>
+            </div>
+        </div>
+        <!-- End Company -->
+        <!-- Solutions -->
+        <div class="md-modal md-effect-1" id="solutionpopup">
+            <div class="md-content">
+                <h3>Solutions We Offer</h3>
+                <div>
+                    <p align="center">
+                        @Html.Raw(item.service)
+                    </p>
+
+                    <button class="vjModalChokdi md-close">Close Me!</button>
+                </div>
+            </div>
+        </div>
+        <!-- End Solutions -->
+        <!-- Address -->
+        <div class="md-modal md-effect-1" id="Addresspopup">
+            <div class="md-content">
+                <h3>Address</h3>
+                <div>
+                    <p style="background: #1cb0e0;color: #fff;margin-bottom: 15px;border-radius: 5px;">
+                        <i class="fa fa-map-marker" style="font-size:20px;"></i>
+                        @item.address
+                    </p>
+
+                    <a href="@item.direction" class="vjModalChokdi" rel="noreferrer"> <i class="fa fa-location-arrow"></i> Get Direction</a>
+
+                    <a class="vjModalChokdi md-close">Close Me!</a>
+                </div>
+            </div>
+        </div>
+        <!-- End Address -->
+        <!-- Enquire Form -->
+        <style>
+
+            .form-control {
+                display: block;
+                width: 97%;
+                height: 25px;
+                margin: 10px 0px;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            }
+
+            @@media only screen and (max-width:520px) and (min-width:220px) {
+                .form-control {
+                    width: 90%;
+                }
+            }
+
+            @@media (min-width: 992px) {
+                .col-md-offset-3 {
+                    margin-left: 25%;
+                }
+            }
+
+            @@media (min-width: 992px) {
+                .col-md-6 {
+                    width: 50%;
+                }
+            }
+
+            @@media (min-width: 992px) {
+                .col-md-6 {
+                    float: left;
+                }
+            }
+
+            .col-md-6 {
+                background: #1cb0e0;
+                position: relative;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            label {
+                /*float: left;*/
+                margin: 5px 0px;
+                color: #fff;
+                text-align: left;
+                display: block;
+            }
+
+            textarea {
+                -webkit-writing-mode: horizontal-tb !important;
+                text-rendering: auto;
+                color: initial;
+                letter-spacing: normal;
+                word-spacing: normal;
+                text-transform: none;
+                text-indent: 0px;
+                text-shadow: none;
+                display: inline-block;
+                text-align: start;
+                -webkit-appearance: textarea;
+                background-color: white;
+                -webkit-rtl-ordering: logical;
+                flex-direction: column;
+                resize: auto;
+                cursor: text;
+                white-space: pre-wrap;
+                overflow-wrap: break-word;
+                margin: 0em;
+                font: 400 13.3333px Arial;
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgb(169, 169, 169);
+                border-image: initial;
+                padding: 2px;
+            }
+
+            .g-recaptcha {
+                transform: scale(1);
+                transform-origin: 0 0;
+                padding: 5px 15px;
+            }
+
+                .g-recaptcha div {
+                    width: 100% !important;
+                }
+
+            @@media only screen and (max-width:520px) and (min-width:220px) {
+                .g-recaptcha {
+                    transform: scale(1);
+                    transform-origin: 0 0;
+                    padding: 5px 10px;
+                }
+            }
+        </style>
+        <div class="md-modal md-effect-1" id="EnquireForm">
+            <div class="md-content">
+
+                <h3>Enquire Now</h3>
+                <div>
+                    <div class="vjJagya10"></div>
+                    <div class="vjJagya20"></div>
+
+                    <div class="col-md-6 col-md-offset-3">
+
+                        <form method="post" id="register" name="register" action="sendenquiry">
+                            <input type="hidden" name="toname" value="@item.customername">
+                            <input type="hidden" name="toemail" value="@item.emailid">
+                            <div class="vjJagya10"></div>
+                            <div class="form-group">
+                                <label>Name </label>
+                                <input id="name" type="text" class="form-control alphabetOnly" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email </label>
+                                <input id="Email" type="text" class="form-control" name="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mobile No </label>
+                                <input id="phone" type="text" class="form-control numbersOnly" name="number" pattern="[1-9]{1}[0-9]{9}" maxlength="10">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea id="msg" class="form-control" name="query" style="height:40px;"> </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                                <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="vjModalChokdi" name="subquery" style="display:inline-block;">Submit</button>
+                                <a class="vjModalChokdi md-close" style="display:inline-block;">Close Me!</a>
+                            </div>
+
+                            <div class="vjJagya20"></div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Enquire Form -->
+
+        <style>
+            .col-md-4 {
+                width: 30.3333%;
+                float: left;
+                margin: 10px;
+            }
+
+            .hidden-md, .hidden-lg {
+                display: none !important;
+            }
+
+            .hidden-sm, .hidden-xs {
+                display: inline-block !important;
+            }
+
+            @@media only screen and (max-width:520px) and (min-width:220px) {
+                .col-sm-12 {
+                    width: 100%;
+                }
+
+                .hidden-md, .hidden-lg {
+                    display: inline-block !important;
+                }
+
+                .hidden-sm, .hidden-xs {
+                    display: none !important;
+                }
+            }
+        </style>
+        <!--Gallery-->
+        <style>
+.box{
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+.box img{
+    width: 100%;
+    height: auto;
+}
+.box .option{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease 0s;
+}
+.box:hover .option{
+    background: rgba(0, 0, 0 ,0.8);
+}
+.box .link{
+    border: 4px solid #fff;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 18px;
+    display: inline-block;
+    color: #fff;
+    transition: all 0.5s ease 0s;
+    opacity: 0;
+}
+.box .link:hover{
+    color:#fff;
+}
+.box:hover .link{
+    top: 40%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+}
+@@media only screen and (max-width: 990px){
+    .box{
+        margin-bottom: 20px;
+    }
+}
+
+        </style>
+        <div class="md-modal md-effect-1" id="Gallerypopup">
+            <div class="md-content">
+                <h3> Recommend </h3>
+                <div>
+                    <div>
+                        @if (Model.gallery != null)
+                        {
+                            foreach (var items in Model.gallery)
+                            {
+                                @*<div class="col-md-4 col-sm-12">
+                                    <div class="box_gallery">
+                                        <img src="@items.Image">
+                                        <div class="box-content">
+                                            <div class="inner-content">
+                                                <ul class="icon">
+                                                    <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="box">
+                                        <img src="@items.Image" alt="">
+                                        <div class="option">
+                                            <a href="@items.Image" data-magnify="gallery" class="link"><i class="fa fa-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    </div>
+
+                    <button class="vjModalChokdi md-close">Close Me!</button>
+                </div>
+            </div>
+        </div>
+        <!--End Gallery-->
+        <style>
+            .container1 {
+                border: 2px solid #d6d6d6;
+                background-color: #ececec;
+                border-radius: 5px;
+                padding: 16px;
+                margin: 16px 0;
+            }
+
+                .container1::after {
+                    content: "";
+                    clear: both;
+                    display: table;
+                }
+
+                .container1 img {
+                    float: left;
+                    margin-right: 20px;
+                    border-radius: 50%;
+                    width: 150px;
+                    height: 150px;
+                }
+
+                .container1 span {
+                    font-size: 20px;
+                    margin-right: 15px;
+                    color: #000;
+                    font-weight: 700;
+                }
+
+            @@media (max-width: 500px) {
+                .container1 span {
+                    text-align: center;
+                    display: block;
+                }
+
+                .container1 img {
+                    margin: auto;
+                    float: none;
+                    display: block;
+                }
+            }
+        </style>
+        <!--Testimonials-->
+        <div class="md-modal md-effect-1" id="Testimonialpopup">
+            <div class="md-content">
+                <h3> Testimonial </h3>
+                <div>
+                    <div class="">
+                        @if (Model.testimonials != null)
+                        {
+                            foreach (var items in Model.testimonials)
+                            {
+                                <div class="row" style="display:block;">
+                                    <div class="">
+                                        <div class="container1">
+                                            <div class="col-md-12">
+                                                <div>
+                                                    <div class="col-md-3">
+                                                        @if (items.image != null)
+                                                        {
+                                                            <img src="@items.image" alt="">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/DigitalCard/images/abc.png" alt="">
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <span>@items.name</span>
+                                                        <p style="color:#000">@items.description</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <button class="vjModalChokdi md-close">Close Me!</button>
+                </div>
+            </div>
+        </div>
+        <!--End Testimonials-->
+
+    </div>
+
+    <div class="vjJagya50"></div>
+
+    <div class="vjAkhuContainer">
+        <div class="vjJagya20"></div>
+        <div class="vjJagya10"></div>
+
+        <!--First Tab-->
+        <style>
+            .icons {
+                display: inline-block;
+                /* margin-right: 10px; */
+            }
+
+            .icons-content .icons {
+                margin-right: 0px;
+                text-align: center;
+                margin-bottom: 9px;
+                width: 85px;
+                height: 70px;
+            }
+
+            @@media only screen and (max-width:640px) and (min-width:480px) {
+                .icons-content .icons {
+                    width: 90px;
+                }
+            }
+
+            @@media only screen and (max-width:480px) and (min-width:220px) {
+                .icons-content .icons {
+                    width: 70px;
+                }
+            }
+
+            .icons-content .icons i {
+                margin: 0 auto;
+                border: 1px solid #ddd;
+                color: #ffffff;
+                border-radius: 10px;
+                background-color: #01a9dc;
+                margin-bottom: 5px;
+            }
+
+            .icons i {
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                text-align: center;
+                border: 1px solid;
+                background-color: transparent;
+                font-size: 135%;
+                line-height: 40px;
+            }
+
+            .icons-content .icons span {
+                font-size: 15px;
+                color: #565656;
+            }
+
+            .icons-content .icons p {
+                text-transform: capitalize;
+                font-size: 94%;
+                margin-top: 5px;
+                color: #333;
+            }
+        </style>
+        <div class="vjCTAcontainer icons-content">
+            <a href="tel:@item.callme" class="icons">
+                <i class="fa fa-phone"></i>
+                <span> Call Me </span>
+            </a>
+            <a href="mailto:@item.emailid" class="icons">
+                <i class="fa fa-envelope-o"></i>
+                <span> E-Mail </span>
+            </a>
+            <a href="@item.website" target="_blank" class="icons">
+                <i class="fa fa-globe"></i>
+                <span> Website </span>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=91 @item.whatsapp&amp;text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me" class="icons hidden-md hidden-lg visible-sm visible-xs">
+                <i class="fa fa-whatsapp"></i>
+                <span> Whatsapp </span>
+            </a>
+
+            <a href="#" class="icons hidden-sm hidden-xs visble-md visible-lg" id="whatsapp" target="_blank">
+                <i class="fa fa-whatsapp"></i>
+                <span> Whatsapp </span>
+            </a>
+
+            <a href="@item.fblink" target="_blank" class="icons">
+                <i class="fa fa-facebook"></i>
+                <span> Facebook </span>
+            </a>
+
+            <a href="@item.direction" target="_blank" class="icons" rel="noreferrer">
+                <i class="fa fa-map-marker"></i>
+                <span> Direction </span>
+            </a>
+
+        </div>
+        <!--End First Tab-->
+
+        <script type="text/javascript">
+            document.getElementById("whatsapp").onclick = function () {
+                document.getElementById("whatsapp").href = "https://api.whatsapp.com/send?phone=91"+"@item.whatsapp&text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me";
+            return false;
+            };
+        </script>
+
+        <!--Second Tab-->
+        <div class="vjCTAcontainer">
+            <div class="border" style="border-top:1px solid #02a9dc;margin:10px 0px;"></div>
+            <span style="">About Us</span>
+        </div>
+
+        <div class="vjCTAcontainer icons-content-box">
+            <p>
+                @Html.Raw(item.about)
+            </p>
+        </div>
+        <!--End Second Tab-->
+        <!--Third Tab-->
+        <div class="vjCTAcontainer">
+            <div class="border" style="border-top:1px solid #02a9dc;margin:11px 0px;"></div>
+            <span>About My Company</span>
+        </div>
+
+        <style>
+            .icons {
+                display: inline-block;
+                /* margin-right: 10px; */
+            }
+
+            .icons-content-box .icons {
+                margin-right: 0px;
+                text-align: center;
+                margin-bottom: 9px;
+                width: 65px;
+                height: 65px;
+            }
+
+                .icons-content-box .icons i {
+                    margin: 0 auto;
+                    border: 1px solid #ddd;
+                    color: #02a9dc;
+                    border-radius: 10px;
+                    background-color: transparent;
+                }
+
+            .icons i {
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                text-align: center;
+                border: 1px solid;
+                background-color: transparent;
+                font-size: 120%;
+                line-height: 40px;
+            }
+
+            .icons-content-box .icons span {
+                font-size: 15px;
+                color: #000;
+            }
+
+            .icons-content-box .icons p {
+                text-transform: capitalize;
+                font-size: 94%;
+                margin-top: 5px;
+                color: #333;
+            }
+
+            @@media only screen and (max-width:520px) and (min-width:220px) {
+                .icons-content .icons {
+                    margin-right: 5px;
+                    margin-left: 5px;
+                    text-align: center;
+                    margin-top: 15px;
+                }
+
+                .icons-content-box .icons span {
+                    font-size: 14px;
+                }
+
+                .icons-content-box .icons {
+                    margin-right: 0px;
+                    text-align: center;
+                    margin-bottom: 9px;
+                    width: 80px;
+                    height: 65px;
+                }
+            }
+        </style>
+
+        <div class="vjCTAcontainer icons-content-box">
+            <a class="icons md-trigger" data-modal="companypopup">
+                <i class="fa fa-building"></i>
+                <span> Company </span>
+            </a>
+            <a class="icons md-trigger" data-modal="solutionpopup">
+                <i class="fa fa-thumbs-up"></i>
+                <span> Solutions </span>
+            </a>
+            <a class="icons md-trigger" data-modal="Addresspopup">
+                <i class="fa fa-map-marker"></i>
+                <span> Address </span>
+            </a>
+            <a href="@item.website" class="icons" target="_blank" rel="noreferrer">
+                <i class="fa fa-globe"></i>
+                <span> Website </span>
+            </a>
+            <a class="icons md-trigger hidden-md hidden-lg" data-modal="Gallerypopup">
+                <i class="fa fa-lightbulb-o"></i>
+                <span> Recommend </span>
+            </a>
+
+            <a class="icons md-trigger hidden-md hidden-lg" data-modal="Testimonialpopup">
+                <i class="fa fa-comments-o"></i>
+                <span> Testimonials </span>
+            </a>
+        </div>
+
+        <style>
+
+            .box_gallery {
+                overflow: hidden;
+                position: relative;
+            }
+
+                .box_gallery img {
+                    width: 100%;
+                    height: 300px;
+                    margin-bottom: 10px;
+                }
+
+                .box_gallery .box-content {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    z-index: 2;
+                    transform: translate(-50%, -50%);
+                }
+
+                    .box_gallery:before,
+                    .box_gallery:after,
+                    .box_gallery .box-content:before,
+                    .box_gallery .box-content:after {
+                        /*content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                    position: absolute;
+                    top: -100%;
+                    left: 50%;
+                    opacity: 0;
+                    transform: translateX(-50%) rotate(45deg);
+                    transition: all 0.3s steps(4);*/
+                    }
+
+                .box_gallery:after {
+                    /*top: 100%;
+                    background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                    transform: translateX(-50%) rotate(45deg);*/
+                }
+
+                .box_gallery .box-content:before {
+                    /*top: 50%;
+                    left: -100%;
+                    background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                    transform: translateY(-50%) rotate(45deg);*/
+                }
+
+                .box_gallery .box-content:after {
+                    /*top: 50%;
+                    left: 100%;
+                    background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                    transform: translateY(-50%) rotate(45deg);*/
+                }
+
+                .box_gallery:hover:before {
+                    top: -70%;
+                    opacity: 1;
+                }
+
+                .box_gallery:hover:after {
+                    top: 70%;
+                    opacity: 1;
+                }
+
+                .box_gallery:hover .box-content:before {
+                    top: 50%;
+                    left: -71%;
+                    opacity: 1;
+                }
+
+                .box_gallery:hover .box-content:after {
+                    top: 50%;
+                    left: 71%;
+                    opacity: 1;
+                }
+
+                .box_gallery .inner-content {
+                    width: 100%;
+                    height: 50%;
+                    text-align: center;
+                    color: #fff;
+                    position: absolute;
+                    top: 65%;
+                    left: 50%;
+                    z-index: 2;
+                    transform: translate(-50%, 50%) scale(0);
+                    transition: all 0.3s ease 0.2s;
+                }
+
+                    .box_gallery .inner-content:after {
+                        content: "";
+                        width: 180px;
+                        height: 180px;
+                        border-radius: 50%;
+                        background: rgb(1, 169, 220);
+                        position: absolute;
+                        top: 20%;
+                        left: 50%;
+                        z-index: -1;
+                        transform: translate(-50%, -50%);
+                    }
+
+                .box_gallery:hover .inner-content {
+                    transform: translate(-50%, -50%) scale(1);
+                    transition: all 0.3s ease 0s;
+                }
+
+                .box_gallery .title {
+                    font-size: 22px;
+                    font-weight: 700;
+                    text-transform: capitalize;
+                    margin: 0 0 5px 0;
+                }
+
+                .box_gallery .post {
+                    display: block;
+                    font-size: 14px;
+                    font-style: italic;
+                    text-transform: uppercase;
+                    margin-bottom: 7px;
+                }
+
+                .box_gallery .icon {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                }
+
+                    .box_gallery .icon li {
+                        display: inline-block;
+                        margin: 0 10px;
+                        opacity: 0;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                .box_gallery:hover .icon li {
+                    margin: 0 3px;
+                    opacity: 1;
+                }
+
+                .box_gallery .icon li a {
+                    display: block;
+                    width: 28px;
+                    height: 28px;
+                    line-height: 28px;
+                    border-radius: 20%;
+                    background: #fff;
+                    font-size: 16px;
+                    color: #505050;
+                    transition: all 0.3s ease 0s;
+                }
+
+                    .box_gallery .icon li a:hover {
+                        background: #fff;
+                        color: #1856a3;
+                        box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                    }
+
+            @@media only screen and (max-width:990px) {
+                .box_gallery {
+                    margin-bottom: 30px;
+                }
+            }
+        </style>
+
+        <div class="vjCTAcontainer">
+            <div class="border" style="border-top:1px solid #02a9dc;margin:10px 0px;"></div>
+            <div class="vjCTAcontainer">
+                <span> Our Recommended Images </span>
+            </div>
+            @if (Model.concept != null)
+            {
+                foreach (var items in Model.concept)
+                {
+                    @*<div class="col-sm-12">
+                    <div class="box_gallery">
+                        <img src="@items.Image">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <ul class="icon">
+                                    <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                    <div class="col-sm-12">
+                        <div class="box">
+                            <img src="@items.Image" alt="">
+                            <div class="option">
+                                <a href="@items.Image" data-magnify="gallery" class="link"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="center-text">
+            <div class="vjJagya10"></div>
+            <a class="vjTwobuttonShareCSS md-trigger" data-modal="savemepopup">
+                <i class="fa fa-bookmark vjTwobuttonShare"></i>Save Me
+            </a>
+            <a class="vjTwobuttonShareCSS md-trigger" data-modal="EnquireForm">
+                <i class="fa fa-send-o vjTwobuttonShare"></i>Enquire Now
+            </a>
+
+            <div class="vjJagya20"></div>
+            <div class="vjJagya10"></div>
+            <div class="vjJagya10"></div>
+            <a class="vjTwobuttonShareCSS md-trigger" href="http://digitalcard.live/Home/PrivacyPolicy?customerid=@ViewBag.id" target="_blank">
+                <i class="fa fa-question-circle vjTwobuttonShare"></i> Privacy Policy
+            </a>
+            <div class="vjJagya20"></div>
+            <div class="vjJagya10"></div>
+        </div>
+
+        <!--End Third Tab-->
+    </div>
+}
+
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+        Modal content
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title"> Alert </h4>
+            </div>
+            <div class="modal-body">
+                <p id="msg"> Enquiry Send Successfully </p>
+
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="clearcookies">
+                    <button type="submit" class="btn btn-primary" style="background: #01559b;color: #fff;padding: 10px;"> OK </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="~/DigitalCard/js/bootstrap.js"></script>
+    <a href="http://zaidicorp.in/" target="_blank"><div class="vjcopyrightcontainer">&copy; 2019 Zaidi Corporation</div></a>
+
+    <div class="md-overlay"></div>
+    <script src="~/DigitalCard1/js/classie.js"></script>
+    <script src="~/DigitalCard1/js/modalEffects.js"></script>
+
+    <script src="~/DigitalCard1/js/cssParser.js"></script>
+    @*<script src="~/DigitalCard1/js/css-filters-polyfill.js"></script>*@
+
+    <script>
+    $(window).load(function () {
+        var msg = "@ViewBag.msg";
+        if (msg != "")
+        {
+            $(".modal-title").html("Alert!");
+            $("#msg").html(msg);
+            $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+        }
+    })
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <style>
+        .error {
+            color: #c71111;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#register").validate({
+                ignore: ".ignore",
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    number: {
+                        required: true,
+                        number: true,
+                        minlength: 10
+                    },
+                    query: {
+                        required: true
+                    },
+                    hiddenRecaptcha: {
+                        required: function () {
+                            if (grecaptcha.getResponse() == '') {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Enter Name"
+                    },
+                    email: {
+                        required: "Enter email Id",
+                        email: "Enter valid email Id"
+                    },
+                    number: {
+                        required: "Enter Phone number",
+                        number: "Enter 10 Phone number"
+                    },
+                    query: {
+                        required: "Enter Query"
+                    },
+                    hiddenRecaptcha:
+                    {
+                        required: "This Field Required"
+                    }
+                }
+            }); //validate
+        });
+    </script>
+
+    <script>
+        function recaptchaCallback() {
+            $('#hiddenRecaptcha').valid();
+        };
+    </script>
+
+    <link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+    <script src="~/js/jQueryMagnify.js"></script>
+
+    <script>
+        $('[data-magnify]').magnify({
+            resizable: true,
+            initMaximized: true
+        })
+    </script>
+    <script>
+        $(".numbersOnly").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+
+        $(".alphabetOnly").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[a-zA-Z ]*$/;
+
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                return false;
+            }
+        });
+    </script>
+
+}

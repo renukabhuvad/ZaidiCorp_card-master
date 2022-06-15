@@ -1,0 +1,780 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard8";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+<link href="~/DigitalCard8/css/Style.css" rel="stylesheet" />
+<link href="~/DigitalCard8/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<link href="https://fonts.googleapis.com/css?family=Grenze:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+<style>
+    a, a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .back-top {
+        background: #951009;
+        padding: 15px;
+        text-align: center;
+        color: #fff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-size: 19px;
+    }
+
+    .back-content {
+        padding: 30px;
+    }
+
+    .enquiresave:hover {
+        background: #da8681;
+        color: #000;
+    }
+
+    .m_bottom {
+        margin-bottom: 10px;
+    }
+
+        .m_bottom i {
+            color: #951009;
+            font-size: 20px;
+        }
+
+    .info_det {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .social {
+        width: 20%;
+        float: left;
+    }
+
+        .social i {
+            background: #951009;
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            font-size: 18px;
+            border-radius: 50px;
+        }
+</style>
+@foreach (var item in Model.customerinfo)
+{
+    <div id="wrapper">
+        <div id="content">
+            <div id="card">
+                <div id="front">
+                    @*<div id="arrow"><i class="fa fa-arrow-left"></i></div>*@
+                    <div id="top-pic"></div>
+                    <div id="avatar">
+                        @if (item.imageurl != "")
+                        {
+                            <img src="@item.imageurl">
+                        }
+                        else
+                        {
+                            <img src="~/images/abc.png">
+                        }
+                    </div>
+
+                    <div id="info-box">
+                        <div class="info">
+                            <h1> @item.customername </h1>
+                            <h5 style="color: #fff;font-weight: 300;font-size: 16px;"> @item.designation </h5>
+                            <div class="info_det">
+                                <a href="tel:@item.callme">
+                                    <i class="fa fa-phone"></i> @item.callme
+                                </a>
+                            </div>
+                            <div class="info_det">
+                                <a href="mailto:@item.emailid">
+                                    <i class="fa fa-envelope-o"></i> @item.emailid
+                                </a>
+                            </div>
+                            <div class="info_det">
+                                <a href="@item.website" target="_blank">
+                                    <i class="fa fa-globe"> </i> @item.website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="social-bar">
+                        <a href="#" data-toggle="modal" data-target="#company">
+                            <span><i class="fa fa-building"></i></span>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#solution">
+                            <span><i class="fa fa-cog"></i></span>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#address">
+                            <span><i class="fa fa-map-marker"></i></span>
+                        </a>
+                        <a href="@item.website" target="_blank" rel="noreferrer">
+                            <span><i class="fa fa-globe"></i></span>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#gallery">
+                            <span><i class="fa fa-lightbulb-o"></i></span>
+                        </a>
+
+                        <a href="" data-toggle="modal" data-target="#testimonial">
+                            <i class="fa fa-comments-o"></i>
+                        </a>
+
+                        <a href="@item.fblink" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="javascript:void" class="more-info">
+                            <i class="fa fa-undo"></i>
+                        </a>
+
+                    </div>
+
+                    <div style="height: 30px;bottom: 0;line-height: 30px;position: absolute;width: 100%;bottom: 0;left: 0;font-size: 16px;text-align: center;border-top:1px solid #ce6c64">
+                        <a style="float:left;border-right:1px solid #ce6c64;width:50%;" class="enquiresave" href="" data-toggle="modal" data-target="#enquire">
+                            Enquire Now
+                        </a>
+                        <a style="float:right;width:50%;" class="enquiresave" href="" data-toggle="modal" data-target="#saveme">
+                            Save Me
+                        </a>
+                    </div>
+
+                </div>
+
+                <div id="back">
+                    <div class="back-info">
+                        <div class="back-top">
+                            @item.customername
+                        </div>
+                        <div class="back-content">
+                            <div class="m_bottom">
+                                <span>
+                                    <i class="fa fa-phone"> </i> @item.callme
+                                </span>
+                            </div>
+
+                            <div class="m_bottom">
+                                <span>
+                                    <i class="fa fa-envelope-o"></i> @item.emailid
+                                </span>
+                            </div>
+
+                            <div class="m_bottom">
+                                <span>
+                                    <i class="fa fa-map-marker"></i> @item.address
+                                </span>
+                            </div>
+
+                            <div class="m_bottom">
+                                <span>
+                                    <i class="fa fa-globe"></i> @item.website
+                                </span>
+                            </div>
+
+                            <div style="margin:20px 0px;">
+                                <div class="social">
+                                    <a href="tel:@item.callme">
+                                        <span><i class="fa fa-phone"></i></span>
+                                        <span style="color:#000;margin:5px 10px;display:block;"> Call </span>
+                                    </a>
+                                </div>
+
+                                <div class="social">
+                                    <a href="mailto:@item.emailid" class="">
+                                        <span><i class="fa fa-envelope-o"></i></span>
+                                        <span style="color:#000;margin:5px 5px;display:block;"> Email </span>
+                                    </a>
+                                </div>
+
+                                <div class="social">
+                                    <a href="@item.direction">
+                                        <span><i class="fa fa-map-marker"></i></span>
+                                        <span style="color:#000;margin:5px 5px;display:block;"> Address </span>
+                                    </a>
+                                </div>
+
+                                <div class="social">
+                                    <a href="@item.website" target="_blank" rel="noreferrer" class="">
+                                        <span><i class="fa fa-globe"></i></span>
+                                        <span style="color:#000;margin:5px 5px;display:block;"> Website </span>
+                                    </a>
+                                </div>
+                                <div class="social">
+                                    <a href="https://api.whatsapp.com/send?phone=91 @item.whatsapp&text=I%20have%20Visited%20Your%20Digital%20Card%20And%20I%20Have%20Some%20Query%20So%20Can%20You%20Please%20Contact%20Me" target="_blank" rel="noreferrer" class="">
+                                        <span><i class="fa fa-whatsapp"></i></span>
+                                        <span style="color:#000;margin:5px 5px;display:block;"> Whatsapp </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="social-bar" style="background: #e6e4e33b;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+
+                        <a href="@item.fblink" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="javascript:void" class="more-info">
+                            <i class="fa fa-undo"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="background">
+                <div id="background-image"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Popup-->
+    <div class="modal fade" id="company" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Company Details </h4>
+                </div>
+                <div class="modal-body">
+                    <p>@Html.Raw(item.vision)</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="solution" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Solutions We Offer </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    @Html.Raw(item.service)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="address" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Address </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <p style="color: #000;margin-bottom: 15px;border-radius: 5px;padding: 10px;background: #ffd5d3;">
+                        <i class="fa fa-map-marker" style="font-size:20px;"></i>
+                        @item.address
+                    </p>
+                    <a href="@item.direction" class="button28 btn btn-danger" style="width:100%;" rel="noreferrer"> <i class="fa fa-location-arrow"></i> Get Location</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .box_gallery {
+            overflow: hidden;
+            position: relative;
+        }
+
+            .box_gallery img {
+                width: 100%;
+                height: 300px;
+                margin-bottom: 10px;
+            }
+
+            .box_gallery .box-content {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 2;
+                transform: translate(-50%, -50%);
+            }
+
+                .box_gallery:before,
+                .box_gallery:after,
+                .box_gallery .box-content:before,
+                .box_gallery .box-content:after {
+                    /*content: "";
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                        position: absolute;
+                        top: -100%;
+                        left: 50%;
+                        opacity: 0;
+                        transform: translateX(-50%) rotate(45deg);
+                        transition: all 0.3s steps(4);*/
+                }
+
+            .box_gallery:after {
+                /*top: 100%;
+                            background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                            transform: translateX(-50%) rotate(45deg);*/
+            }
+
+            .box_gallery .box-content:before {
+                /*top: 50%;
+                            left: -100%;
+                            background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                            transform: translateY(-50%) rotate(45deg);*/
+            }
+
+            .box_gallery .box-content:after {
+                /*top: 50%;
+                            left: 100%;
+                            background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                            transform: translateY(-50%) rotate(45deg);*/
+            }
+
+            .box_gallery:hover:before {
+                top: -70%;
+                opacity: 1;
+            }
+
+            .box_gallery:hover:after {
+                top: 70%;
+                opacity: 1;
+            }
+
+            .box_gallery:hover .box-content:before {
+                top: 50%;
+                left: -71%;
+                opacity: 1;
+            }
+
+            .box_gallery:hover .box-content:after {
+                top: 50%;
+                left: 71%;
+                opacity: 1;
+            }
+
+            .box_gallery .inner-content {
+                width: 100%;
+                height: 50%;
+                text-align: center;
+                color: #fff;
+                position: absolute;
+                top: 65%;
+                left: 50%;
+                z-index: 2;
+                transform: translate(-50%, 50%) scale(0);
+                transition: all 0.3s ease 0.2s;
+            }
+
+                .box_gallery .inner-content:after {
+                    content: "";
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 50%;
+                    background: #d86660;
+                    position: absolute;
+                    top: 20%;
+                    left: 50%;
+                    z-index: -1;
+                    transform: translate(-50%, -50%);
+                }
+
+            .box_gallery:hover .inner-content {
+                transform: translate(-50%, -50%) scale(1);
+                transition: all 0.3s ease 0s;
+            }
+
+            .box_gallery .title {
+                font-size: 22px;
+                font-weight: 700;
+                text-transform: capitalize;
+                margin: 0 0 5px 0;
+            }
+
+            .box_gallery .post {
+                display: block;
+                font-size: 14px;
+                font-style: italic;
+                text-transform: uppercase;
+                margin-bottom: 7px;
+            }
+
+            .box_gallery .icon {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+                .box_gallery .icon li {
+                    display: inline-block;
+                    margin: 0 10px;
+                    opacity: 0;
+                    transition: all 0.3s ease 0s;
+                }
+
+            .box_gallery:hover .icon li {
+                margin: 0 3px;
+                opacity: 1;
+            }
+
+            .box_gallery .icon li a {
+                display: block;
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+                border-radius: 20%;
+                background: #fff;
+                font-size: 16px;
+                color: #505050;
+                transition: all 0.3s ease 0s;
+            }
+
+                .box_gallery .icon li a:hover {
+                    background: #fff;
+                    color: #1856a3;
+                    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                }
+
+        @@media only screen and (max-width:990px) {
+            .box_gallery {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
+    <div class="modal fade" id="gallery" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Recommend </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <div class="row">
+                        @if (Model.gallery != null)
+                        {
+                            foreach (var items in Model.gallery)
+                            {
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="box_gallery">
+                                        <img src="@items.Image" class="img-responsive">
+                                        <div class="box-content">
+                                            <div class="inner-content">
+                                                <ul class="icon">
+                                                    <li>
+                                                        <a href="@items.Image" data-magnify="gallery">
+                                                            <i class="fa fa-search"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveme" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Save to Phone Book </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <p> Save my Contact Information in your phone book </p>
+                    <form method="post" action="savecontact">
+                        <p class="vjModalNiAndarNaText">
+                            <strong>Step : 1 - </strong>Download this
+                            <button class="button28 btn btn-danger"> <i class="fa fa-save"></i> File </button>
+                        </p>
+                    </form>
+
+                    <p class="vjModalNiAndarNaText"><strong>Step : 2 - </strong>Open the File</p>
+                    <p class="vjModalNiAndarNaText"><strong>Step : 3 - </strong>Save To Contacts</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="enquire" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Enquire Now </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <form method="post" id="register" name="register" action="sendenquiry">
+                        <input type="hidden" name="toname" value="@item.customername">
+                        <input type="hidden" name="toemail" value="@item.emailid">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email Id</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phone</label>
+                            <input type="text" class="form-control" name="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Query</label>
+                            <textarea name="query" class="form-control"></textarea>
+                        </div>
+
+                        <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                        <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+
+                        <div class="common-btn">
+                            <button type="submit" name="subquery" class="btn btn-danger">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .container1 {
+            border: 2px solid #d6d6d6;
+            background-color: #ececec;
+            border-radius: 5px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+            .container1::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            .container1 img {
+                float: left;
+                margin-right: 20px;
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+            }
+
+            .container1 span {
+                font-size: 20px;
+                margin-right: 15px;
+                color: #000;
+                font-weight: 700;
+            }
+
+        @@media (max-width: 500px) {
+            .container1 span {
+                text-align: center;
+                display: block;
+            }
+
+            .container1 img {
+                margin: auto;
+                float: none;
+                display: block;
+            }
+        }
+    </style>
+
+    <div class="modal fade" id="testimonial" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Testimonial </h4>
+                </div>
+                <div class="modal-body" align="left">
+                    <div class="">
+                        <div class="">
+                            <div class="">
+                                @if (Model.testimonials != null)
+                                {
+                                    foreach (var items in Model.testimonials)
+                                    {
+                                        <div class="row" style="display:block;">
+                                            <div class="">
+                                                <div class="container1">
+                                                    <div class="col-md-12">
+                                                        <div>
+                                                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                                                @if (items.image != null)
+                                                                {
+                                                                    <img src="@items.image" alt="">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/DigitalCard/images/abc.png" alt="">
+                                                                }
+                                                            </div>
+                                                            <div class="col-md-9 col-sm-12 col-xs-12">
+                                                                <span>@items.name</span>
+                                                                <p style="color:#000">@items.description</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--End Popup-->
+}
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="background:#fff;">
+            <div class="modal-header">
+
+                <h4 class="modal-title"> Alert </h4>
+            </div>
+            <div class="modal-body">
+                <p id="msg"> Enquiry Send Successfully </p>
+
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="clearcookies">
+                    <button type="submit" class="btn btn-success">OK</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $('#wrapper').addClass('loaded');
+        })
+
+        $('.more-info').click(function () {
+            $("#card").toggleClass('flip');
+            $('#arrow').remove();
+        });
+
+        $('#background').click(function () {
+            $('#card').removeClass('flip');
+        })
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#register").validate({
+                ignore: ".ignore",
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    number: {
+                        required: true,
+                        number: true,
+                        minlength: 10
+                    },
+                    query: {
+                        required: true
+                    },
+                    hiddenRecaptcha: {
+                        required: function () {
+                            if (grecaptcha.getResponse() == '') {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Enter name"
+                    },
+                    email: {
+                        required: "Enter email Id",
+                        email: "Enter valid email Id"
+                    },
+                    number: {
+                        required: "Enter phone number",
+                        number: "Enter Phone number"
+                    },
+                    hiddenRecaptcha:
+                    {
+                        required: "This Field Required"
+                    }
+                }
+
+            }); //validate
+        });
+    </script>
+
+    <script>
+        function recaptchaCallback() {
+            $('#hiddenRecaptcha').valid();
+        };
+    </script>
+
+
+    <link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+    <script src="~/js/jQueryMagnify.js"></script>
+
+    <script>
+        $('[data-magnify]').magnify({
+            resizable: true,
+            initMaximized: true
+        })
+    </script>
+
+}

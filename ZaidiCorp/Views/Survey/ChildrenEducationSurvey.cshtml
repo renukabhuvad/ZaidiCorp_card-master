@@ -1,0 +1,1002 @@
+﻿
+@{
+    ViewBag.Title = "ChildrenEducationSurvey";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/Style.css" rel="stylesheet" />
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+<style>
+    body {
+        color: #484848;
+        font-size: 13.3px !important;
+        font-family: 'Dosis';
+        line-height: normal;
+    }
+
+    .survey {
+        border: 1px solid #cacaca;
+        background: #fff;
+        /*padding: 10px;*/
+        border-radius: 5px;
+        box-shadow: 0px 0px 2px 2px #c7c7c7;
+    }
+
+    input[name='sex'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: none;
+    }
+
+        input[name='sex']:after {
+            font-family: 'FontAwesome';
+            display: inline-block;
+            text-align: center;
+            font-size: 35px;
+            content: attr(data-icon);
+            padding: 15px 20px;
+            border-radius: 15px;
+            color: #fdc236;
+            transition: box-shadow 1s, color 1s;
+        }
+        @@media only screen and (max-width:520px) and (min-width:220px)
+        {
+            input[name='sex']:after {
+                font-family: 'FontAwesome';
+                display: inline-block;
+                text-align: center;
+                font-size: 25px;
+                content: attr(data-icon);
+                padding: 10px 15px;
+                border-radius: 15px;
+                color: #fdc236;
+                transition: box-shadow 1s, color 1s;
+            }
+        }
+
+        input[name='sex']:checked:after {
+            box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+            color: #00529c;
+        }
+
+    .form-group {
+        margin-bottom: 5px;
+    }
+</style>
+
+<style>
+    input[type='checkbox'] {
+        height: 0;
+        width: 0;
+        position: absolute;
+    }
+
+        input[type='checkbox'] + label {
+            position: relative;
+            display: flex;
+            /*margin: .6em 0;*/
+            align-items: center;
+            color: #484848;
+            transition: color 250ms cubic-bezier(.4,.0,.23,1);
+        }
+
+            input[type='checkbox'] + label > ins {
+                position: absolute;
+                display: none;
+                bottom: 0;
+                /*left: 2em;*/
+                height: 0;
+                width: 100%;
+                overflow: hidden;
+                text-decoration: none;
+                transition: height 300ms cubic-bezier(.4,.0,.23,1);
+            }
+
+                input[type='checkbox'] + label > ins > i {
+                    position: absolute;
+                    bottom: 0;
+                    font-style: normal;
+                    color: #4FC3F7;
+                }
+
+            input[type='checkbox'] + label > span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 1em;
+                width: 1em;
+                height: 1em;
+                background: transparent;
+                border: 2px solid #9E9E9E;
+                border-radius: 2px;
+                cursor: pointer;
+                transition: all 250ms cubic-bezier(.4,.0,.23,1);
+            }
+
+            input[type='checkbox'] + label:hover, input[type='checkbox']:focus + label {
+                /*color: #fff;*/
+            }
+
+                input[type='checkbox'] + label:hover > span, input[type='checkbox']:focus + label > span {
+                    background: rgba(255,255,255,.1);
+                }
+
+        input[type='checkbox']:checked + label > ins {
+            height: 100%;
+        }
+
+        input[type='checkbox']:checked + label > span {
+            border: 2px solid #ea4d34;
+            /*background: linear-gradient(180deg, #ff8a00, #da1b60);*/
+            animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1);
+        }
+
+            input[type='checkbox']:checked + label > span:before {
+                content: "";
+                position: absolute;
+                top: 0.7em;
+                left: 0.3em;
+                border-right: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+                transform: rotate(45deg);
+                transform-origin: 0% 100%;
+                animation: checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
+            }
+
+    @@keyframes shrink-bounce {
+        0% {
+            transform: scale(1);
+        }
+
+        33% {
+            transform: scale(.85);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @@keyframes checkbox-check {
+        0% {
+            width: 0;
+            height: 0;
+            border-color: #212121;
+            transform: translate3d(0,0,0) rotate(45deg);
+        }
+
+        33% {
+            width: .2em;
+            height: 0;
+            transform: translate3d(0,0,0) rotate(45deg);
+        }
+
+        100% {
+            width: .2em;
+            height: .5em;
+            border-color: #212121;
+            transform: translate3d(0,-.5em,0) rotate(45deg);
+        }
+    }
+</style>
+
+<style>
+    .containers .name {
+        margin-bottom: 0.675rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+        .containers .name h4 {
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #dadadf;
+            transform: scale(0);
+            transform-origin: 100% 50%;
+            transition: transform 500ms ease;
+        }
+
+    .containers svg {
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+        .containers svg.gear {
+            order: 1;
+            margin-left: 1.35rem;
+            cursor: help;
+        }
+
+            .containers svg.gear:hover ~ h4 {
+                transform: scale(1);
+            }
+
+    label {
+        position: relative;
+        margin: 0.675rem 0px;
+        display: flex;
+        width: auto;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .check {
+        margin-right: 7px;
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+        .check #border {
+            fill: none;
+            stroke: #7a7a8c;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .check #dot {
+            fill: url(#gradient);
+            transform: scale(0);
+            transform-origin: 50% 50%;
+        }
+
+    .input {
+        display: none;
+    }
+
+    input + label {
+        font-weight: 400;
+    }
+
+    input:checked + label {
+        background: linear-gradient(180deg, #ff8a00, #da1b60);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+        input:checked + label svg #border {
+            stroke: url(#gradient);
+            stroke-dasharray: 145;
+            stroke-dashoffset: 145;
+            animation: checked 500ms ease forwards;
+        }
+
+        input:checked + label svg #dot {
+            transform: scale(1);
+            transition: transform 500ms cubic-bezier(0.57, 0.21, 0.69, 3.25);
+        }
+
+    @@keyframes checked {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+</style>
+
+<section style="padding:20px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="survey">
+                    <div style="background: #00529c;color: #fff;padding: 10px;border-top-left-radius: 5px;border-top-right-radius: 5px;margin: -1px;text-align: center;">
+                        <span style="font-size:16px;">
+                            Child Education Survey
+                        </span>
+                    </div>
+                    <div style="padding:10px">
+                        <div class="form-group" style="margin-top:15px;">
+                            <label style="margin-top:15px;"> Name </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" />
+                        </div>
+
+                        <div class="" style="width:50%;float:left;">
+                            <div class="form-group">
+                                <label style="margin-top:15px;"> Marital Status </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="marital" id="Uno" class="input" onclick="show1();" />
+                                <label for="Uno">
+                                    <svg class="check" viewbox="0 0 40 40">
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8a00"></stop>
+                                                <stop offset="100%" stop-color="#da1b60"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                        <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                    </svg>
+                                    Single
+                                </label>
+                                <input type="radio" name="marital" id="Dos" class="input" onclick="show2();" />
+                                <label for="Dos">
+                                    <svg class="check" viewbox="0 0 40 40">
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8a00"></stop>
+                                                <stop offset="100%" stop-color="#da1b60"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                        <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                    </svg>
+                                    Marriage
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="" style="width:50%;float:left;">
+                            <div class="form-group" style="margin-top:15px;">
+                                <label style="margin-top:15px;"> Gender </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="sex" value="f" data-icon='' checked />
+                                <input type="radio" name="sex" value="m" data-icon='' />
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="float:left;">
+                            <label style="margin-top:15px;"> Mobile No </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Mobile No" />
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label style="margin-top:15px;"> Email ID </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email ID" />
+                        </div>
+
+                        <div id="childList">
+                            <div class="form-group">
+                                <label style="margin-top:15px;"> Child Name </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Child Name" />
+                            </div>
+                            <div class="form-group">
+                                <label style="margin-top:15px"> Child DOB </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Date Of Birth" id="js-date" />
+                            </div>
+                            <div class="form-group">
+                                <label> Amount Required At Age </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Amount Required At Age" />
+                            </div>
+                            <div class="form-group">
+                                <label> How Much You Want To Save per Month </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Amount Save Per Month" />
+                            </div>
+
+                        </div>
+
+                     
+
+                        @*<div class="form-group" style="margin-top:15px;">
+                            <label style="margin-top:15px;"> Employment Details </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="field" id="Uno" class="input" />
+                            <label for="Uno">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Government Sector
+                            </label>
+                            <input type="radio" name="field" id="Dos" class="input" />
+                            <label for="Dos">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Private Sector
+                            </label>
+                            <input type="radio" name="field" id="Tres" class="input" />
+                            <label for="Tres">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Self Employed
+                            </label>
+                            <input type="radio" name="field" id="daily" class="input" />
+                            <label for="daily">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Homemaker
+                            </label>
+                            <input type="radio" name="field" id="other" class="input" />
+                            <label for="other">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Other
+                            </label>
+                        </div>
+
+                        <div id='show-me' style="display:none;">
+                            <div class="form-group">
+                                <label style="margin-top:15px;"> Spouse’s Employment Status </label>
+                            </div>
+                            <div class="containers">
+                                <input type="radio" name="advantage" id="a1" class="input" />
+                                <label for="a1">
+                                    <svg class="check" viewbox="0 0 40 40">
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8a00"></stop>
+                                                <stop offset="100%" stop-color="#da1b60"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                        <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                    </svg>
+                                    Yes
+                                </label>
+                                <input type="radio" name="advantage" id="a2" class="input" />
+                                <label for="a2">
+                                    <svg class="check" viewbox="0 0 40 40">
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8a00"></stop>
+                                                <stop offset="100%" stop-color="#da1b60"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                        <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                    </svg>
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top:15px;">
+                            <label>
+                                Income Details
+                            </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="income" id="c1" class="input" />
+                            <label for="c1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Below Rs. 5 Lakh
+                            </label>
+
+                            <input type="radio" name="income" id="c2" class="input" />
+                            <label for="c2">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Between Rs. 5 Lakh and Rs. 7.5 Lakh
+                            </label>
+
+                            <input type="radio" name="income" id="c3" class="input" />
+                            <label for="c3">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Between Rs. 7.5 Lakh and Rs. 10 Lakh
+                            </label>
+
+                            <input type="radio" name="income" id="c4" class="input" />
+                            <label for="c4">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Between Rs. 10 Lakh and Rs. 15 lakh
+                            </label>
+
+                            <input type="radio" name="income" id="c5" class="input" />
+                            <label for="c5">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Between Rs. 15 Lakh and Rs. 20 lakh
+                            </label>
+
+                            <input type="radio" name="income" id="c6" class="input" />
+                            <label for="c6">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Above Rs. 20 Lakh
+                            </label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;">
+                                Assets Owned
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input id='one' type='checkbox' />
+                            <label for='one'>
+                                <span></span>
+                                Self-occupied House
+                                <ins><i> Self-occupied House </i></ins>
+                            </label>
+
+                            <input id='two' type='checkbox' />
+                            <label for='two'>
+                                <span></span>
+                                Additional House
+                                <ins><i> Additional House </i></ins>
+                            </label>
+
+                            <input id='three' type='checkbox' />
+                            <label for='three'>
+                                <span></span>
+                                Land
+                                <ins><i> Land  </i></ins>
+                            </label>
+
+                            <input id='four' type='checkbox' />
+                            <label for='four'>
+                                <span></span>
+                                Business Premises
+                                <ins><i> Business Premises </i></ins>
+                            </label>
+
+                            <input id='five' type='checkbox' />
+                            <label for='five'>
+                                <span></span>
+                                Two-wheeler
+                                <ins><i> Two-wheeler </i></ins>
+                            </label>
+
+                            <input id='six' type='checkbox' />
+                            <label for='six'>
+                                <span></span>
+                                Car
+                                <ins><i> Car </i></ins>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Type of Financial Assets Owned </label>
+                        </div>
+                        <div class="form-group">
+                            <input id='one1' type='checkbox' />
+                            <label for='one1'>
+                                <span></span>
+                                Fixed Deposits
+                                <ins><i> Fixed Deposits </i></ins>
+                            </label>
+
+                            <input id="two1" type="checkbox" />
+                            <label for="two1">
+                                <span></span>
+                                Bonds
+                                <ins><i> Bonds </i></ins>
+                            </label>
+
+                            <input id="three1" type="checkbox" />
+                            <label for="three1">
+                                <span></span>
+                                Mutual Funds
+                                <ins><i> Mutual Funds  </i></ins>
+                            </label>
+
+                            <input id="four1" type="checkbox" />
+                            <label for="four1">
+                                <span></span>
+                                Stocks/Shares
+                                <ins><i> Stocks/Shares </i></ins>
+                            </label>
+
+                            <input id="five1" type="checkbox" />
+                            <label for="five1">
+                                <span></span>
+                                Pension Fund
+                                <ins><i> Pension Fund </i></ins>
+                            </label>
+
+                            <input id="six1" type="checkbox" />
+                            <label for="six1">
+                                <span></span>
+                                PPF
+                                <ins><i> PPF  </i></ins>
+                            </label>
+
+                            <input id="seven1" type="checkbox" />
+                            <label for="seven1">
+                                <span></span>
+                                Provident Fund
+                                <ins><i> Provident Fund </i></ins>
+                            </label>
+
+                            <input id="eight1" type="checkbox" />
+                            <label for="eight1">
+                                <span></span>
+                                Other
+                                <ins><i> Other </i></ins>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Insurance Policies Held (Life Insurance) </label>
+                        </div>
+                        <div class="containers">
+                            <input type="radio" name="energy" id="b1" class="input" />
+                            <label for="b1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Endowment Policy
+                            </label>
+                            <input type="radio" name="energy" id="b2" class="input" />
+                            <label for="b2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Unit Linked Insurance (ULIP)
+                            </label>
+                            <input type="radio" name="energy" id="b3" class="input" />
+                            <label for="b3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Unit Linked Pension
+                            </label>
+                            <input type="radio" name="energy" id="b4" class="input" />
+                            <label for="b4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Child Plan
+                            </label>
+                            <input type="radio" name="energy" id="b5" class="input" />
+                            <label for="b5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Term Plan
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Insurance Policies Held (Non-Life Insurance) </label>
+                        </div>
+
+                        <div class="form-group">
+                            <input id='one11' type='checkbox' />
+                            <label for='one11'>
+                                <span></span>
+                                Vehicle Insurance
+                                <ins><i> Vehicle Insurance </i></ins>
+                            </label>
+
+                            <input id="two11" type="checkbox" />
+                            <label for="two11">
+                                <span></span>
+                                Household’s Policy
+                                <ins><i> Household’s Policy </i></ins>
+                            </label>
+
+                            <input id="three11" type="checkbox" />
+                            <label for="three11">
+                                <span></span>
+                                Health Insurance
+                                <ins><i> Health Insurance </i></ins>
+                            </label>
+
+                            <input id="four11" type="checkbox" />
+                            <label for="four11">
+                                <span></span>
+                                Business Insurance
+                                <ins><i> Business Insurance </i></ins>
+                            </label>
+
+                            <input id="five11" type="checkbox" />
+                            <label for="five11">
+                                <span></span>
+                                Term Plan
+                                <ins><i>  Term Plan </i></ins>
+                            </label>
+
+                            <input id="six11" type="checkbox" />
+                            <label for="six11">
+                                <span></span>
+                                Professional Indemnity
+                                <ins><i> Professional Indemnity  </i></ins>
+                            </label>
+
+                            <input id="seven11" type="checkbox" />
+                            <label for="seven11">
+                                <span></span>
+                                Accident cover
+                                <ins><i> PAccident cover </i></ins>
+                            </label>
+
+                            <input id="eight11" type="checkbox" />
+                            <label for="eight11">
+                                <span></span>
+                                Disability Insurance
+                                <ins><i> Disability Insurance  </i></ins>
+                            </label>
+
+                            <input id="nine11" type="checkbox" />
+                            <label for="nine11">
+                                <span></span>
+                                Critical illness Insurance
+                                <ins><i> Critical illness Insurance </i></ins>
+                            </label>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-top:15px;"> Liabilities </label>
+                        </div>
+
+                        <div class="containers">
+                            <input type="radio" name="save_money" id="e1" class="input" />
+                            <label for="e1">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Housing Loan
+                            </label>
+                            <input type="radio" name="save_money" id="e2" class="input" />
+                            <label for="e2">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Vehicle Loan
+                            </label>
+                            <input type="radio" name="save_money" id="e3" class="input" />
+                            <label for="e3">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Education Loan/ Personal Loan
+                            </label>
+                            <input type="radio" name="save_money" id="e4" class="input" />
+                            <label for="e4">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Credit Cards/Other Loans
+                            </label>
+                            <input type="radio" name="save_money" id="e5" class="input" />
+                            <label for="e5">
+                                <svg class="check" viewbox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Marriage(Self/Dependents)
+                            </label>
+                            <input type="radio" name="save_money" id="e6" class="input" />
+                            <label for="e6">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1b60"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Hospitalization/Medical
+                            </label>
+
+                            <input type="radio" name="save_money" id="e7" class="input" />
+                            <label for="e7">
+                                <svg class="check" viewBox="0 0 40 40">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="100%">
+                                            <stop offset="0%" stop-color="#ff8a00"></stop>
+                                            <stop offset="100%" stop-color="#da1be0"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle id="border" r="18px" cx="20px" cy="20px"></circle>
+                                    <circle id="dot" r="8px" cx="20px" cy="20px"></circle>
+                                </svg>
+                                Other
+                            </label>
+                        </div>*@
+
+                    </div>
+                    <div style="background: #00529c;color: #fff;padding: 10px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;margin: -1px;text-align: right;">
+                        <a class="btn btn-primary" id="childAddList"> <i class="fa fa-plus"></i> New Child Details </a>
+                        <a class="btn btn-primary" href="">
+                            Submit
+                        </a>
+                        <a class="btn btn-warning" href="">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{   
+    <script>
+        $(function () {
+            $('#childAddList').click(function () {
+                var newDiv = $('<div><div class="form-group"><label style="margin-top:15px;"> Child Name </label></div><div class="form-group"><input type="text" class="form-control" placeholder="Child Name" /></div><div class="form-group"><label style="margin-top:15px"> Child DOB </label></div><div class="form-group"><input type="text" class="form-control" placeholder="Date Of Birth" /></div><div class="form-group"><label> Amount Required At Age </label></div><div class="form-group"><input type="text" class="form-control" placeholder="Amount Required At Age" /></div><div class="form-group"><label> How Much You Want To Save per Month </label></div><div class="form-group"><input type="text" class="form-control" placeholder="Amount Save Per Month" /></div></div ><div>');
+                //newDiv.style.background = "#000";
+                $('#childList').append(newDiv);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#js-date').datepicker();
+        });
+    </script>
+}

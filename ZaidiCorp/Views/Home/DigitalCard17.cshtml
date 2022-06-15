@@ -1,0 +1,1042 @@
+﻿@model ZaidiCorp.Models.combo
+@{
+    ViewBag.Title = "DigitalCard17";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    if (Request.Cookies["msg"] != null)
+    {
+        ViewBag.msg = Request.Cookies["msg"].Value;
+        Request.Cookies["msg"].Expires = DateTime.Now.AddSeconds(0);
+    }
+}
+
+@foreach (var item in Model.customerinfo)
+{
+    <title> @item.customername </title>
+}
+
+<!-- CSS Styles -->
+<link rel="stylesheet" href="~/DigitalCard17/assets/css/styles.css" />
+<!-- CSS Theme -->
+<link rel="stylesheet" id="theme" href="/DigitalCard17/assets/css/themes/theme-blue.css" />
+
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@foreach (var item in Model.customerinfo)
+{
+
+    <meta name="keywords" content="">
+    <meta name="description" content="@item.customername">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:site" content="@item.customername">
+    <meta name="twitter:title" content="@item.customername">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:creator" content="http://mydc.in/?a=@item.callme-17">
+    <meta name="twitter:image:src" content="@item.imageurl">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="@item.customername" />
+    <meta property="og:type" content="@item.customername" />
+    <meta property="og:description" content="We are group of life insurance professionals, helping people with professional and expert advice on different types of life insurance as per their needs. We also provide support to people searching for career in life insurance sector." />
+    <meta property="og:site_name" content="http://mydc.in/?a=@item.callme-17" />
+    <meta property="og:image" content="@item.imageurl" />
+    <meta property="article:section" content="@item.customername" />
+
+    <!-- BG Image -->
+    <div class="bg-body bg-image zooming">
+        <img src="~/DigitalCard17/assets/img/photos/bg_frontend.jpg" alt="">
+    </div>
+    <!-- Header -->
+    <header id="header" class="bg-primary">
+        <!-- Navigation Bar -->
+        <div id="nav-bar" class="container">
+            <nav>
+                <ul id="nav-primary" class="nav nav-primary">
+                    <li class="icon-link"><a href="#home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#vision"> Vision </a></li>
+                    <li><a href="#services"> Services </a></li>
+                    <li><a href="#testimonials"> Team </a></li>
+                    <li><a href="#gallery"> Gallery </a></li>
+                    <li><a href="#videos"> Videos </a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="icon-link"><a href="#" class="panel-toggle" data-toggle="panel"><span><span></span></span></a></li>
+                </ul>
+            </nav>
+            <div class="mobile-nav clearfix">
+                <div class="owner">
+                    @if (item.imageurl != "")
+                    {
+                        <img src="@item.imageurl">
+                    }
+                    else
+                    {
+                        <img src="~/images/abc.png">
+                    }
+                    <span class="name"> @item.customername </span>
+                </div>
+                <a href="#" class="panel-toggle" data-toggle="panel"><span><span></span></span></a>
+            </div>
+        </div>
+    </header>
+    <!-- Header / End -->
+
+    <!-- Content -->
+    <div id="content" class="container">
+
+        <div id="photo">
+            @if (item.imageurl != "")
+            {
+                <img src="@item.imageurl" class="img-fluid">
+            }
+            else
+            {
+                <img src="~/images/abc.png" class="img-fluid">
+            }
+        </div>
+        <div id="sections-wrapper">
+            <style>
+                @@media only screen and (max-width:520px) and (min-width:220px) {
+                    .text-sm-center {
+                        text-align: center;
+                        margin: auto;
+                        display: block;
+                    }
+                }
+            </style>
+            <!-- Section Home -->
+            <section id="home" class="bg-white" data-target="local-scroll">
+                <div class="section-content">
+                    @if (item.imageurl != "")
+                    {
+                        <img src="@item.imageurl" class="img-circle mb-40 visible-sm visible-xs" style="width:150px;height:150px;margin:auto;">
+                    }
+                    else
+                    {
+                        <img src="~/images/abc.png" class="img-circle mb-40 visible-sm visible-xs" style="width:150px;height:150px;margin:auto;">
+                    }
+
+                    <h1 class="mb-0 text-sm-center"> @item.customername </h1>
+                    <h3 class="text-muted"><span class="typing text-sm-center"> @item.designation </span></h3>
+                    <hr class="sep-line">
+                    <div class="row">
+                        <style>
+                            .iconsH {
+                                margin-right: 15px;
+                                float: left;
+                                background: #ffe608;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                line-height: 30px;
+                                text-align: center;
+                                font-size: 15px;
+                            }
+                        </style>
+                        <div class="col-sm-4">
+                            <dl class="description-2">
+                                <a href="tel:@item.callme">
+                                    <span class="iconsH"><i class="fa fa-phone"></i></span>
+                                </a>
+                                <dt> Phone </dt>
+                                <dd><a href="tel:@item.callme"> @item.callme</a></dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-4">
+                            <dl class="description-2">
+                                <a href="mailto:@item.emailid">
+                                    <span class="iconsH"><i class="fa fa-envelope-o"></i></span>
+                                </a>
+                                <dt> Email </dt>
+                                <dd><a href="mailto:@item.emailid"> @item.emailid</a></dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-4">
+                            <dl class="description-2">
+                                <a href="@item.website">
+                                    <span class="iconsH"><i class="fa fa-globe"></i></span>
+                                </a>
+                                <dt> Website </dt>
+                                <dd><a href="@item.website" target="_blank"> @item.website </a></dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-12">
+                            <dl class="description-2">
+                                <a href="@item.direction">
+                                    <span class="iconsH"><i class="fa fa-map-marker"></i></span>
+                                </a>
+                                <dt> Address </dt>
+                                <dd><a href="@item.direction"> @item.address </a></dd>
+                            </dl>
+                        </div>
+
+                        <style>
+                            .home .share-whatsapp {
+                                /*display: flex;justify-content: center;*/
+                            }
+
+                                .home .share-whatsapp input {
+                                    -webkit-appearance: none;
+                                    outline: 0;
+                                    border: 0;
+                                    background: #fff;
+                                    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+                                    padding: 10px 15px;
+                                    /*border-radius: 30px;*/
+                                }
+
+                            .share-whatsapp .whatsapp-button {
+                                -webkit-appearance: none;
+                                outline: 0;
+                                cursor: pointer;
+                                /*border-radius: 30px;*/
+                                padding: 10px 15px;
+                                font-size: 13px;
+                                background-color: #51B14D;
+                                color: #fff;
+                                border: none;
+                                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 251, 251, 0.1) inset;
+                                margin-left: 10px;
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            @@media only screen and (max-width:520px) and (min-width:220px) {
+                                .share-whatsapp .whatsapp-button {
+                                    padding: 10px 12px;
+                                    font-size: 8px;
+                                }
+                            }
+                        </style>
+
+                        <div class="col-md-12 home">
+
+                            <div style="padding:10px;padding-top:30px;" class="input-group">
+                                <input id="whatsapp-input" type="text" class="form-control" placeholder="Enter Mobile No">
+                                <span class="input-group-addon"><a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)" style="color:#fff;" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"><i class="fa fa-whatsapp"></i> Share On Whatsapp </a> </span>
+                            </div>
+                            <style>
+                                .input-group-addon {
+                                    padding: 6px 12px;
+                                    font-size: 14px;
+                                    font-weight: normal;
+                                    line-height: 1.8;
+                                    text-align: center;
+                                    background-color: #13730f;
+                                    /* border: 1px solid #cccccc; */
+                                    /*border-radius: 4px;*/
+                                    color: #fff;
+                                    /* background-color: white; */
+                                }
+                            </style>
+
+                            @*<div class="share-whatsapp">
+                                    <div class="col-md-6 col-sm-6 col-xs-6" style="float:left;padding:0px;">
+                                        <input type="text" id="txtWhatsappNo" placeholder="+91 0000000000">
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6" style="float:left;padding:0px;">
+                                        <button type="submit" class="whatsapp-button" onclick="shareViaWhatsapp()"><i class="fa fa-whatsapp" style="font-size:20px;margin-right:10px;"></i> Share on Whatsapp</button>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+                 function handleWhatsappShare(e) {
+                     const {value} = document.getElementById('whatsapp-input');
+                     if (value.length < 10) {
+                         e.preventDefault();
+                         return;
+                     }
+                     var msg = encodeURIComponent('Hello,\n To Know more about our provided services click on given link...\n http://mydc.in/?a=@item.callme-17 \n Thanks & Regards \n @item.customername')
+                     e.href = `https://wa.me/91${document.getElementById('whatsapp-input').value}?text=${msg}`;
+                     }
+                     function handleDirectWhatsappShare(e) {
+                         e.href = `whatsapp: \/\/send?text=${window.location.href}`;
+                   }
+                </script>
+
+                @*<a href="#works" class="btn btn-section btn-primary">
+                        <span class="i-before i"><i class="ti-desktop"></i><i class="ti-arrow-down"></i></span> Know <strong> More </strong>
+                    </a>*@
+
+            </section>
+            <!-- End Section Home -->
+            <!-- Section About -->
+            <section id="about" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted">About me</h3>
+                    <p class="lead text-lg mb-0">
+                        @Html.Raw(item.about)
+                    </p>
+                </div>
+            </section>
+            <!-- End Section About -->
+            <!-- Section  Vision -->
+            <section id="vision" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted"> Vision </h3>
+                    <div>
+                        @Html.Raw(item.vision)
+
+                    </div>
+                </div>
+            </section>
+            <!-- End Section Vision -->
+            <!-- Section Services -->
+            <section id="services" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted">My services</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.Raw(item.service)
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Section Services -->
+            <!-- Section -->
+            <style>
+                .testimonial {
+                    border: 1px solid #7dbef9;
+                    padding: 10px;
+                    border-radius: 10px;
+                    background: #bedcf7;
+                    margin-bottom: 10px;
+                }
+
+                    .testimonial img {
+                        width: 150px;
+                        height: 150px;
+                        text-align: center;
+                        display: block;
+                        margin: auto;
+                        border-radius: 50%;
+                    }
+
+                    .testimonial h2 {
+                        font-size: 18px;
+                        /*text-align: left;*/
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                        margin-top: 10px;
+                    }
+
+                    .testimonial p {
+                        font-size: 17px;
+                    }
+
+                @@media only screen and (max-width:520px) and (min-width:220px) {
+                    .testimonial {
+                        position: initial;
+                    }
+
+                        .testimonial h2 {
+                            text-align: center;
+                        }
+                }
+            </style>
+            <section id="testimonials" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted"> Team </h3>
+                    <div class="row no-padding">
+                        <div class="col-sm-12">
+                            @if (Model.testimonials != null)
+                            {
+                                foreach (var items in Model.testimonials)
+                                {
+                                    <div class="testimonial">
+                                        <div class="" style="margin-bottom:10px;">
+                                            @if (items.image != null)
+                                            {
+                                                <img src="@items.image" alt="" class="img-responsive">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/DigitalCard/images/abc.png" alt="" class="img-responsive">
+                                            }
+
+                                        </div>
+                                        <div class="text-center">
+                                            <h2 class="text-center">
+                                                @items.name
+                                            </h2>
+                                            <p>
+                                                @items.description
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section Testimonials -->
+            <!-- Section Gallery -->
+            <style>
+                .box_gallery {
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                    .box_gallery img {
+                        width: 100%;
+                        height: 300px;
+                        margin-bottom: 10px;
+                    }
+
+                    .box_gallery .box-content {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translate(-50%, -50%);
+                    }
+
+                        .box_gallery:before,
+                        .box_gallery:after,
+                        .box_gallery .box-content:before,
+                        .box_gallery .box-content:after {
+                            /*content: "";
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                position: absolute;
+                top: -100%;
+                left: 50%;
+                opacity: 0;
+                transform: translateX(-50%) rotate(45deg);
+                transition: all 0.3s steps(4);*/
+                        }
+
+                    .box_gallery:after {
+                        /*top: 100%;
+                    background: linear-gradient(45deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                    transform: translateX(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery .box-content:before {
+                        /*top: 50%;
+                    left: -100%;
+                    background: linear-gradient(135deg,rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.5) 50%);
+                    transform: translateY(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery .box-content:after {
+                        /*top: 50%;
+                    left: 100%;
+                    background: linear-gradient(135deg,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0.7) 50%);
+                    transform: translateY(-50%) rotate(45deg);*/
+                    }
+
+                    .box_gallery:hover:before {
+                        top: -70%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover:after {
+                        top: 70%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover .box-content:before {
+                        top: 50%;
+                        left: -71%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery:hover .box-content:after {
+                        top: 50%;
+                        left: 71%;
+                        opacity: 1;
+                    }
+
+                    .box_gallery .inner-content {
+                        width: 100%;
+                        height: 50%;
+                        text-align: center;
+                        color: #fff;
+                        position: absolute;
+                        top: 65%;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translate(-50%, 50%) scale(0);
+                        transition: all 0.3s ease 0.2s;
+                    }
+
+                        .box_gallery .inner-content:after {
+                            content: "";
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 50%;
+                            background: #00529c;
+                            position: absolute;
+                            top: 20%;
+                            left: 50%;
+                            z-index: -1;
+                            transform: translate(-50%, -50%);
+                        }
+
+                    .box_gallery:hover .inner-content {
+                        transform: translate(-50%, -50%) scale(1);
+                        transition: all 0.3s ease 0s;
+                    }
+
+                    .box_gallery .title {
+                        font-size: 22px;
+                        font-weight: 700;
+                        text-transform: capitalize;
+                        margin: 0 0 5px 0;
+                    }
+
+                    .box_gallery .post {
+                        display: block;
+                        font-size: 14px;
+                        font-style: italic;
+                        text-transform: uppercase;
+                        margin-bottom: 7px;
+                    }
+
+                    .box_gallery .icon {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                    }
+
+                        .box_gallery .icon li {
+                            display: inline-block;
+                            margin: 0 10px;
+                            opacity: 0;
+                            transition: all 0.3s ease 0s;
+                        }
+
+                    .box_gallery:hover .icon li {
+                        margin: 0 3px;
+                        opacity: 1;
+                    }
+
+                    .box_gallery .icon li a {
+                        display: block;
+                        width: 28px;
+                        height: 28px;
+                        line-height: 28px;
+                        border-radius: 20%;
+                        background: #fff;
+                        font-size: 16px;
+                        color: #505050;
+                        transition: all 0.3s ease 0s;
+                    }
+
+                        .box_gallery .icon li a:hover {
+                            background: #fff;
+                            color: #1856a3;
+                            box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+                        }
+
+                @@media only screen and (max-width:990px) {
+                    .box_gallery {
+                        margin-bottom: 30px;
+                    }
+                }
+            </style>
+            <style>
+                .box{
+                    text-align: center;
+                    overflow: hidden;
+                    position: relative;
+                    transition: all 0.2s ease-out 0s;
+                    margin-bottom:15px;
+                }
+                    .box:after {
+                        content: "";
+                        display: block;
+                        background: #3ba3e2;
+                        position: absolute;
+                        top: 20px;
+                        left: 20px;
+                        bottom: 20px;
+                        right: 20px;
+                        opacity: 0;
+                        transform: rotate3d(-1, 1, 0, 100deg);
+                        transition: all 0.4s ease-in-out 0s;
+                    }
+.box:hover:after{
+    opacity: 0.9;
+    transform: rotate3d(0, 0, 0, 0deg);
+}
+.box img{
+    width: 100%;
+    height: 250px;
+}
+.box .box-content{
+    position: absolute;
+    top: 45%;
+    left: 20px;
+    right: 20px;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transform: translate(10%, -30%);
+    transform: translate(10%, -30%);
+    transition: all 0.2s ease-out 0s;
+}
+.box:hover .box-content{
+    opacity: 1;
+    transform: translate(0%, -50%);
+    transition-delay: 0.2s;
+}
+.box .title{
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: #39b54a;
+    margin: 0 0 10px 0;
+}
+.box .post{
+    display: block;
+    font-size: 15px;
+    color: #f7f7b9;
+    margin-bottom: 20px;
+}
+.box .social{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.box .social li{
+    display: inline-block;
+}
+.box .social li a{
+    display: block;
+    width: 35px;
+    height: 35px;
+    background: #f7f7b9;
+    border-radius: 50%;
+    font-size: 17px;
+    color: #1b1462;
+    line-height: 35px;
+    margin-right: 5px;
+    transition: all 0.4s ease-in-out 0s;
+}
+                .box .social li a:hover {
+                    color: #f7f7b9;
+                    background: #3b48e2;
+                }
+@@media only screen and (max-width:990px){
+    .box{ margin-bottom: 30px; }
+}
+            </style>
+
+            <section id="gallery" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted"> Gallery </h3>
+                    <div class="row no-padding">
+                        <div class="col-md-12">
+                            @if (Model.gallery != null)
+                            {
+                                foreach (var items in Model.gallery)
+                                {
+                                    @*<div class="col-sm-4">
+                                        <div class="box_gallery">
+                                            <img src="@items.Image" class="img-responsive">
+                                            <div class="box-content">
+                                                <div class="inner-content">
+                                                    <ul class="icon">
+                                                        <li>
+                                                            <a href="@items.Image" data-magnify="gallery">
+                                                                <i class="fa fa-search"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="box">
+                                            <img src="@items.Image">
+                                            <div class="box-content">
+                                                <ul class="social">
+                                                    <li><a href="@items.Image" data-magnify="gallery"><i class="fa fa-search"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Section Gallery -->
+            <!-- Section Videos -->
+            <section id="videos" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted"> Videos </h3>
+                    <style>
+                        .Video_blcok .blocks {
+                            position: relative;
+                        }
+
+                            .Video_blcok .blocks .greenhead {
+                                background: #fff;
+                                text-align: center;
+                                color: #00283a;
+                                font-size: 14px;
+                                /*border-bottom: 1px solid #558f02;*/
+                                line-height: 43px;
+                                font-weight: 600;
+                            }
+
+                        .blockstart {
+                            border: 2px solid #000;
+                            padding: 2px;
+                            height: 300px;
+                            margin: 10px 0px;
+                        }
+
+                            .blockstart a {
+                                width: 100%;
+                            }
+
+                        .blockimg {
+                            width: 100%;
+                            height: 250px !important;
+                        }
+
+                        .Video_blcok .blocks .blockstart span {
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            margin-top: -25px;
+                            margin-left: -25px;
+                            width: 58px;
+                            height: 41px;
+                            line-height: 50px;
+                            font-size: 60px;
+                            color: #48c7f6;
+                        }
+                    </style>
+                    <div class="product mb-3">
+                        <div class="Video_blcok">
+                            <section>
+                                @{
+                                    if (Model.videos != null)
+                                    {
+                                        foreach (var itm in Model.videos)
+                                        {
+                                            <div class="blocks">
+                                                <div class="blockstart" style="position:relative;">
+                                                    <a id="pIASsr9TcKA" rel="fancyvideo" class="fancybox-media" href="https://youtu.be/@itm.url">
+                                                        <img src="https://img.youtube.com/vi/@itm.url/0.jpg" class="img-responsive blockimg">
+                                                        <span class="fa fa-play" id="@itm.url"></span>
+                                                    </a>
+                                                    <div class="greenhead"> @itm.title</div>
+                                                </div>
+                                            </div>
+
+
+                                        }
+                                    }
+
+                                }
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Section Videos -->
+            <!-- Section Contact -->
+            <section id="contact" class="bg-white">
+                <div class="section-content">
+                    <h3 class="text-muted">Contact me</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Icon Box -->
+                            <div class="icon-box icon-box-2">
+                                <span class="icon icon-sm icon-circle icon-primary"><i class="fa fa-map-marker"></i></span>
+                                <div class="icon-box-content">
+                                    <h6 class="text-muted">Address:</h6>
+                                    <address class="text-md mb-0">
+                                        @item.address
+                                    </address>
+                                </div>
+                            </div>
+                            <!-- Icon Box -->
+                            <div class="icon-box icon-box-2">
+                                <span class="icon icon-sm icon-circle icon-primary"><i class="fa fa-envelope"></i></span>
+                                <div class="icon-box-content">
+                                    <h6 class="text-muted">E-mail:</h6>
+                                    <a href="mailto:@item.emailid" class="text-md"> @item.emailid </a>
+                                </div>
+                            </div>
+                            <!-- Icon Box -->
+                            <div class="icon-box icon-box-2">
+                                <span class="icon icon-sm icon-circle icon-primary"><i class="fa fa-phone"></i></span>
+                                <div class="icon-box-content">
+                                    <h6 class="text-muted">Phone:</h6>
+                                    <a href="tel:@item.callme" class="text-md"> @item.callme </a>
+                                </div>
+                            </div>
+                            <!-- Icon Box -->
+                            <div class="icon-box icon-box-2">
+                                <span class="icon icon-sm icon-circle icon-primary"><i class="fa fa-globe"></i></span>
+                                <div class="icon-box-content">
+                                    <h6 class="text-muted">Website:</h6>
+                                    <a href="@item.website" class="text-md"> @item.website </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                                            .g-recaptcha {
+                                                /*transform: scale(1);
+                            transform-origin: 0 0;*/
+                                                padding: 5px 15px;
+                                            }
+
+                                                .g-recaptcha div {
+                                                    width: 100% !important;
+                                                    text-align: center;
+                                                    margin: auto;
+                                                }
+
+                                            @@media only screen and (max-width:520px) and (min-width:220px) {
+                                                .g-recaptcha {
+                                                    transform: scale(1);
+                                                    transform-origin: 0 0;
+                                                    padding: 5px 10px;
+                                                }
+                                            }
+                        </style>
+
+                        <div class="col-sm-6">
+                            <form method="post" id="register" name="register" action="sendenquiry">
+                                <div class="form-group input-wrapper">
+                                    <input type="hidden" name="toname" value="@item.customername">
+                                    <input type="hidden" name="toemail" value="@item.emailid">
+                                </div>
+                                <div class="form-group input-wrapper">
+                                    <input name="name" type="text" class="form-control alphabetOnly" placeholder="Name">
+                                </div>
+                                <div class="form-group input-wrapper">
+                                    <input name="email" type="email" class="form-control" placeholder="E-mail">
+                                </div>
+                                <div class="form-group input-wrapper">
+                                    <input name="number" type="text" class="form-control numbersOnly" placeholder="Mobile No" pattern="[1-9]{1}[0-9]{9}" maxlength="10">
+                                </div>
+                                <div class="form-group input-wrapper">
+                                    <textarea name="query" cols="30" rows="4" class="form-control" placeholder="Message"></textarea>
+                                </div>
+
+                                <div class="g-recaptcha" data-sitekey="6LdZ48kbAAAAALzrv1omkzc5Kld6IJj9wAFxM8qW" data-callback="recaptchaCallback"></div>
+                                <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-push-2">
+                                        <button type="submit" name="subquery" class="btn btn-submit"><span>Send message</span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Section Contact -->
+
+        </div>
+    </div>
+    <!-- Content End -->
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <!-- Panel -->
+    <nav id="panel" class="bg-white">
+        <div class="panel-wrapper">
+            <!-- Photo -->
+            <div class="photo">
+                @if (item.imageurl != "")
+                {
+                    <img src="@item.imageurl" style="width:100%;height:350px;">
+                }
+                else
+                {
+                    <img src="~/images/abc.png" style="width:100%;height:350px;">
+                }
+            </div>
+            <!-- Menu -->
+            <div class="menu widget">
+                <h6>Navigation</h6>
+                <ul id="nav-mobile" class="nav nav-panel">
+                    <li><a href="#home"><i class="ti-home"></i> Home </a></li>
+                    <li><a href="#about"><i class="ti-comment-alt"></i> About </a></li>
+                    <li><a href="#vision"><i class="ti-eye"></i> Vision </a></li>
+                    <li><a href="#services"><i class="ti-heart"></i> Servies </a></li>
+                    <li><a href="#testimonials"><i class="ti-comment"></i> Team </a></li>
+                    <li><a href="#gallery"><i class="ti-image"></i> Gallery </a></li>
+                    <li><a href="#videos"><i class="ti-video-camera"></i> Videos </a></li>
+                    <li><a href="#contact"><i class="ti-mobile"></i> Contact </a></li>
+                </ul>
+                <a href="https://digitalcard.live/Home/PrivacyPolicy?customerid=@ViewBag.id" target="_blank" style="font-size: 13px;padding: 10px 0;font-weight: 400;position: absolute;"><i class="fa fa-question" style="font-size: 22px;margin-right: 15px;margin-top: -5px;vertical-align: middle;display: inline-block;filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);opacity: 0.5;"></i> Privacy Policy </a>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Panel / End -->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Alert</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="msg">Enquiry Send Successfully</p>
+
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="clearcookies">
+                        <button type="submit" class="btn btn-success"> OK </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*<!-- Ajax Modal -->
+    <div id="ajax-modal"></div>
+    <!-- Ajax Loader -->
+    <svg id="ajax-loader" class="loader" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>*@
+<!-- JS Libraries -->
+<script src="/DigitalCard17/assets/js/jquery-1.12.3.min.js"></script>
+<!-- JS Plugins -->
+<script src="/DigitalCard17/assets/js/plugins.js"></script>
+<!-- JS Core -->
+<script src="/DigitalCard17/assets/js/core.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    //function shareViaWhatsapp() {
+    //    var phoneNo = $('#txtWhatsappNo').val().replace('+', '');
+    //    window.open('https://api.whatsapp.com/send?phone=' + phoneNo + '&text=Please check my new digital visiting card', '_blank');
+    //}
+</script>
+
+<script>
+    $(window).load(function () {
+        var msg = "@ViewBag.msg";
+        if (msg != "") {
+            $(".modal-title").html("Alert!")
+            $("#msg").html(msg);
+            $('#myModal1').modal({ backdrop: 'static', keyboard: false });
+        }
+    })
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    $(document).ready(function () {
+        $("#register").validate({
+            ignore: ".ignore",
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                number: {
+                    required: true,
+                    number: true,
+                    minlength: 10
+                },
+                query: {
+                    required: true
+                },
+                hiddenRecaptcha: {
+                    required: function () {
+                        if (grecaptcha.getResponse() == '') {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+            messages: {
+                name: {
+                    required: "Enter name"
+                },
+                email: {
+                    required: "Enter email Id",
+                    email: "Enter valid email Id"
+                },
+                number: {
+                    required: "Enter phone number",
+                    number: "Enter Phone number"
+                },
+                hiddenRecaptcha:
+                {
+                    required: "This Field Required"
+                }
+            }
+        }); //validate
+    });
+</script>
+
+<script>
+    function recaptchaCallback() {
+        $('#hiddenRecaptcha').valid();
+    };
+</script>
+
+
+<link href="~/css/JQueryMagnify.css" rel="stylesheet" />
+<script src="~/js/jQueryMagnify.js"></script>
+
+<script>
+    $('[data-magnify]').magnify({
+        resizable: true,
+        initMaximized: true
+    })
+</script>
+<script>
+    $(".numbersOnly").keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
+
+    $(".alphabetOnly").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Alphabets.
+        var regex = /^[a-zA-Z ]*$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        if (!isValid) {
+            return false;
+        }
+    });
+</script>
